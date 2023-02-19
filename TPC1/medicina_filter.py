@@ -16,7 +16,7 @@ texto = remove_header_footer(texto)
 
 def marcaE(texto):
     texto = re.sub(r'<text.* font="3"><b>\s*(\d+)\s*(\w+(?: \w+)*)\s*(\w)\s*</b></text>\n?', r'\n###IDENT \1;\2;\3', texto)
-    texto = re.sub(r'<text.* font="3"><b>\s*(\S.*)</b></text>\n?', r'\n###R \1', texto)
+    texto = re.sub(r'<text.* font="3"><b>\s*(\S.*)</b></text>\n?', r'\n###REM \1', texto)
   
     return texto
 
@@ -127,7 +127,7 @@ def getECNota(notaMatch):
 def preencherEstrutura(texto):
     global i
     entradaCompleta = r'###IDENT (?P<cabecalho>.*)\n###AT (?P<areasTematicas>.*)\n(?:###SIN (?P<SIN>.*)\n)?(?:###VAR (?P<VAR>.*)\n)?(###TRAD es (?P<es>.*)\n)?(###TRAD en (?P<en>.*)\n)?(###TRAD pt (?P<pt>.*)\n)?(###TRAD la (?P<la>.*)\n)?(###NOTA (?P<nota>.*)\n)?'
-    entradaRemissiva = r''
+    entradaRemissiva = r'###REM (?P<rem>.*)\n###RED (?P<red>.*)'
 
     # parser das entradas completas
     for ec in re.finditer(entradaCompleta,texto):
@@ -145,7 +145,16 @@ def preencherEstrutura(texto):
         ecObj["traducoes"]["pt"] = getECTraducoes(ec.groupdict()["pt"])
         ecObj["traducoes"]["la"] = getECTraducoes(ec.groupdict()["la"])
         ecObj["nota"] = getECNota(ec.groupdict()["nota"])
+
         medicinaConceitos["entradasCompletas"].append(ecObj)
+
+    # parser das entradas remissivas
+    for er in re.finditer(entradaRemissiva,texto):
+        erObj = {}
+        erObj["denominacao"] = er.groupdict()["rem"]
+        erObj["referência"] = er.groupdict()["red"]
+
+        medicinaConceitos["entradasRemissivas"].append(erObj)
 
 preencherEstrutura(texto)
 
