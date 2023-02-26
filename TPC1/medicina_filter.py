@@ -14,13 +14,50 @@ def remove_header_footer(texto):
 
 texto = remove_header_footer(texto)
 
-def marcaE(texto):
-    texto = re.sub(r'<text.* font="3"><b>\s*(\d+)\s*(\w+(?: \w+)*)\s*(\w)\s*</b></text>\n?', r'\n###IDENT \1;\2;\3', texto)
+def marcaEntradaCompletaERemissiva(texto):
+    ''' Entrada Completa toda contida na mesma linha 
+    1-) \s* -> pode haver um número de espaços arbitrário antes do index 
+    2-) (\d+) -> índex
+    3-) \s+ -> pode haver um número de espaços arbitrário entre o index e o nome do termo (no mínimo 1)
+    4-) (\w+(?: \w+)*) -> O nome do termo pode ser multi-palavra
+    5-) \s+ -> pode haver um número de espaços arbitrário entre o nome do termo e o genéro gramatical (no mínimo 1)
+    6-) (\w) -> gênero gramatical
+    7-) \s* -> pode haver um número arbitrário de espaços até a tag de fecho </b>
+    '''
+    texto = re.sub(r'<text.* font="3"><b>\s*(\d+)\s+(\w+(?: \w+)*)\s+(\w)\s*</b></text>\n?', r'\n###IDENT \1;\2;\3', texto)
+    
+    ''' Entrada Completa que pode estar contida em duas linhas
+    *Deteção da primeira linha*
+    1-) \s* -> pode haver um número de espaços arbitrário antes do index 
+    2-) (\d+) -> índex
+    3-) \s+ -> pode haver um número de espaços arbitrário entre o index e o nome do termo (no mínimo 1)
+    4-) (\w+(?: \w+)*) -> O nome do termo pode ser multi-palavra
+
+    (uma entrada completa que está contida em mais de uma linha não tem o gênero gramatical
+    na primeira linha)
+
+    *Deteção da segunda linha*
+    1-) \s* -> pode haver um número de espaços arbitrário antes do index 
+    2-) (\d+) -> índex
+    3-) \s+ -> pode haver um número de espaços arbitrário entre o nome do termo e o gênero gramatical (no mínimo 1)
+    4-) (\w) -> gênero gramatical
+    7-) \s* -> pode haver um número arbitrário de espaços até a tag de fecho </b>
+
+    Nesse caso, a string de substituiçã não leba \n, uma vez que ela será um continuação daquilo que foi
+    substituído no regex anterior!
+    '''
+    texto = re.sub(r'<text.* font="3"><b>\s*(\d+)\s+(\w+(?: \w+)*)\s*</b></text>\n?', r'\n###IDENT \1;\2 ', texto)
+    texto = re.sub(r'<text.* font="3"><b>\s*(\w+(?: \w+)*)\s+(\w)\s*</b></text>\n?', r'\1;\2;', texto)
+    
+    ''' Entrada Remissiva
+    O que não foi detetado anteriormente com font=3 que tenha conteúdo para além de espaços é considerado
+    uma Entrada Remissiva.
+    '''
     texto = re.sub(r'<text.* font="3"><b>\s*(\S.*)</b></text>\n?', r'\n###REM \1', texto)
   
     return texto
 
-texto = marcaE(texto)
+texto = marcaEntradaCompletaERemissiva(texto)
 
 def marcaLinguas(texto):
     texto = re.sub(r'<text.* font="0">\s*(es|en|pt|la)\s*</text>\n?', r'\n###TRAD \1 ',texto)
@@ -37,6 +74,13 @@ def areaTematicaReplace(m):
     return text
 
 def marcaAreaTematica(texto):
+    ''''
+    Pode haver mais de uma área temática por termo, e cada área temática pode se ruma multi-palavra
+    1-) \s* -> pode haver um número de espaços antes da primeira área temática
+    2-) (\w+(?: \w+)*) -> Área temática multi-palavra
+    3-) \s* -> pode haver um número de espaços entre as áreas temáticas
+    4-) (\w+(?: \w+)*)* -> Possibilidade de havera mais Áreas temáticas
+    '''
     texto = re.sub(r'<text.* font="6"><i>\s*(\w+(?: \w+)*)\s*(\w+(?: \w+)*)*</i></text>\n?',areaTematicaReplace,texto)
     return texto 
 
@@ -163,3 +207,8 @@ with open("medicina.json", "w") as outfile:
 
 file = open('medicina.text', 'w')
 file.write(texto)
+
+# Print de algumas observações sobre os dados coletados no dicionário
+print("Número de Entradas Completas detetadas: ", len(medicinaConceitos["entradasCompletas"]))
+print("Número de Entradas Remissivas detetadas: ", len(medicinaConceitos["entradasRemissivas"]))
+print("Número total de Entradas detetadas: ", len(medicinaConceitos["entradasRemissivas"]) + len(medicinaConceitos["entradasCompletas"]))

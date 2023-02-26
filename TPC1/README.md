@@ -2,7 +2,7 @@
 # TPC1
 
 Extração e estruturação das informações do ficheiro *medicina.pdf* num formato de dados conveniente.
-![enter image description here](https://raw.githubusercontent.com/henriqueparola/spln-2223/main/TPC1/banner.png)
+![enter image description here](https://raw.githubusercontent.com/henriqueparola/spln-2223/main/TPC1/images/banner.png)
 
 ### Ficheiros:
 * **medicina.pdf**:  pdf sobre o vocabulário de medicina (galego-espanhol-inglés-portugués);
@@ -31,7 +31,14 @@ Extração e estruturação das informações do ficheiro *medicina.pdf* num for
 	* Palavra referênciada como sinónimo ou variante;
 
 Exemplo de **Entrada Completa** com duas áreas temáticas, dois sinónimos, zero variantes  e três palavras por tradução (sem a tradução em *la*) :
-![enter image description here](https://raw.githubusercontent.com/henriqueparola/spln-2223/main/TPC1/repInputComplexo.png)
+![enter image description here](https://raw.githubusercontent.com/henriqueparola/spln-2223/main/TPC1/images/repInputComplexo.png)
 
-#  TODO
-* Corrigir bug de Identificação de EC conter mais de uma linha no XML.
+# Termos difíceis para teste
+* Entrada Completa 20
+* Entrada Completa 184
+* Entrada Completa 483
+* Entrada Completa 5074
+
+# FIX
+
+Número de Entradas Completas detetadas está sendo de 5223, enquanto o esperado é 5393

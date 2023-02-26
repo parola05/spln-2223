@@ -112,7 +112,7 @@
 ###TRAD es acantolisis
 ###TRAD en acantholysis
 ###TRAD pt acantólise
-###IDENT 17;acantos;e
+###IDENT 17;acantose 
 ###REM f
 ###AT Patoloxías;
 ###TRAD es acantosis nigricans
@@ -133,8 +133,7 @@
 ###TRAD es accidente de trabajo;accidente laboral
 ###TRAD en work accident
 ###TRAD pt acidente de trabalho	___
-###IDENT 20;accidente isquémic;o
-###REM transitorio      m
+###IDENT 20;accidente isquémico transitorio;m;
 ###AT Semioloxía;Patoloxías;
 ###SIN ataque isquémico transitorio; AIT  (sg) 
 ###TRAD es accidente isquémico transitorio;AIT (sg);ataque isquémico transitorio
@@ -228,8 +227,7 @@
 ###SIN HCl (sb) 
 ###TRAD es ácido clorhídrico
 ###TRAD en hydrochloric acid
-###TRAD pt ácido clorídrico
-###REM ácido desoxirribonucleico      m
+###TRAD pt ácido clorídricoácido desoxirribonucleico;m;
 ###AT Bioquímica;
 ###SIN ADN; (sg) DNA (sg) 
 ###TRAD es ácido desoxirribonucleico;ADN (sg);DNA (sg)
@@ -900,7 +898,7 @@
 ###TRAD es AFP (sg);alfa fetoproteína
 ###TRAD en AFP (sg);alpha fetoprotein
 ###TRAD pt AFP (sg);alfa-fetoproteína
-###IDENT 1;3;9
+###REM 139 
 ###REM m
 ###AT Termos xerais;
 ###TRAD es algor mortis
@@ -934,7 +932,7 @@
 ###TRAD es alopecia androgenética;alopecia androgénica
 ###TRAD en androgenetic alopecia;androgenic alopecia
 ###TRAD pt alopecia androgenética;alopecia androgénica
-###IDENT 1;4;4
+###REM 144 
 ###REM f
 ###AT Patoloxías;
 ###TRAD es alopecia areata
@@ -1164,8 +1162,7 @@
 ###TRAD pt análise
 ###REM análise de LCR
 ###RED análise de líquido cefalorraquídeo 
-###IDENT 182;análise de líquid;o
-###REM cefalorraquídeo      f
+###IDENT 182;análise de líquido cefalorraquídeo;f;
 ###AT Probas complementarias;
 ###SIN análise de LCR; exame de  líquido cefalorraquídeo (m); exame de  LCR (m) 
 ###TRAD es análisis de LCR;análisis de líquido cefalorraquídeo;examen de LCR;examen de líquido cefalorraquídeo
@@ -1560,27 +1557,23 @@
 ###TRAD es antagonista de la vitamina K
 ###TRAD en vitamin K antagonist
 ###TRAD pt antagonista da vitamina K___
-###IDENT 247;antagonista dos receptores d;a
-###REM anxiotensina II          m 
+###IDENT 247;antagonista dos receptores da anxiotensina II;m;
 ###AT Farmacoloxía;
 ###SIN ARA II (sg); antagonista da  anxiotensina II 
 ###TRAD es antagonista de la angiotensina II;antagonista de los receptores de la angiotensina II;ARA II
 ###TRAD en angiotensin II antagonist;angiotensin II receptor antagonist;ARA II (sg)
 ###TRAD pt antagonista da angiotensina II;antagonista dos receptores da angiotensina II;ARA II (sg)
-###IDENT 248;antagonista dos receptores d;a
-###REM serotonina      m
+###IDENT 248;antagonista dos receptores da serotonina;m;
 ###AT Farmacoloxía;
 ###TRAD es antagonista de los receptores de serotonina
 ###TRAD en serotonin receptor antagonist
 ###TRAD pt antagonista dos receptores da serotonina
-###IDENT 249;antagonista dos receptores d;e
-###REM leucotrienos      m          
+###IDENT 249;antagonista dos receptores de leucotrienos;m;
 ###AT Farmacoloxía;
 ###TRAD es antagonista de receptores de leucotrienos
 ###TRAD en leukotriene receptor antagonist
 ###TRAD pt antagonista dos receptores de leucotrienos
-###REM antagonista dos receptores 
-###REM H2      m
+###REM antagonista dos receptores H2;m;
 ###AT Farmacoloxía;
 ###TRAD es antagonista de receptores H2
 ###TRAD en H-2 receptor antagonist
@@ -1853,7 +1846,7 @@
 ###TRAD es antiflogístico;antiinflamatorio
 ###TRAD en antiinflammatory;anti-inflammatory;antiphlogistic
 ###TRAD pt antiflogístico;antiinflamatório;anti-inflamatório
-###IDENT 296;antiinflamatori;o
+###IDENT 296;antiinflamatorio 
 ###REM non-esteroide      m
 ###AT Farmacoloxía;
 ###SIN AINE (sg) 
@@ -3104,8 +3097,7 @@
 ###TRAD en arthrodia;gliding joint;plane joint
 ###TRAD pt articulação plana;artródia
 ###TRAD la articulatio plana
-###IDENT 483;articulación por encaix;e
-###REM recíproco      f
+###IDENT 483;articulación por encaixe recíproco;f;
 ###AT Anatomía;
 ###SIN articulación en sela; articulación  selar 
 ###TRAD es articulación en encaje recíproco;articulación en silla de montar
@@ -3116,8 +3108,7 @@
 ###REM articulación selar 
 ###RED articulación por encaixe recíproco
 ###REM *articulación sellar
-###RED articulación por encaixe recíproco
-###REM articulación sinovial      f
+###RED articulación por encaixe recíprocoarticulación sinovial;f;
 ###AT Anatomía;
 ###SIN diartrose; articulación diartrodial 
 ###TRAD es articulación sinovial;diartrosis
@@ -3499,8 +3490,7 @@
 ###REM atomización
 ###RED nebulización
 ###REM atomizador 
-###RED nebulizador
-###REM atopía      f
+###RED nebulizadoratopía;f;
 ###AT Etiopatoxenia;
 ###TRAD es atopia
 ###TRAD en atopy
@@ -3885,8 +3875,7 @@
 ###TRAD es balneoterapia
 ###TRAD en balneotherapy
 ###TRAD pt balneoterapia
-###IDENT 599;balón de contrapulsació;n
-###REM aórtico      m
+###IDENT 599;balón de contrapulsación aórtico;m;
 ###AT Terapéutica;
 ###SIN balón intraaórtico 
 ###TRAD es balón de contrapulsación aórtico
@@ -4532,8 +4521,7 @@
 ###REM C
 ###RED carbono
 ###REM C
-###RED citosina
-###REM C I
+###RED citosinaC;I;
 ###RED atlas
 ###REM C II
 ###RED axe
@@ -5042,8 +5030,7 @@
 ###TRAD es carbunco
 ###TRAD en anthrax
 ###TRAD pt carbúnculo
-###IDENT 774;carcinoma da ampola d;e
-###REM Vater      m
+###IDENT 774;carcinoma da ampola de Vater;m;
 ###AT Patoloxías;
 ###SIN ampuloma;  tumor maligno da  ampola de Vater 
 ###TRAD es ampuloma;tumor maligno de la ampolla de Vater
@@ -5372,7 +5359,7 @@
 ###TRAD pt cateterismo cardíaco
 ###REM cateterización
 ###RED cateterismo
-###IDENT 8;2;6
+###REM 826 
 ###REM f
 ###AT Anatomía;
 ###TRAD es cola de caballo
@@ -5609,8 +5596,7 @@
 ###REM célula alveolar 
 ###RED pneumocito
 ###REM célula asasina natural
-###RED célula NK
-###REM célula B 
+###RED célula NKcélula;B;
 ###RED linfocito B
 ###IDENT 858;célula caliciforme;f
 ###AT Histoloxía;
@@ -5708,8 +5694,7 @@
 ###AT Histoloxía;
 ###TRAD es célula reticular
 ###TRAD en reticular cell
-###TRAD pt célula reticular
-###REM célula T
+###TRAD pt célula reticularcélula;T;
 ###RED linfocito T
 ###REM célula troncal  
 ###RED célula nai
@@ -5745,8 +5730,7 @@
 ###TRAD pt centro de saúde
 ###REM centro frénico
 ###RED centro tendinoso do diafragma 
-###IDENT 880;centro tendinoso d;o
-###REM diafragma      m
+###IDENT 880;centro tendinoso do diafragma;m;
 ###AT Anatomía;
 ###SIN centro frénico 
 ###TRAD es centro frénico;centro tendinoso del diafragma
@@ -6520,7 +6504,7 @@
 ###TRAD es clitoroplastia
 ###TRAD en clitoroplasty
 ###TRAD pt clitoroplastia
-###IDENT 10;0;4
+###REM 1004 
 ###REM m
 ###AT Anatomía;
 ###SIN canal basilar 
@@ -6693,8 +6677,7 @@
 ###TRAD es colangiografía
 ###TRAD en cholangiography
 ###TRAD pt colangiografia
-###IDENT 1030;colanxiografía percutáne;a
-###REM transhepática      f
+###IDENT 1030;colanxiografía percutánea transhepática;f;
 ###AT Probas complementarias;
 ###SIN colanxiografía  transparietohepática 
 ###TRAD es colangiografía percutánea transhepática;colangiografía transparietohepática;CPTH (sg)
@@ -6714,8 +6697,7 @@
 ###TRAD es colangiopancreatografía
 ###TRAD en cholangiopancreatography
 ###TRAD pt colangiopancreatografia
-###IDENT 1033;colanxiopancreatografí;a
-###REM retrógrada endoscópica      f          
+###IDENT 1033;colanxiopancreatografía retrógrada endoscópica;f;
 ###AT Probas complementarias;
 ###SIN CPRE (sg) 
 ###TRAD es colangiopancreatografía retrógrada endoscópica;CPRE (sg)
@@ -7134,7 +7116,7 @@
 ###REM complexo maior de 
 ###REM histocompatibilidade       
 ###RED complexo principal de histocompatibilidade 
-###IDENT 1099;complexo principal d;e
+###IDENT 1099;complexo principal de 
 ###REM histocompatibilidade  
 ###REM m  
 ###AT Bioquímica;
@@ -7560,7 +7542,7 @@
 ###TRAD es coprofrasia;coprolalia
 ###TRAD en coprolalia;coprophrasia
 ###TRAD pt coprolalia
-###IDENT 11;6;9
+###REM 1169 
 ###REM m
 ###AT Etiopatoxenia;
 ###TRAD es cor pulmonale
@@ -7828,7 +7810,7 @@
 ###TRAD la corpus vertebrae
 ###REM corpo vítreo
 ###RED humor vítreo
-###IDENT 12;0;5
+###REM 1205 
 ###REM m
 ###AT Histoloxía;
 ###SIN corpo branco  
@@ -7837,7 +7819,7 @@
 ###TRAD es corpus albicans;cuerpo albicans;cuerpo blanco
 ###TRAD en albicans;corpus albicans
 ###TRAD pt corpo albicans;corpo branco;corpus albicans
-###IDENT 12;0;6
+###REM 1206 
 ###REM m
 ###AT Histoloxía;
 ###SIN corpo amarelo  
@@ -8127,7 +8109,7 @@
 ###REM crista de galo
 ###RED 
 ###AT crista galli;
-###IDENT 12;4;6
+###REM 1246 
 ###REM f
 ###AT Anatomía;
 ###VAR crista de galo 
@@ -8483,8 +8465,7 @@
 ###TRAD es deformidad en ojal
 ###TRAD en boutonnière deformity;buttonhole deformity
 ###TRAD pt deformidade em botoeira
-###IDENT 1299;deformidade en pescozo d;e
-###REM cisne      f
+###IDENT 1299;deformidade en pescozo de cisne;f;
 ###AT Semioloxía;
 ###TRAD es deformidad en cuello de cisne
 ###TRAD en swan-neck deformity
@@ -8830,8 +8811,7 @@
 ###TRAD en decongestant
 ###TRAD pt descongestionante
 ###REM desconxestivo      
-###RED desconxestionante
-###REM descorticación      f
+###RED desconxestionantedescorticación;f;
 ###AT Etiopatoxenia;
 ###TRAD es decorticación
 ###TRAD en decortication
@@ -9004,7 +8984,7 @@
 ###TRAD en diabetes insipidus
 ###TRAD pt diabete insípida;diabete insipidus;diabetes insípida;diabetes insipidus
 ###RED diabetes insípida
-###IDENT 13;8;1
+###REM 1381 
 ###REM f
 ###AT Patoloxías;
 ###TRAD es diabetes mellitus;diabetes sacarina
@@ -9073,7 +9053,7 @@
 ###TRAD es diagnóstico diferencial
 ###TRAD en differential diagnosis
 ###TRAD pt diagnóstico diferencial___
-###IDENT 1391;diagnóstic;o
+###IDENT 1391;diagnóstico 
 ###REM m
 ###AT Termos xerais;
 ###TRAD es diagnóstico post mortem
@@ -9399,8 +9379,7 @@
 ###TRAD pt dissociação
 ###REM disociación atrioventricular      
 ###RED disociación auriculoventricular
-###IDENT 1448;disociació;n
-###REM auriculoventricular      f
+###IDENT 1448;disociación auriculoventricular;f;
 ###AT Etiopatoxenia;
 ###SIN disociación atrioventricular;  disociación AV 
 ###TRAD es disociación auriculoventricular;disociación AV
@@ -9525,8 +9504,7 @@
 ###TRAD es diurético
 ###TRAD en diuretic
 ###TRAD pt diurético
-###IDENT 1469;diurético aforrador d;e
-###REM potasio      m
+###IDENT 1469;diurético aforrador de potasio;m;
 ###AT Farmacoloxía;
 ###SIN aforrador de potasio 
 ###TRAD es ahorrador de potasio;diurético ahorrador de potasio
@@ -10538,8 +10516,7 @@
 ###RED esclerose tuberosa
 ###REM enfermidade de Buerger      
 ###RED tromboanxite obliterante
-###IDENT 1629;enfermidade de declaració;n
-###REM obrigatoria      f
+###IDENT 1629;enfermidade de declaración obrigatoria;f;
 ###AT Epidemioloxía;
 ###SIN EDO (sg) 
 ###TRAD es EDO (sg);enfermedad de declaración obligatoria
@@ -10554,8 +10531,7 @@
 ###RED hemoglobinuria paroxística nocturna 
 ###REM enfermidade de Miller      
 ###RED osteomalacía
-###IDENT 1630;enfermidade de transmisió;n
-###REM sexual      f
+###IDENT 1630;enfermidade de transmisión sexual;f;
 ###AT Patoloxías;
 ###SIN ETS (sg); infección de transmisión  sexual; ITS (sg) 
 ###TRAD es enfermedad de transmisión sexual;ETS (sg);infección de transmisión sexual;ITS (sg)
@@ -10563,8 +10539,7 @@
 ###TRAD pt doença de transmissão sexual;DTS (sg);infecção de transmissão sexual;ITS (sg)
 ###REM enfermidade diverticular      
 ###RED diverticulose
-###IDENT 1631;enfermidade do reflux;o
-###REM gastroesofáxico      f
+###IDENT 1631;enfermidade do refluxo gastroesofáxico;f;
 ###AT Patoloxías;
 ###SIN ERGE (sg); doenza do refluxo  gastroesofáxico; DRGE (sg) 
 ###TRAD es enfermedad del reflujo gastresofágico;ERGE (sg)
@@ -10601,15 +10576,13 @@
 ###TRAD es enfermedad exantemática
 ###TRAD en exanthematous disease
 ###TRAD pt doença exantemática___
-###IDENT 1636;enfermidade granulomatos;a
-###REM crónica      f
+###IDENT 1636;enfermidade granulomatosa crónica;f;
 ###AT Patoloxías;
 ###SIN doenza granulomatosa crónica 
 ###TRAD es enfermedad granulomatosa crónica
 ###TRAD en chronic granulomatous disease
 ###TRAD pt doença granulomatosa crônica [Br.];doença granulomatosa crónica [Pt.]
-###IDENT 1637;enfermidade hemolítica d;o
-###REM neonato      f
+###IDENT 1637;enfermidade hemolítica do neonato;f;
 ###AT Patoloxías;
 ###SIN eritroblastose fetal 
 ###TRAD es enfermedad hemolítica del recién nacido;eritroblastosis fetal
@@ -10630,15 +10603,13 @@
 ###TRAD es enfermedad infecciosa
 ###TRAD en infectious disease
 ###TRAD pt doença infecciosa
-###IDENT 1641;enfermidade inflamatori;a
-###REM intestinal      f
+###IDENT 1641;enfermidade inflamatoria intestinal;f;
 ###AT Patoloxías;
 ###SIN EII (sg); doenza inflamatoria  intestinal; DII (sg) 
 ###TRAD es EII (sg);enfermedad inflamatoria intestinal
 ###TRAD en IBD (sg);inflammatory bowel disease
 ###TRAD pt DII (sg);doença inflamatória intestinal
-###IDENT 1642;enfermidade inflamatori;a
-###REM pélvica      f
+###IDENT 1642;enfermidade inflamatoria pélvica;f;
 ###AT Patoloxías;
 ###SIN EIP (sg); doenza inflamatoria  pélvica; DIP (sg) 
 ###TRAD es EIP (sg);enfermedad inflamatoria pélvica
@@ -10664,15 +10635,14 @@
 ###TRAD es enfermedad profesional
 ###TRAD en occupational disease
 ###TRAD pt doença ocupacional
-###IDENT 1646;enfermidade pulmona;r
+###IDENT 1646;enfermidade pulmonar 
 ###REM obstrutiva crónica     
 ###AT Patoloxías;
 ###SIN EPOC (sg); doenza pulmonar  obstrutiva crónica; DPOC (sg) 
 ###TRAD es enfermedad pulmonar obstructiva crónica;EPOC (sg)
 ###TRAD en chronic obstructive pulmonary disease;COPD (sg)
 ###TRAD pt doença pulmonar obstrutiva crônica [Br.];doença pulmonar obstrutiva crónica [Pt.];DPOC (sg)
-###IDENT 1647;enfermidade pulmona;r
-###REM restritiva      f
+###IDENT 1647;enfermidade pulmonar restritiva;f;
 ###AT Patoloxías;
 ###SIN doenza pulmonar restritiva 
 ###TRAD es enfermedad pulmonar restrictiva
@@ -10691,8 +10661,7 @@
 ###TRAD es enfermedad trofoblástica
 ###TRAD en trophoblastic disease
 ###TRAD pt doença trofoblástica
-###IDENT 1650;enfermidade trofoblástic;a
-###REM xestacional      f
+###IDENT 1650;enfermidade trofoblástica xestacional;f;
 ###AT Patoloxías;
 ###SIN corioepitelioma (m);  coriocarcinoma (m); corioblastoma (m) 
 ###TRAD es corioblastoma;coriocarcinoma;corioepitelioma;enfermedad trofoblástica gestacional
@@ -10736,8 +10705,7 @@
 ###TRAD es enmascaramiento
 ###TRAD en masking
 ###TRAD pt mascaramento
-###IDENT 1657;ensaio aleatorizad;o
-###REM controlado      m
+###IDENT 1657;ensaio aleatorizado controlado;m;
 ###AT Epidemioloxía;
 ###TRAD es EAC (sg);ensayo aleatorio controlado
 ###TRAD en randomized controlled trial;RCT (sg)
@@ -10747,8 +10715,7 @@
 ###TRAD es ensayo clínico
 ###TRAD en clinical trial
 ###TRAD pt ensaio clínico
-###IDENT 1659;ensaio comunitario d;e
-###REM intervención      m
+###IDENT 1659;ensaio comunitario de intervención;m;
 ###AT Epidemioloxía;
 ###TRAD es ensayo comunitario de intervención
 ###TRAD en community intervention trial
@@ -10909,8 +10876,7 @@
 ###TRAD es enzima
 ###TRAD en enzyme
 ###TRAD pt enzima
-###IDENT 1688;enzima conversor d;a
-###REM anxiotensina      m
+###IDENT 1688;enzima conversor da anxiotensina;m;
 ###AT Bioquímica;
 ###SIN ECA (sg) 
 ###TRAD es ECA (sg);enzima convertidora de la angiotensina
@@ -11223,7 +11189,7 @@
 ###TRAD es eritrocito;glóbulo rojo;hematíe
 ###TRAD en erythrocyte;red blood cell
 ###TRAD pt eritrócito;glóbulo vermelho;hemácia
-###IDENT 1737;eritrocitos en rima d;e
+###IDENT 1737;eritrocitos en rima de 
 ###REM moedas      m pl
 ###AT Semioloxía;
 ###SIN hemacias en rima de moedas (f) 
@@ -11271,8 +11237,7 @@
 ###TRAD es error sistemático;sesgo
 ###TRAD en bias;systematic error
 ###TRAD pt erro sistemático;viés
-###IDENT 1745;erro sistemático d;e
-###REM información      m
+###IDENT 1745;erro sistemático de información;m;
 ###AT Epidemioloxía;
 ###SIN nesgo de observación; nesgo de  información 
 ###TRAD es sesgo de información;sesgo de observación;sesgo del observador
@@ -11288,8 +11253,7 @@
 ###REM escabiose 
 ###RED sarna
 ###REM escafoide 
-###RED óso escafoide
-###REM escala timpánica      f
+###RED óso escafoideescala timpánica;f;
 ###AT Anatomía;
 ###SIN rampla timpánica 
 ###TRAD es escala timpánica;rampa timpánica
@@ -11783,16 +11747,14 @@
 ###TRAD en spine of scapula
 ###TRAD pt espinha da escápula;espinha escapular
 ###TRAD la spina scapulae
-###IDENT 1820;espiña ilíaca anterio;r
-###REM inferior      f
+###IDENT 1820;espiña ilíaca anterior inferior;f;
 ###AT Anatomía;
 ###VAR espiña ilíaca anteroinferior 
 ###TRAD es espina ilíaca anterior inferior;espina ilíaca anteroinferior
 ###TRAD en anterior inferior iliac spine
 ###TRAD pt espinha ilíaca ântero-inferior [Br.];espinha ilíaca antero-inferior [Pt.]
 ###TRAD la spina iliaca anterior inferior
-###IDENT 1821;espiña ilíaca anterio;r
-###REM superior      f
+###IDENT 1821;espiña ilíaca anterior superior;f;
 ###AT Anatomía;
 ###VAR espiña ilíaca anterosuperior 
 ###TRAD es espina ilíaca anterior superior;espina ilíaca anterosuperior
@@ -11803,16 +11765,14 @@
 ###RED espiña ilíaca anterior inferior
 ###REM espiña ilíaca anterosuperior      
 ###RED espiña ilíaca anterior superior
-###IDENT 1822;espiña ilíaca posterio;r
-###REM inferior      f
+###IDENT 1822;espiña ilíaca posterior inferior;f;
 ###AT Anatomía;
 ###VAR espiña ilíaca posteroinferior 
 ###TRAD es espina ilíaca posterior inferior;espina ilíaca posteroinferior
 ###TRAD en posterior inferior iliac spine
 ###TRAD pt espinha ilíaca póstero-inferior [Br.];espinha ilíaca postero-inferior [Pt.]
 ###TRAD la spina iliaca posterior inferior
-###IDENT 1823;espiña ilíaca posterio;r
-###REM superior      f
+###IDENT 1823;espiña ilíaca posterior superior;f;
 ###AT Anatomía;
 ###VAR espiña ilíaca posterosuperior 
 ###TRAD es espina ilíaca posterior superior;espina ilíaca posterosuperior
@@ -12463,8 +12423,7 @@
 ###TRAD es exón
 ###TRAD en exon
 ###TRAD pt exão [Pt.];exon [Br.]
-###IDENT 1927;exostose cartilaxinos;a
-###REM múltiple      f
+###IDENT 1927;exostose cartilaxinosa múltiple;f;
 ###AT Patoloxías;
 ###TRAD es exostosis cartilaginosa múltiple
 ###TRAD en exostosis
@@ -12681,8 +12640,7 @@
 ###AT Epidemioloxía;
 ###TRAD es factor facilitador
 ###TRAD en facilitating factor
-###TRAD pt factor facilitador [Pt.];fator facilitador [Br.]
-###REM factor I 
+###TRAD pt factor facilitador [Pt.];fator facilitador [Br.]factor;I;
 ###RED fibrinóxeno
 ###IDENT 1960;factor intrínseco;m
 ###AT Bioquímica;Fisioloxía;
@@ -12947,7 +12905,7 @@
 ###TRAD es fecundación;fertilización
 ###TRAD en fecundation;fertilization
 ###TRAD pt fecundação;fertilização
-###IDENT 1998;fecundació;n
+###IDENT 1998;fecundación 
 ###REM f
 ###AT Terapéutica;
 ###SIN fertilización  
@@ -13061,7 +13019,7 @@
 ###TRAD es feto
 ###TRAD en fetus;foetus
 ###TRAD pt feto
-###IDENT 20;1;5
+###REM 2015 
 ###REM m
 ###AT Semioloxía;
 ###SIN alento hepático 
@@ -13171,8 +13129,7 @@
 ###TRAD en fibromyalgia
 ###TRAD pt fibromialgia
 ###REM fibromioma uterino      
-###RED leiomioma uterino
-###REM fibronectina      f
+###RED leiomioma uterinofibronectina;f;
 ###AT Bioquímica;
 ###TRAD es fibronectina
 ###TRAD en fibronectin
@@ -14232,8 +14189,7 @@
 ###TRAD es glucosa
 ###TRAD en glucose
 ###TRAD pt glicose
-###REM 2201  glicosa-6-fosfato 
-###REM deshidroxenase      f
+###REM 2201  glicosa-6-fosfato deshidroxenase;f;
 ###AT Bioquímica;
 ###TRAD es glucosa-6-fosfatodeshidrogenasa
 ###TRAD en glucose-6-phosphate dehydrogenase
@@ -14433,8 +14389,7 @@
 ###TRAD es gonadotrofina;gonadotropina
 ###TRAD en gonadotrophin;gonadotropin
 ###TRAD pt gonadotrofina;gonadotropina
-###IDENT 2233;gonadotropina coriónic;a
-###REM humana      f
+###IDENT 2233;gonadotropina coriónica humana;f;
 ###AT Bioquímica;Fisioloxía;
 ###SIN hCG (sg)  
 ###VAR gonadotrofina coriónica humana 
@@ -14795,8 +14750,7 @@
 ###TRAD es hemoglobinuria
 ###TRAD en hemoglobinuria
 ###TRAD pt hemoglobinúria
-###IDENT 2289;hemoglobinuria paroxístic;a
-###REM nocturna      f
+###IDENT 2289;hemoglobinuria paroxística nocturna;f;
 ###AT Patoloxías;
 ###SIN enfermidade de Marchiafava- Micheli 
 ###TRAD es enfermedad de Marchiafava-Micheli;hemoglobinuria paroxística nocturna
@@ -14978,14 +14932,12 @@
 ###TRAD es herencia autosómica
 ###TRAD en autosomal inheritance
 ###TRAD pt herança autossômica [Br.];herança autossómica [Pt.]
-###IDENT 2322;herdanza autosómic;a
-###REM codominante      f
+###IDENT 2322;herdanza autosómica codominante;f;
 ###AT Xenética;
 ###TRAD es herencia autosómica codominante
 ###TRAD en codominant autosomal inheritance
 ###TRAD pt herança autossômica codominante [Br.];herança autossómica codominante [Pt.]
-###IDENT 2323;herdanza autosómic;a
-###REM dominante      f
+###IDENT 2323;herdanza autosómica dominante;f;
 ###AT Xenética;
 ###TRAD es herencia autosómica dominante
 ###TRAD en autosomal dominant inheritance
@@ -15007,8 +14959,7 @@
 ###AT Xenética;
 ###TRAD es herencia ligada a X
 ###TRAD en X-linked inheritance
-###TRAD pt herança ligada ao X___
-###REM herdanza ligada ao Y      
+###TRAD pt herança ligada ao X___herdanza ligada ao;Y;
 ###RED herdanza holándrica
 ###REM herdanza mendeliana      
 ###RED herdanza monoxénica
@@ -15237,7 +15188,7 @@
 ###TRAD pt anion gap;hiato aniônico;intervalo aniônico
 ###REM hibernación miocárdica      
 ###RED miocardio hibernado
-###IDENT 2364;hibridació;n
+###IDENT 2364;hibridación 
 ###REM f
 ###AT Xenética;
 ###TRAD es hibridación in situ
@@ -15593,8 +15544,7 @@
 ###TRAD es hiperplasia
 ###TRAD en hyperplasia
 ###TRAD pt hiperplasia
-###IDENT 2424;hiperplasia suprarrena;l
-###REM conxénita      f
+###IDENT 2424;hiperplasia suprarrenal conxénita;f;
 ###AT Patoloxías;
 ###TRAD es hiperplasia suprarrenal congénita
 ###TRAD en congenital adrenal hyperplasia
@@ -16210,15 +16160,13 @@
 ###TRAD es GH (sg);hormona del crecimiento
 ###TRAD en GH (sg);growth hormone
 ###TRAD pt GH (sg);hormona do crescimento [Pt.];hormônio do crescimento [Br.]
-###IDENT 2530;hormona estimuladora d;a
-###REM tiroide      f
+###IDENT 2530;hormona estimuladora da tiroide;f;
 ###AT Fisioloxía;Bioquímica;
 ###SIN TSH (sg); tirotropina 
 ###TRAD es hormona estimulante del tiroides;tirotropina;TSH (sg)
 ###TRAD en thyroid stimulating hormone;thyrotropin;TSH (sg)
 ###TRAD pt hormona estimulante da tiróide [Pt.];hormônio estimulante da tiróide [Br.];tirotrofina;tirotropina;TSH (sg)___
-###IDENT 2531;hormona estimuladora d;o
-###REM melanocito      f
+###IDENT 2531;hormona estimuladora do melanocito;f;
 ###AT Fisioloxía;Bioquímica;
 ###SIN hormona estimulante do  melanocito; MSH (sg) 
 ###TRAD es hormona estimulante del melanocito;MSH (sg)
@@ -16238,29 +16186,25 @@
 ###TRAD pt FSH (sg);hormona folículo-estimulante [Pt.];hormônio folículo-estimulante [Br.]
 ###REM hormona lactóxena
 ###RED prolactina
-###IDENT 2533;hormona liberadora d;a
-###REM hormona do crecemento      f 
+###IDENT 2533;hormona liberadora da hormona do crecemento;f;
 ###AT Fisioloxía;Bioquímica;
 ###SIN GHRH (sg) 
 ###TRAD es GHRH (sg);hormona liberadora de la hormona del crecimiento
 ###TRAD en GHRF (sg);growth hormone releasing factor
 ###TRAD pt GHRH (sg);hormona liberadora da hormona do crescimento [Pt.];hormônio liberador do hormônio do crescimento [Br.]
-###IDENT 2534;hormona liberadora d;e
-###REM corticotropina      f
+###IDENT 2534;hormona liberadora de corticotropina;f;
 ###AT Fisioloxía;Bioquímica;
 ###SIN CRH (sg) 
 ###TRAD es CRH (sg);hormona liberadora de corticotropina
 ###TRAD en corticotropin-releasing hormone;CRH (sg)
 ###TRAD pt CRH (sg);hormona liberadorade corticotropina [Pt.];hormônio liberador de corticotropina [Br.]
-###IDENT 2535;hormona liberadora d;e
-###REM gonadotropina      f
+###IDENT 2535;hormona liberadora de gonadotropina;f;
 ###AT Fisioloxía;Bioquímica;
 ###SIN GnRH (sg) 
 ###TRAD es GnRH (sg);hormona liberadora de gonadotropina
 ###TRAD en GnRH (sg);gonadotropin-releasing hormone
 ###TRAD pt GnrH (sg);hormona liberadorade gonadotropina [Pt.];hormônio liberador de gonadotropina [Br.]___
-###IDENT 2536;hormona liberadora d;e
-###REM tirotropina      f
+###IDENT 2536;hormona liberadora de tirotropina;f;
 ###AT Fisioloxía;Bioquímica;
 ###SIN TRH (sg) 
 ###TRAD es hormona liberadora de tirotropina;TRH (sg)
@@ -16304,8 +16248,7 @@
 ###TRAD es hospital de día
 ###TRAD en day hospital
 ###TRAD pt hospital de dia
-###IDENT 2543;hospital de media e long;a
-###REM estadía      m
+###IDENT 2543;hospital de media e longa estadía;m;
 ###AT Organización sanitaria;
 ###SIN sanatorio [arc.] 
 ###TRAD es hospital de media y larga estancia;sanatorio [arc.]
@@ -16832,15 +16775,13 @@
 ###TRAD es inhibidor
 ###TRAD en inhibitor
 ###TRAD pt inibidor
-###IDENT 2624;inhibidor da agregació;n
-###REM plaquetaria      m
+###IDENT 2624;inhibidor da agregación plaquetaria;m;
 ###AT Farmacoloxía;
 ###SIN antiagregante 
 ###TRAD es inhibidor de la agregación plaquetaria
 ###TRAD en platelet aggregation inhibitor
 ###TRAD pt inibidor da agregação plaquetária
-###IDENT 2625;inhibidor da anhidras;e
-###REM carbónica      m
+###IDENT 2625;inhibidor da anhidrase carbónica;m;
 ###AT Farmacoloxía;
 ###TRAD es inhibidor de la anhidrasa carbónica
 ###TRAD en carbonic anhydrase inhibitor
@@ -16850,8 +16791,7 @@
 ###TRAD es inhibidor de la betalactamasa
 ###TRAD en beta-lactamase inhibitor
 ###TRAD pt inibidor da beta-lactamase
-###IDENT 2627;inhibidor da bomba d;e
-###REM protóns      m
+###IDENT 2627;inhibidor da bomba de protóns;m;
 ###AT Farmacoloxía;
 ###SIN inhibidor da bomba protónica 
 ###TRAD es inhibidor de la bomba de protones
@@ -16864,8 +16804,7 @@
 ###TRAD es inhibidor de la fosfodiesterasa
 ###TRAD en phosphodiesterase inhibitor
 ###TRAD pt inibidor da fosfodiesterase
-###IDENT 2629;inhibidor d;a
-###REM monoaminooxidase      m
+###IDENT 2629;inhibidor da monoaminooxidase;m;
 ###AT Farmacoloxía;
 ###SIN IMAO (sg) 
 ###TRAD es IMAO (sg);inhibidor de la monoaminooxidasa
@@ -16882,26 +16821,23 @@
 ###TRAD es alfa-1-antitripsina;inhibidor de la proteinasa
 ###TRAD en alpha-1 antitrypsin;proteinase inhibitor
 ###TRAD pt alfa-1-antitripsina;inibidor de proteinase
-###IDENT 2632;inhibidor da recaptación d;e
-###REM noradrenalina   m          
+###IDENT 2632;inhibidor da recaptación de noradrenalina;m;
 ###AT Farmacoloxía;
 ###TRAD es inhibidor de la recaptación de la noradrenalina
 ###TRAD en noradrenaline reuptake inhibitor
 ###TRAD pt inibidor da recaptação de noradrenalina
-###IDENT 2633;inhibidor da testosteron;a
+###IDENT 2633;inhibidor da testosterona 
 ###REM 5-alfa reductase        m
 ###AT Farmacoloxía;
 ###TRAD es inhibidor de la testosterona 5-alfa reductasa
 ###TRAD en testosterone 5 alpha-reductase inhibitor
 ###TRAD pt inibidor da testosterona 5-alfa-redutase
-###IDENT 2634;inhibidor da tirosin;a
-###REM hidroxilase      m
+###IDENT 2634;inhibidor da tirosina hidroxilase;m;
 ###AT Farmacoloxía;
 ###TRAD es inhibidor de la tirosina hidroxilasa
 ###TRAD en tyrosine hydroxylase inhibitor
 ###TRAD pt inibidor da tirosina-hidroxilase
-###IDENT 2635;inhibidor da transcriptas;e
-###REM inversa      m
+###IDENT 2635;inhibidor da transcriptase inversa;m;
 ###AT Farmacoloxía;
 ###SIN inhibidor da transcriptase reversa 
 ###TRAD es inhibidor de la transcriptasa inversa
@@ -16910,28 +16846,24 @@
 ###REM inhibidor da transcriptase 
 ###REM reversa      
 ###RED inhibidor da transcriptase inversa
-###IDENT 2636;inhibidor do enzima converso;r
-###REM da anxiotensina      m 
+###IDENT 2636;inhibidor do enzima conversor da anxiotensina;m;
 ###AT Farmacoloxía;
 ###SIN IECA (sg) 
 ###TRAD es IECA (sg);inhibidor de la enzima convertidora de la angiotensina
 ###TRAD en ACEI (sg);angiotensin converting enzyme inhibitor;angiotensin-converting enzyme inhibitor
 ###TRAD pt IECA (sg);inibidor da enzima conversora da angiotensina
-###REM 2637  inhibidor non-selectivo da 
-###REM recaptación de monaminas    m    
+###REM 2637  inhibidor non-selectivo da recaptación de monaminas;m;
 ###AT Farmacoloxía;
 ###TRAD es inhibidor no selectivo de la recaptación de monoaminas
 ###TRAD en nonselective monoamine reuptake inhibitor
 ###TRAD pt inibidor não-seletivo da recaptação de monoaminas
-###IDENT 2638;inhibidor selectivo d;a
-###REM cicloosixenase      m
+###IDENT 2638;inhibidor selectivo da cicloosixenase;m;
 ###AT Farmacoloxía;
 ###SIN COXIB (sg) 
 ###TRAD es COXIB (sg);inhibidor selectivo de la ciclooxigenasa
 ###TRAD en COXIB (sg);cyclooxygenase selective inhibitor
 ###TRAD pt COXIB (sg);inibidor selectivo da ciclooxigenase [Pt.];inibidor seletivo da ciclooxigenase [Br.]
-###IDENT 2639;inhibidor selectivo d;a
-###REM recaptación da serotonina      m
+###IDENT 2639;inhibidor selectivo da recaptación da serotonina;m;
 ###AT Farmacoloxía;
 ###TRAD es inhibidor selectivo de la recaptación de la serotonina;ISRS (sg)
 ###TRAD en selective serotonin reuptake inhibitor;SSRI (sg)
@@ -17550,8 +17482,7 @@
 ###TRAD en bony labyrinth
 ###TRAD pt labirinto ósseo
 ###TRAD la labyrinthus osseus
-###IDENT 27;4;4
-###REM articular      m
+###REM 2744 articular;m;
 ###AT Anatomía;
 ###TRAD es labrum;rodete articular
 ###TRAD en articular labrum;articular lip;labrum articulare
@@ -17644,8 +17575,7 @@
 ###TRAD es lámina externa
 ###TRAD en external layer
 ###TRAD pt lâmina externa
-###IDENT 2759;lámina perpendicular d;o
-###REM etmoide      f
+###IDENT 2759;lámina perpendicular do etmoide;f;
 ###AT Anatomía;
 ###TRAD es lámina perpendicular del etmoides
 ###TRAD en perpendicular plate of ethmoid bone
@@ -18146,16 +18076,14 @@
 ###TRAD la ligamentum teres
 ###REM ligamento rotuliano
 ###RED ligamento patelar
-###IDENT 2835;ligamento sacrociátic;o
-###REM maior  m
+###IDENT 2835;ligamento sacrociático maior;m;
 ###AT Anatomía;
 ###SIN ligamento sacrotuberoso 
 ###TRAD es ligamento sacrociático mayor;ligamento sacrotuberoso
 ###TRAD en posterior sacrosciatic ligament;sacrotuberous ligament
 ###TRAD pt grande ligamento sacrociático;ligamento sacrotuberoso
 ###TRAD la ligamentum sacrotuberale
-###IDENT 2836;ligamento sacrociátic;o
-###REM menor      m
+###IDENT 2836;ligamento sacrociático menor;m;
 ###AT Anatomía;
 ###SIN ligamento sacrospiñal 
 ###TRAD es ligamento sacrociático menor;ligamento sacro-espinoso
@@ -18498,29 +18426,25 @@
 ###TRAD es lipoproteína
 ###TRAD en lipoprotein
 ###TRAD pt lipoproteína
-###IDENT 2892;lipoproteína de alt;a
-###REM densidade   f
+###IDENT 2892;lipoproteína de alta densidade;f;
 ###AT Bioquímica;
 ###SIN HDL (sg) 
 ###TRAD es HDL (sg);lipoproteína de alta densidad
 ###TRAD en HDL (sg);high density lipoprotein
 ###TRAD pt HDL (sg);lipoproteína de alta densidade___
-###IDENT 2893;lipoproteína de baix;a
-###REM densidade      f
+###IDENT 2893;lipoproteína de baixa densidade;f;
 ###AT Bioquímica;
 ###SIN LDL (sg) 
 ###TRAD es LDL (sg);lipoproteína de baja densidad
 ###TRAD en LDL (sg);low density lipoprotein
 ###TRAD pt LDL (sg);lipoproteína de baixa densidade
-###IDENT 2894;lipoproteína de densidad;e
-###REM intermedia      f
+###IDENT 2894;lipoproteína de densidade intermedia;f;
 ###AT Bioquímica;
 ###SIN IDL (sg) 
 ###TRAD es IDL (sg);lipoproteína de densidad intermedia
 ###TRAD en IDL (sg);intermediate density lipoprotein
 ###TRAD pt IDL (sg);lipoproteína de densidade intermediária
-###IDENT 2895;lipoproteína de moi baix;a
-###REM densidade      f
+###IDENT 2895;lipoproteína de moi baixa densidade;f;
 ###AT Bioquímica;
 ###SIN VLDL (sg) 
 ###TRAD es lipoproteína de muy baja densidad;VLDL (sg)
@@ -19183,8 +19107,7 @@
 ###AT Xenética;
 ###TRAD es cuadro de lectura;pauta de lectura
 ###TRAD en reading frame
-###TRAD pt quadro de leitura
-###REM mareo      m
+###TRAD pt quadro de leituramareo;m;
 ###AT Semioloxía;
 ###TRAD es mareo
 ###TRAD en dizziness
@@ -19383,8 +19306,7 @@
 ###TRAD pt medicina
 ###REM medicina   
 ###RED medicamento___
-###IDENT 3033;medicina da educación física;e
-###REM o deporte      f
+###IDENT 3033;medicina da educación física;eo deporte;f;
 ###AT Organización sanitaria;
 ###TRAD es medicina de la educación física y del deporte
 ###TRAD en sports and physical education medicine
@@ -19615,8 +19537,7 @@
 ###TRAD es barrera alvéolo-capilar;membrana alvéolo-capilar
 ###TRAD en alveolar-capillary membrane;alveolocapillary membrane
 ###TRAD pt barreira alvéolo-capilar;membrana alvéolo-capilar
-###IDENT 3070;membrana de intercambi;o
-###REM placentario      f
+###IDENT 3070;membrana de intercambio placentario;f;
 ###AT Histoloxía;
 ###SIN membrana hemato-fetal;  membrana materno-fetal 
 ###TRAD es membrana de intercambio placentario
@@ -19869,8 +19790,7 @@
 ###TRAD es metatarso
 ###TRAD en metatarsus
 ###TRAD pt metatarso
-###TRAD la metatarsus
-###REM meteorismo      m
+###TRAD la metatarsusmeteorismo;m;
 ###AT Semioloxía;
 ###TRAD es meteorismo
 ###TRAD en meteorism
@@ -19901,7 +19821,7 @@
 ###RED 
 ###AT miastenia;
 ###AT gravis;
-###IDENT 31;1;5
+###REM 3115 
 ###REM f
 ###AT Patoloxías;
 ###VAR miastenia grave 
@@ -20204,8 +20124,7 @@
 ###REM mioclono
 ###RED mioclonía
 ###REM miodinia
-###RED mialxia
-###REM miofascite      f
+###RED mialxiamiofascite;f;
 ###AT Patoloxías;
 ###TRAD es miofascitis
 ###TRAD en myofascitis
@@ -20405,8 +20324,7 @@
 ###TRAD es modelación ósea
 ###TRAD en bone modelling
 ###TRAD pt modelação óssea;modelagem óssea
-###IDENT 3202;modulador selectivo d;o
-###REM receptor de estróxeno      m          
+###IDENT 3202;modulador selectivo do receptor de estróxeno;m;
 ###AT Farmacoloxía;
 ###SIN SERM (sg) 
 ###TRAD es modulador selectivo del receptor de estrógenos;SERM (sg)
@@ -20470,8 +20388,7 @@
 ###TRAD es monocitopenia
 ###TRAD en monocytopenia
 ###TRAD pt monocitopenia
-###IDENT 3212;monofosfato cíclico d;e
-###REM guanosina      m
+###IDENT 3212;monofosfato cíclico de guanosina;m;
 ###AT Bioquímica;
 ###SIN GMPc (sg) 
 ###TRAD es GMPc;guanosín monofosfato cíclico;monofosfato cíclico de guanosina
@@ -20711,29 +20628,25 @@
 ###TRAD en muscle
 ###TRAD pt músculo
 ###TRAD la musculus
-###IDENT 3251;músculo abdutor curto d;o
-###REM polgar      m
+###IDENT 3251;músculo abdutor curto do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo abductor corto del pulgar
 ###TRAD en abductor pollicis brevis muscle
 ###TRAD pt músculo abductor curto do polegar [Pt.];músculo abdutor curto do polegar [Br.]
 ###TRAD la musculus abductor pollicis brevis
-###IDENT 3252;músculo abdutor da primeir;a
-###REM deda      m
+###IDENT 3252;músculo abdutor da primeira deda;m;
 ###AT Anatomía;
 ###TRAD es músculo abductor del dedo gordo
 ###TRAD en abductor hallucis muscle
 ###TRAD pt músculo abductor do hálux [Pt.];músculo abdutor do hálux [Br.]
 ###TRAD la musculus abductor hallucis
-###IDENT 3253;músculo abdutor d;o
-###REM maimiño      m
+###IDENT 3253;músculo abdutor do maimiño;m;
 ###AT Anatomía;
 ###TRAD es músculo abductor del meñique;músculo abductor del quinto dedo
 ###TRAD en abductor digiti minimi muscle
 ###TRAD pt músculo abductor do dedo mínimo [Pt.];músculo abdutor do dedo mínimo [Br.]
 ###TRAD la musculus abductor digiti minimi
-###IDENT 3254;músculo abdutor longo d;o
-###REM polgar      m
+###IDENT 3254;músculo abdutor longo do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo abductor largo del pulgar
 ###TRAD en abductor pollicis longus muscle
@@ -20745,8 +20658,7 @@
 ###TRAD en adductor brevis;adductor brevis muscle
 ###TRAD pt músculo adutor curto
 ###TRAD la musculus adductor brevis
-###IDENT 3256;músculo adutor da primeir;a
-###REM deda      m
+###IDENT 3256;músculo adutor da primeira deda;m;
 ###AT Anatomía;
 ###TRAD es músculo aductor del dedo gordo
 ###TRAD en adductor hallucis muscle
@@ -20886,8 +20798,7 @@
 ###TRAD es músculo cutáneo
 ###TRAD en cutaneous muscle
 ###TRAD pt músculo cutâneo
-###TRAD la musculus cutaneus___
-###REM músculo da barbela      m
+###TRAD la musculus cutaneus___músculo da barbela;m;
 ###AT Anatomía;
 ###SIN músculo elevador do labio  inferior; músculo mentoniano 
 ###TRAD es borla de la barba (f);músculo mental;músculo mentoniano
@@ -20904,15 +20815,13 @@
 ###NOTA Evítese “músculo deltoides”.
 ###REM *músculo deltoides      
 ###RED músculo deltoide
-###IDENT 3278;músculo depresor do ángul;o
-###REM da boca      m
+###IDENT 3278;músculo depresor do ángulo da boca;m;
 ###AT Anatomía;
 ###TRAD es músculo depresor del ángulo da boca
 ###TRAD en depressor anguli oris;depressor anguli oris muscle
 ###TRAD pt músculo depressor do ângulo da boca
 ###TRAD la musculus depressor anguli oris
-###IDENT 3279;músculo depresor do labi;o
-###REM inferior      m
+###IDENT 3279;músculo depresor do labio inferior;m;
 ###AT Anatomía;
 ###TRAD es músculo depresor del labio inferior
 ###TRAD en depressor labii inferioris;depressor labii inferioris muscle;depressor muscle of lower lip
@@ -20921,8 +20830,7 @@
 ###REM músculo depresor do septo 
 ###REM nasal     
 ###RED músculo depresor do tabique nasal 
-###IDENT 3280;músculo depresor do tabiqu;e
-###REM nasal      m
+###IDENT 3280;músculo depresor do tabique nasal;m;
 ###AT Anatomía;
 ###SIN músculo depresor do septo nasal 
 ###TRAD es músculo depresor del tabique nasal
@@ -20950,8 +20858,7 @@
 ###TRAD en latissimus dorsi;latissimus dorsi muscle
 ###TRAD pt músculo grande dorsal
 ###TRAD la musculus latissimus dorsi___
-###IDENT 3284;músculo elevador d;a
-###REM escápula      m
+###IDENT 3284;músculo elevador da escápula;m;
 ###AT Anatomía;
 ###SIN músculo angular da omoplata 
 ###TRAD es músculo angular del omóplato;músculo elevador de la escápula
@@ -20961,7 +20868,7 @@
 ###REM músculo elevador da 
 ###REM pálpebra      
 ###RED músculo elevador da pálpebra superior 
-###IDENT 3285;músculo elevador da pálpebr;a
+###IDENT 3285;músculo elevador da pálpebra 
 ###REM superior      
 ###AT Anatomía;
 ###SIN músculo elevador da pálpebra 
@@ -20969,15 +20876,13 @@
 ###TRAD en levator palpebrae superioris muscle
 ###TRAD pt músculo elevador da pálpebra;músculo elevador da pálpebra superior
 ###TRAD la musculus levator palpebrae superioris
-###IDENT 3286;músculo elevador d;a
-###REM próstata      m
+###IDENT 3286;músculo elevador da próstata;m;
 ###AT Anatomía;
 ###TRAD es músculo elevador de la próstata
 ###TRAD en levator prostatae muscle
 ###TRAD pt músculo elevador da próstata
 ###TRAD la musculus levator prostatae
-###IDENT 3287;músculo elevador do ángulo d;a
-###REM boca      m
+###IDENT 3287;músculo elevador do ángulo da boca;m;
 ###AT Anatomía;
 ###TRAD es músculo elevador del ángulo de la boca
 ###TRAD en levator anguli oris;levator anguli oris muscle
@@ -20992,15 +20897,13 @@
 ###REM músculo elevador do labio 
 ###REM inferior      
 ###RED músculo da barbela
-###IDENT 3289;músculo elevador do labi;o
-###REM superior      m
+###IDENT 3289;músculo elevador do labio superior;m;
 ###AT Anatomía;
 ###TRAD es músculo elevador del labio superior
 ###TRAD en levator labii superioris;levator labii superioris muscle
 ###TRAD pt músculo elevador do lábio superior
 ###TRAD la musculus levator labii superioris
-###IDENT 3290;músculo elevador do labi;o
-###REM superior e da á do nariz      m         
+###IDENT 3290;músculo elevador do labio superior e da á do nariz;m;
 ###AT Anatomía;
 ###TRAD es músculo elevador del labio superior y del ala de la nariz
 ###TRAD en levator labii superioris alaeque nasi;levator labii superioris alaeque nasi muscle
@@ -21049,8 +20952,7 @@
 ###REM músculo 
 ###REM esternocleidomastoide      
 ###RED músculo esternocleidomastoideo
-###IDENT 3297;múscul;o
-###REM esternocleidomastoideo      m
+###IDENT 3297;músculo esternocleidomastoideo;m;
 ###AT Anatomía;
 ###SIN esternocleidomastoideo; músculo  esternocleidomastoide;  esternocleidomastoide 
 ###TRAD es músculo esternocleidomastoideo
@@ -21098,36 +21000,32 @@
 ###REM músculo extensor cubital do 
 ###REM carpo     
 ###RED músculo extensor ulnar do carpo 
-###IDENT 3304;músculo extensor curto d;a
+###IDENT 3304;músculo extensor curto da 
 ###REM primeira deda     
 ###AT Anatomía;
 ###TRAD es músculo extensor corto del dedo gordo
 ###TRAD en extensor hallucis brevis muscle
 ###TRAD pt músculo extensor curto do hálux
 ###TRAD la musculus extensor hallucis brevis
-###IDENT 3305;músculo extensor curto da;s
-###REM dedas      m
+###IDENT 3305;músculo extensor curto das dedas;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor corto de los dedos del pie
 ###TRAD en extensor digitorum brevis muscle;short extensor muscle of toes
 ###TRAD pt músculo extensor curto dos dedos
 ###TRAD la musculus extensor digitorum brevis
-###IDENT 3306;músculo extensor curto d;o
-###REM polgar      m
+###IDENT 3306;músculo extensor curto do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor corto del pulgar
 ###TRAD en extensor pollicis brevis muscle;short extensor muscle of thumb
 ###TRAD pt músculo extensor curto do polegar
 ###TRAD la musculus extensor pollicis brevis
-###IDENT 3307;músculo extensor d;o
-###REM indicador      m
+###IDENT 3307;músculo extensor do indicador;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor del índice
 ###TRAD en extensor indicis muscle;index extensor muscle
 ###TRAD pt músculo extensor do indicador
 ###TRAD la musculus extensor indicis
-###IDENT 3308;músculo extensor d;o
-###REM maimiño      m
+###IDENT 3308;músculo extensor do maimiño;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor del meñique
 ###TRAD en extensor digiti minimi muscle;extensor muscle of little finger
@@ -21139,43 +21037,38 @@
 ###TRAD en extensor digitorum muscle;extensor muscle of fingers
 ###TRAD pt músculo extensor dos dedos
 ###TRAD la musculus extensor digitorum___
-###IDENT 3310;músculo extensor longo d;a
-###REM primeira deda   m          
+###IDENT 3310;músculo extensor longo da primeira deda;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor largo del dedo gordo
 ###TRAD en extensor hallucis longus muscle;long extensor muscle of great toe
 ###TRAD pt músculo extensor longo do hálux
 ###TRAD la musculus extensor hallucis longus
-###IDENT 3311;músculo extensor longo da;s
-###REM dedas      m
+###IDENT 3311;músculo extensor longo das dedas;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor largo de los dedos del pie
 ###TRAD en extensor digitorum longus muscle;long extensor muscle of toes
 ###TRAD pt músculo extensor longo dos dedos
 ###TRAD la musculus extensor digitorum longus
-###IDENT 3312;músculo extensor longo d;o
-###REM polgar      m
+###IDENT 3312;músculo extensor longo do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor largo del pulgar
 ###TRAD en extensor pollicis longus muscle;long extensor muscle of thumb
 ###TRAD pt músculo extensor longo do polegar
 ###TRAD la musculus extensor pollicis longus
-###IDENT 3313;músculo extensor radial curt;o
+###IDENT 3313;músculo extensor radial curto 
 ###REM do carpo      
 ###AT Anatomía;
 ###TRAD es músculo extensor radial corto del carpo
 ###TRAD en extensor carpi radialis brevis muscle;short radial extensor muscle of wrist
 ###TRAD pt músculo extensor radial curto do carpo
 ###TRAD la musculus extensor carpi radialis brevis
-###IDENT 3314;músculo extensor radial long;o
-###REM do carpo      m
+###IDENT 3314;músculo extensor radial longo do carpo;m;
 ###AT Anatomía;
 ###TRAD es músculo extensor radial largo del carpo
 ###TRAD en extensor carpi radialis longus muscle;long radial extensor muscle of wrist
 ###TRAD pt músculo extensor radial longo do carpo
 ###TRAD la musculus extensor carpi radialis longus
-###IDENT 3315;músculo extensor ulnar d;o
-###REM carpo      m
+###IDENT 3315;músculo extensor ulnar do carpo;m;
 ###AT Anatomía;
 ###SIN músculo extensor cubital do  carpo; músculo cubital posterior 
 ###TRAD es músculo cubital posterior;músculo extensor cubital del carpo
@@ -21207,64 +21100,55 @@
 ###TRAD la musculus fibularis tertius;musculus peroneus tertius
 ###REM músculo flexor cubital do carpo      
 ###RED músculo flexor ulnar do carpo
-###IDENT 3319;músculo flexor curto d;a
-###REM primeira deda      m
+###IDENT 3319;músculo flexor curto da primeira deda;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor corto del dedo gordo
 ###TRAD en flexor hallucis brevis muscle;short flexor muscle of great toe
 ###TRAD pt músculo flexor curto do hálux
 ###TRAD la musculus flexor hallucis brevis
-###IDENT 3320;músculo flexor curto d;o
-###REM maimiño      m
+###IDENT 3320;músculo flexor curto do maimiño;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor corto del meñique
 ###TRAD en flexor digiti minimi brevis muscle
 ###TRAD pt músculo flexor curto do dedo mínimo
 ###TRAD la musculus flexor digiti minimi brevis
-###IDENT 3321;músculo flexor curto d;o
-###REM polgar      m
+###IDENT 3321;músculo flexor curto do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor corto del pulgar
 ###TRAD en flexor pollicis brevis muscle;short flexor muscle of thumb
 ###TRAD pt músculo flexor curto do polegar
 ###TRAD la musculus flexor pollicis brevis
-###IDENT 3322;músculo flexor longo d;a
-###REM primeira deda      m
+###IDENT 3322;músculo flexor longo da primeira deda;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor largo del dedo gordo
 ###TRAD en flexor hallucis longus muscle;long flexor muscle of great toe
 ###TRAD pt músculo flexor longo do hálux
 ###TRAD la musculus flexor hallucis longus
-###IDENT 3323;músculo flexor longo d;o
-###REM polgar      m
+###IDENT 3323;músculo flexor longo do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor largo del pulgar
 ###TRAD en flexor pollicis longus muscle;long flexor muscle of thumb
 ###TRAD pt músculo flexor longo do polegar
 ###TRAD la musculus flexor pollicis longus
-###IDENT 3324;músculo flexor profundo do;s
-###REM dedos      m
+###IDENT 3324;músculo flexor profundo dos dedos;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor profundo de los dedos
 ###TRAD en deep flexor muscle of fingers;flexor digitorum profundus muscle
 ###TRAD pt músculo flexor profundo dos dedos
 ###TRAD la musculus flexor digitorum profundus
-###IDENT 3325;músculo flexor radial d;o
-###REM carpo      m
+###IDENT 3325;músculo flexor radial do carpo;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor radial del carpo
 ###TRAD en flexor carpi radialis muscle;radial flexor muscle of wrist
 ###TRAD pt músculo flexor radial do carpo
 ###TRAD la musculus flexor carpi radialis___
-###IDENT 3326;músculo flexor superficial do;s
-###REM dedos      m
+###IDENT 3326;músculo flexor superficial dos dedos;m;
 ###AT Anatomía;
 ###TRAD es músculo flexor superficial de los dedos
 ###TRAD en flexor digitorum superficialis muscle;superficial flexor muscle of fingers
 ###TRAD pt músculo flexor superficial dos dedos
 ###TRAD la musculus flexor digitorum superficialis
-###IDENT 3327;músculo flexor ulnar d;o
-###REM carpo      m
+###IDENT 3327;músculo flexor ulnar do carpo;m;
 ###AT Anatomía;
 ###SIN músculo flexor cubital do carpo 
 ###TRAD es músculo flexor cubital del carpo
@@ -21431,8 +21315,7 @@
 ###TRAD en nasalis;nasalis muscle
 ###TRAD pt músculo nasal
 ###TRAD la musculus nasalis
-###IDENT 3350;músculo oblicuo externo d;o
-###REM abdome      m
+###IDENT 3350;músculo oblicuo externo do abdome;m;
 ###AT Anatomía;
 ###SIN músculo oblicuo maior do  abdome 
 ###TRAD es músculo oblicuo externo del abdomen;músculo oblicuo mayor del abdomen
@@ -21445,16 +21328,14 @@
 ###TRAD en inferior oblique;inferior oblique muscle
 ###TRAD pt músculo oblíquo inferior
 ###TRAD la musculus obliquus inferior
-###IDENT 3352;músculo oblicuo inferior d;a
-###REM cabeza      m
+###IDENT 3352;músculo oblicuo inferior da cabeza;m;
 ###AT Anatomía;
 ###SIN músculo oblicuo maior da cabeza 
 ###TRAD es músculo oblicuo inferior de la cabeza;músculo oblicuo mayor de la cabeza
 ###TRAD en obliquus capitis inferior;obliquus capitis inferior muscle
 ###TRAD pt músculo oblíquo inferior da cabeça
 ###TRAD la musculus obliquus capitis inferior
-###IDENT 3353;músculo oblicuo interno d;o
-###REM abdome      m
+###IDENT 3353;músculo oblicuo interno do abdome;m;
 ###AT Anatomía;
 ###SIN músculo oblicuo menor do  abdome 
 ###TRAD es músculo oblicuo interno del abdomen;músculo oblicuo menor del abdomen
@@ -21479,8 +21360,7 @@
 ###TRAD en superior oblique;superior oblique muscle
 ###TRAD pt músculo oblíquo superior
 ###TRAD la musculus obliquus sperior
-###IDENT 3355;músculo oblicuo superior d;a
-###REM cabeza      m
+###IDENT 3355;músculo oblicuo superior da cabeza;m;
 ###AT Anatomía;
 ###SIN músculo oblicuo menor da cabeza 
 ###TRAD es músculo oblicuo menor de la cabeza;músculo oblícuo superior de la cabeza
@@ -21505,15 +21385,13 @@
 ###TRAD en omohyoid;omohyoid muscle
 ###TRAD pt músculo omoióideo
 ###TRAD la musculus omohyoideus
-###IDENT 3359;músculo opoñente d;o
-###REM maimiño      m
+###IDENT 3359;músculo opoñente do maimiño;m;
 ###AT Anatomía;
 ###TRAD es músculo oponente del meñique
 ###TRAD en opponens digiti minimi;opponens digiti minimi muscle
 ###TRAD pt músculo oponente do dedo mínimo
 ###TRAD la musculus opponens digiti minimi
-###IDENT 3360;músculo opoñente d;o
-###REM polgar      m
+###IDENT 3360;músculo opoñente do polgar;m;
 ###AT Anatomía;
 ###TRAD es músculo oponente del pulgar
 ###TRAD en opponens pollicis;opponens pollicis muscle
@@ -21678,8 +21556,7 @@
 ###RED músculo recto do abdome
 ###REM músculo recto anterior      
 ###RED músculo recto femoral___
-###IDENT 3382;músculo recto anterior d;a
-###REM cabeza      m
+###IDENT 3382;músculo recto anterior da cabeza;m;
 ###AT Anatomía;
 ###TRAD es músculo recto anterior de la cabeza
 ###TRAD en rectus capitis anterior muscle
@@ -21714,8 +21591,7 @@
 ###TRAD en lateral rectus;lateral rectus muscle
 ###TRAD pt músculo recto lateral [Pt.];músculo reto lateral [Br.]
 ###TRAD la musculus rectus lateralis
-###IDENT 3387;músculo recto lateral d;a
-###REM cabeza      m
+###IDENT 3387;músculo recto lateral da cabeza;m;
 ###AT Anatomía;
 ###TRAD es músculo recto lateral de la cabeza
 ###TRAD en rectus capitis lateralis;rectus capitis lateralis muscle
@@ -21730,15 +21606,13 @@
 ###TRAD en medial rectus;medial rectus muscle
 ###TRAD pt músculo recto medial [Pt.];músculo reto medial [Br.]
 ###TRAD la musculus rectus medialis
-###IDENT 3389;músculo recto posterior maio;r
-###REM da cabeza      m
+###IDENT 3389;músculo recto posterior maior da cabeza;m;
 ###AT Anatomía;
 ###TRAD es músculo recto posterior mayor de la cabeza
 ###TRAD en rectus capitis posterior major;rectus capitis posterior major muscle
 ###TRAD pt músculo recto posterior maior da cabeça [Pt.];músculo reto posterior maior da cabeça [Br.]
 ###TRAD la musculus rectus capitis posterior major___
-###IDENT 3390;músculo recto posterior meno;r
-###REM da cabeza     m 
+###IDENT 3390;músculo recto posterior menor da cabeza;m;
 ###AT Anatomía;
 ###TRAD es músculo recto posterior menor de la cabeza
 ###TRAD en rectus capitis posterior minor;rectus capitis posterior minor muscle
@@ -21806,16 +21680,14 @@
 ###TRAD en anterior serratus muscle;serratus anterior;serratus anterior muscle
 ###TRAD pt músculo serrátil anterior
 ###TRAD la musculus serratus anterior
-###IDENT 3401;músculo serrato posterio;r
-###REM inferior      m
+###IDENT 3401;músculo serrato posterior inferior;m;
 ###AT Anatomía;
 ###VAR músculo serrato posteroinferior 
 ###TRAD es músculo serrato posterior inferior;músculo serrato posteroinferior
 ###TRAD en serratus posterior inferior;serratus posterior inferior muscle
 ###TRAD pt músculo serrátil posterior inferior
 ###TRAD la musculus serratus posterior inferior
-###IDENT 3402;músculo serrato posterio;r
-###REM superior      m
+###IDENT 3402;músculo serrato posterior superior;m;
 ###AT Anatomía;
 ###VAR músculo serrato posterosuperior 
 ###TRAD es músculo serrato posterior superior;músculo serrato posterosuperior
@@ -21893,8 +21765,7 @@
 ###TRAD en thyrohyoid;thyrohyoid muscle
 ###TRAD pt músculo tirohióideo
 ###TRAD la musculus thyrohyoideus
-###IDENT 3413;músculo transverso d;o
-###REM abdome      m
+###IDENT 3413;músculo transverso do abdome;m;
 ###AT Anatomía;
 ###TRAD es músculo transverso del abdomen
 ###TRAD en transversus abdominis;transversus abdominis muscle
@@ -22323,16 +22194,14 @@
 ###RED nervio femoral
 ###REM nervio cubital
 ###RED nervio ulnar___
-###IDENT 3478;nervio cutáneo femora;l
-###REM lateral      m
+###IDENT 3478;nervio cutáneo femoral lateral;m;
 ###AT Anatomía;
 ###SIN nervio cutáneo lateral da coxa;  nervio femorocutáneo 
 ###TRAD es nervio cutáneo femoral lateral;nervio cutáneo lateral del muslo;nervio femorocutáneo
 ###TRAD en lateral cutaneous nerve of thigh;lateral femoral cutaneous nerve
 ###TRAD pt nervo cutâneo femoral lateral;nervo cutâneo lateral da coxa
 ###TRAD la nervus cutaneus femoris lateralis
-###IDENT 3479;nervio cutáneo femora;l
-###REM posterior      m
+###IDENT 3479;nervio cutáneo femoral posterior;m;
 ###AT Anatomía;
 ###SIN nervio cutáneo posterior da coxa 
 ###TRAD es nervio ciático menor;nervio cutáneo femoral posterior;nervio cutáneo posterior del muslo
@@ -22341,15 +22210,13 @@
 ###TRAD la nervus cutaneus femoris posterior
 ###REM nervio cutáneo lateral da coxa      
 ###RED nervio cutáneo femoral lateral
-###IDENT 3480;nervio cutáneo lateral d;o
-###REM antebrazo      m
+###IDENT 3480;nervio cutáneo lateral do antebrazo;m;
 ###AT Anatomía;
 ###TRAD es nervio cutáneo antebraquial lateral;nervio cutáneo lateral del antebrazo
 ###TRAD en lateral antebrachial cutaneous nerve;lateral cutaneous nerve of forearm
 ###TRAD pt nervo cutâneo lateral do antebraço
 ###TRAD la nervus cutaneus antebrachii lateralis
-###IDENT 3481;nervio cutáneo medial d;o
-###REM antebrazo      m
+###IDENT 3481;nervio cutáneo medial do antebrazo;m;
 ###AT Anatomía;
 ###TRAD es nervio cutáneo antebraquial medial;nervio cutáneo medial del antebrazo
 ###TRAD en medial antebrachial cutaneous nerve;medial cutaneous nerve of forearm
@@ -24469,8 +24336,7 @@
 ###TRAD en pancreatostomy
 ###TRAD pt pancreatostomia
 ###REM pancrectomía
-###RED pancreatectomía
-###REM pandemia      f
+###RED pancreatectomíapandemia;f;
 ###AT Epidemioloxía;
 ###TRAD es pandemia
 ###TRAD en pandemy
@@ -24491,7 +24357,7 @@
 ###TRAD es paniculitis
 ###TRAD en panniculitis
 ###TRAD pt paniculite
-###IDENT 38;1;0
+###REM 3810 
 ###REM m
 ###AT Anatomía patolóxica;
 ###VAR pano 
@@ -25888,8 +25754,7 @@
 ###TRAD en plexopathy
 ###TRAD pt plexopatia
 ###REM plicación
-###RED plicatura
-###REM plicatura      f
+###RED plicaturaplicatura;f;
 ###AT Terapéutica;
 ###VAR plicación 
 ###TRAD es plicación;plicatura
@@ -26280,7 +26145,7 @@
 ###TRAD es postprandial
 ###TRAD en postprandial
 ###TRAD pt pós-prandial
-###IDENT 40;8;1
+###REM 4081 
 ###REM loc
 ###AT Termos xerais;
 ###TRAD es post mortem
@@ -26666,11 +26531,10 @@
 ###REM proba de supresión
 ###RED test de supresión 
 ###REM proba de tolerancia á lactosa 
-###RED test de tolerancia á lactosa
-###REM proba de tolerancia oral á 
+###RED test de tolerancia á lactosaproba de tolerancia oral;á;
 ###REM glicosa      
 ###RED test de tolerancia oral á glicosa 
-###IDENT 4133;proba do antíxeno prostátic;o
+###IDENT 4133;proba do antíxeno prostático 
 ###REM específico      
 ###AT Probas complementarias;
 ###SIN proba do PSA 
@@ -27073,15 +26937,13 @@
 ###TRAD es protrombina
 ###TRAD en prothrombin
 ###TRAD pt protrombina
-###IDENT 4195;protuberancia occipita;l
-###REM externa      f
+###IDENT 4195;protuberancia occipital externa;f;
 ###AT Anatomía;
 ###TRAD es protuberancia occipital externa
 ###TRAD en external occipital protuberance
 ###TRAD pt protuberância occipital externa
 ###TRAD la protuberantia occipitalis externa
-###IDENT 4196;protuberancia occipita;l
-###REM interna      f
+###IDENT 4196;protuberancia occipital interna;f;
 ###AT Anatomía;
 ###TRAD es protuberancia occipital interna
 ###TRAD en internal occipital protuberance
@@ -27374,8 +27236,7 @@
 ###TRAD es punción
 ###TRAD en punction;puncture
 ###TRAD pt punção___
-###IDENT 4243;punción aspirativa con agull;a
-###REM fina      f
+###IDENT 4243;punción aspirativa con agulla fina;f;
 ###AT Probas complementarias;
 ###SIN punción-aspiración con agulla  fina; PAAF (ag) 
 ###TRAD es PAAF (sg);punción-aspiración con aguja fina
@@ -27424,16 +27285,14 @@
 ###TRAD es púrpura trombocitopénica;púrpura trombopénica
 ###TRAD en thrombocytopenic purpura;thrombopenic purpura
 ###TRAD pt púrpura trombocitopênica [Br.];púrpura trombocitopénica [Pt.]
-###IDENT 4249;púrpura trombopénic;a
-###REM idiopática      f
+###IDENT 4249;púrpura trombopénica idiopática;f;
 ###AT Patoloxías;
 ###SIN PTI (sg) 
 ###VAR púrpura trombocitopénica  idiopática 
 ###TRAD es PTI (sg);púrpura trombocitopénica idiopática;púrpura trombopénica idiopática
 ###TRAD en idiopathic thrombocytopenic purpura;PTI (sg)
 ###TRAD pt PTI (sg);púrpura trombocitopênica idiopática [Br.];púrpura trombocitopénica idiopática [Pt.]___
-###IDENT 4250;púrpura trombopénic;a
-###REM trombótica      f
+###IDENT 4250;púrpura trombopénica trombótica;f;
 ###AT Patoloxías;
 ###SIN PTT (sg)  
 ###VAR púrpura trombocitopénica  trombótica 
@@ -27770,8 +27629,7 @@
 ###TRAD en radiobiology
 ###TRAD pt radiobiologia
 ###REM radiodensidade      
-###RED radioopacidade
-###REM radiodermatite      f
+###RED radioopacidaderadiodermatite;f;
 ###AT Patoloxías;
 ###VAR radiodermite 
 ###TRAD es radiodermatitis;radiodermitis
@@ -27975,8 +27833,7 @@
 ###TRAD es reacción decidual
 ###TRAD en decidual reaction
 ###TRAD pt reação decidual
-###IDENT 4337;reacción en cadea d;a
-###REM polimerase      f
+###IDENT 4337;reacción en cadea da polimerase;f;
 ###AT Probas complementarias;Xenética;
 ###SIN PCR (sg)  
 ###VAR reacción en cadea pola  polimerase 
@@ -28476,8 +28333,7 @@
 ###TRAD es REL (sg);retículo endoplasmático agranular;retículo endoplasmático liso
 ###TRAD en AER (sg);agranular endoplasmic reticulum;SER (sg);smooth endoplasmic reticulum
 ###TRAD pt REL (sg);retículo endoplasmático liso
-###IDENT 4414;retículo endoplasmátic;o
-###REM rugoso      m
+###IDENT 4414;retículo endoplasmático rugoso;m;
 ###AT Histoloxía;
 ###SIN retículo endoplasmático  granular; RER (sg)  
 ###VAR retículo endoplásmico rugoso 
@@ -28679,7 +28535,7 @@
 ###TRAD pt rifamicina
 ###REM rigor
 ###RED rixidez
-###IDENT 44;4;5
+###REM 4445 
 ###REM m
 ###AT Termos xerais;
 ###TRAD es rigor mortis
@@ -29227,8 +29083,7 @@
 ###TRAD pt seqüenciamento
 ###REM secuenciamento      
 ###RED secuenciación___
-###IDENT 4536;secuestrador de ácido;s
-###REM biliares      m
+###IDENT 4536;secuestrador de ácidos biliares;m;
 ###AT Farmacoloxía;
 ###TRAD es secuestrador de ácidos biliares
 ###TRAD en bile acid sequestrant
@@ -29871,15 +29726,13 @@
 ###TRAD es síndrome confusional
 ###TRAD en confusional syndrome
 ###TRAD pt síndrome confusional
-###REM 4628  síndrome da apnea-hipopnea 
-###REM durante o sono      f          
+###REM 4628  síndrome da apnea-hipopnea durante o sono;f;
 ###AT Patoloxías;
 ###SIN SAHS (sg) 
 ###TRAD es SAHS (sg);síndrome de apnea-hipopnea durante el sueño
 ###TRAD en SAHS (sg);sleep apnea-hypopnea syndrome
 ###TRAD pt SAHS (sg);síndrome da apnéia-hipopnéia do sono
-###IDENT 4629;síndrome da arteri;a
-###REM vertebrobasilar      f
+###IDENT 4629;síndrome da arteria vertebrobasilar;f;
 ###AT Probas complementarias;Patoloxías;
 ###SIN síndrome de insuficiencia da  arteria basilar 
 ###TRAD es síndrome arterial vértebro-basilar;síndrome de insuficiencia de la arteria basilar
@@ -29931,8 +29784,7 @@
 ###TRAD pt síndrome de abstinência
 ###REM síndrome de alcoholismo fetal 
 ###RED síndrome alcohólica fetal
-###REM 4637  síndrome de bradicardia-
-###REM taquicardia      f
+###REM 4637  síndrome de bradicardia-taquicardia;f;
 ###AT Patoloxías;
 ###TRAD es síndrome de bradicardia-taquicardia
 ###TRAD en tachycardia-bradycardia syndrome
@@ -29940,22 +29792,19 @@
 ###REM síndrome de desconforto 
 ###REM respiratorio agudo
 ###RED síndrome de desconforto respiratorio do adulto 
-###IDENT 4638;síndrome de desconfort;o
-###REM respiratorio do adulto      f 
+###IDENT 4638;síndrome de desconforto respiratorio do adulto;f;
 ###AT Probas complementarias;Patoloxías;
 ###SIN síndrome de desconforto  respiratorio agudo; síndrome de distrés  respiratorio do adulto 
 ###TRAD es SDRA (sg);síndrome de dificultad respiratoria aguda;síndrome de dificultad respiratoria del adulto
 ###TRAD en acute respiratory distress syndrome;adult respiratory distress syndrome;ARDS (sg)
 ###TRAD pt síndrome do desconforto respiratório do adulto
-###IDENT 4639;síndrome de desconfort;o
-###REM respiratorio do neonato      f 
+###IDENT 4639;síndrome de desconforto respiratorio do neonato;f;
 ###AT Probas complementarias;Patoloxías;
 ###SIN síndrome de distrés respiratorio  do neonato 
 ###TRAD es síndrome de dificultad respiratoria del recién nacido
 ###TRAD en infant respiratory distress syndrome;respiratory distress syndrome of newborn
 ###TRAD pt síndrome da angústia respiratória do recém-nascido___
-###IDENT 4640;síndrome de disfunció;n
-###REM multiorgánica      f
+###IDENT 4640;síndrome de disfunción multiorgánica;f;
 ###AT Patoloxías;
 ###SIN insuficiencia multiorgánica; fallo  multiorgánico (m) 
 ###TRAD es insuficiencia multiorgánica;síndrome de disfunción multiorgánica
@@ -29979,14 +29828,12 @@
 ###TRAD es SFC (sg);síndrome de fatiga crónica
 ###TRAD en CFS (sg);chronic fatigue syndrome
 ###TRAD pt SFC (sg);síndrome de fadiga crônica [Br.];síndrome de fadiga crónica [Pt.]
-###IDENT 4643;síndrome de inestabilidad;e
-###REM cromosómica     f
+###IDENT 4643;síndrome de inestabilidade cromosómica;f;
 ###AT Xenética;
 ###TRAD es síndrome de inestabilidad cromosómica
 ###TRAD en chromosomal instability syndrome
 ###TRAD pt síndrome de instabilidade cromossômica
-###IDENT 4644;síndrome d;e
-###REM inmunodeficiencia adquirida  f
+###IDENT 4644;síndrome de inmunodeficiencia adquirida;f;
 ###AT Patoloxías;
 ###SIN sida 
 ###TRAD es sida;síndrome de inmunodeficiencia adquirida
@@ -30007,14 +29854,13 @@
 ###TRAD es síndrome de malabsorción
 ###TRAD en malabsorption syndrome
 ###TRAD pt síndrome de mal-absorção___
-###IDENT 4647;síndrome de morte súbita d;o
-###REM lactante      f
+###IDENT 4647;síndrome de morte súbita do lactante;f;
 ###AT Patoloxías;
 ###SIN morte súbita infantil 
 ###TRAD es muerte súbita infantil;síndrome de muerte súbita del lactante
 ###TRAD en SIDS (sg);sudden infant death syndrome
 ###TRAD pt síndrome da morte súbita na infância
-###IDENT 4648;síndrome de respost;a
+###IDENT 4648;síndrome de resposta 
 ###REM inflamatoria sistémica 
 ###REM f      
 ###AT Patoloxías;
@@ -30025,14 +29871,13 @@
 ###REM síndrome de roubo da arteria 
 ###REM subclavia      
 ###RED síndrome de roubo da subclavia 
-###IDENT 4649;síndrome de roubo d;a
-###REM subclavia      f
+###IDENT 4649;síndrome de roubo da subclavia;f;
 ###AT Patoloxías;
 ###SIN síndrome de roubo da arteria  subclavia 
 ###TRAD es síndroma de robo de la arteria subclavia
 ###TRAD en subclavian steal syndrome
 ###TRAD pt sindrome do roubo da subclávia
-###IDENT 4650;síndrome de secreció;n
+###IDENT 4650;síndrome de secreción 
 ###REM inadecuada de ADH 
 ###REM f 
 ###AT Patoloxías;
@@ -30040,8 +29885,7 @@
 ###TRAD es SIADH (sg);síndrome de secreción inadecuada de ADH
 ###TRAD en inappropriate ADH syndrome;SIADH (sg)
 ###TRAD pt SIHAD;síndrome de secreção inadequada de HAD
-###IDENT 4651;síndrome do aprisionament;o
-###REM poplíteo      f
+###IDENT 4651;síndrome do aprisionamento poplíteo;f;
 ###AT Patoloxías;
 ###SIN síndrome do atrapamento  poplíteo 
 ###TRAD es síndrome del atrapamiento poplíteo;síndrome del hueco poplíteo
@@ -30057,15 +29901,13 @@
 ###TRAD pt síndrome do choque tóxico
 ###REM síndrome do colon irritable      
 ###RED colon irritable
-###IDENT 4653;síndrome do cromosoma;X
-###REM fráxil      f
+###IDENT 4653;síndrome do cromosoma;Xfráxil;f;
 ###AT Patoloxías;
 ###SIN síndrome do X fráxil 
 ###TRAD es síndrome del cromosoma X frágil
 ###TRAD en fragile X syndrome
 ###TRAD pt síndrome do cromossomo X-frágil;síndrome do X-frágil
-###IDENT 4654;síndrome do desfiladeir;o
-###REM torácico      f
+###IDENT 4654;síndrome do desfiladeiro torácico;f;
 ###AT Patoloxías;
 ###TRAD es síndrome del desfiladero torácico
 ###TRAD en thoracic outlet syndrome
@@ -30087,8 +29929,7 @@
 ###TRAD pt síndrome do intestino curto
 ###REM síndrome do intestino irritable      
 ###RED colon irritable
-###IDENT 4658;síndrome do membr;o
-###REM fantasma      f
+###IDENT 4658;síndrome do membro fantasma;f;
 ###AT Patoloxías;
 ###VAR síndrome do membro pantasma 
 ###TRAD es síndrome del miembro fantasma
@@ -30108,14 +29949,12 @@
 ###TRAD es queratoconjuntivitis seca;síndrome de ojo seco
 ###TRAD en dry eye syndrome;keratoconjunctivitis sicca
 ###TRAD pt queratoconjuntivite seca;síndromes do olho seco
-###IDENT 4661;síndrome do ovari;o
-###REM poliquístico      f
+###IDENT 4661;síndrome do ovario poliquístico;f;
 ###AT Patoloxías;
 ###TRAD es síndrome del ovario poliquístico
 ###TRAD en PCOS (sg);polycystic ovary syndrome
 ###TRAD pt síndrome do ovário policístico
-###IDENT 4662;síndrome do restaurant;e
-###REM chinés      f
+###IDENT 4662;síndrome do restaurante chinés;f;
 ###AT Patoloxías;
 ###TRAD es síndrome del restaurante chino
 ###TRAD en Chinese restaurant syndrome
@@ -30157,8 +29996,7 @@
 ###TRAD es síndrome nefrótico
 ###TRAD en nephrotic syndrome
 ###TRAD pt síndrome nefrótica
-###IDENT 4669;síndrome neuroléptic;a
-###REM maligna      f
+###IDENT 4669;síndrome neuroléptica maligna;f;
 ###AT Patoloxías;
 ###TRAD es síndrome neuroléptico maligno
 ###TRAD en malignant neuroleptic syndrome
@@ -30299,8 +30137,7 @@
 ###TRAD la systema cardiovasculare
 ###REM sistema de Havers 
 ###RED osteona
-###IDENT 4692;sistema d;e
-###REM histocompatibilidade      m
+###IDENT 4692;sistema de histocompatibilidade;m;
 ###AT Fisioloxía;
 ###TRAD es sistema de histocompatibilidad
 ###TRAD en histocompatibility system
@@ -30370,8 +30207,7 @@
 ###TRAD en central nervous system;NCS (sg)
 ###TRAD pt sistema nervoso central;SNC (sg)
 ###TRAD la pars centralis;systema nervosum centrale
-###IDENT 4701;sistema nervios;o
-###REM parasimpático      m
+###IDENT 4701;sistema nervioso parasimpático;m;
 ###AT Fisioloxía;Anatomía;
 ###SIN parte parasimpática (f) 
 ###TRAD es porción parasimpática;sistema nervioso parasimpático
@@ -31056,8 +30892,7 @@
 ###TRAD es mortalidad;tasa de mortalidad
 ###TRAD en mortality;mortality rate
 ###TRAD pt mortalidade;taxa de mortalidade
-###IDENT 4801;taxa de mortalidade neonata;l
-###REM precoz      f
+###IDENT 4801;taxa de mortalidade neonatal precoz;f;
 ###AT Epidemioloxía;
 ###SIN taxa de mortalidade neonatal  temperá 
 ###TRAD es tasa de mortalidad neonatal precoz
@@ -31066,8 +30901,7 @@
 ###REM taxa de mortalidade neonatal 
 ###REM serodia      
 ###RED taxa de mortalidade neonatal tardía ___
-###IDENT 4802;taxa de mortalidade neonata;l
-###REM tardía      f
+###IDENT 4802;taxa de mortalidade neonatal tardía;f;
 ###AT Epidemioloxía;
 ###SIN taxa de mortalidade neonatal  serodia 
 ###TRAD es tasa de mortalidad neonatal tardía
@@ -31081,8 +30915,7 @@
 ###TRAD es tasa de mortalidad perinatal
 ###TRAD en perinatal mortality rate
 ###TRAD pt taxa de mortalidade perinatal
-###IDENT 4804;taxa de mortalidad;e
-###REM posneonatal      f
+###IDENT 4804;taxa de mortalidade posneonatal;f;
 ###AT Epidemioloxía;
 ###TRAD es tasa de mortalidad postneonatal
 ###TRAD en postneonatal mortality rate
@@ -31347,8 +31180,7 @@
 ###RED tratamento
 ###REM terapia con láser  
 ###RED laserterapia
-###IDENT 4844;terapia de reposició;n
-###REM hormonal      f
+###IDENT 4844;terapia de reposición hormonal;f;
 ###AT Terapéutica;
 ###SIN TRH (sg); terapia hormonal  substitutiva; THS (sg) 
 ###TRAD es terapia de reemplazo hormonal;terapia hormonal sustitutiva;THS (sg);TRH (sg)
@@ -31477,8 +31309,7 @@
 ###TRAD es prueba cutánea de alergia
 ###TRAD en allergy skin test;prick test
 ###TRAD pt teste cutâneo para alergia
-###IDENT 4863;test da elevación da perna e;n
-###REM extensión      m
+###IDENT 4863;test da elevación da perna en extensión;m;
 ###AT Semioloxía;
 ###SIN sinal de elevación da perna  estendida; proba da elevación da perna  en extensión (f) 
 ###TRAD es prueba de la elevación de la pierna extendida;signo de la elevación de la pierna en extensión
@@ -31528,8 +31359,7 @@
 ###TRAD es prueba de la ureasa
 ###TRAD en urease test
 ###TRAD pt teste de urease___
-###IDENT 4871;test de absorción de anticorpo;s
-###REM treponémicos fluorescentes    m   
+###IDENT 4871;test de absorción de anticorpos treponémicos fluorescentes;m;
 ###AT Probas complementarias;
 ###SIN test FTA-ABS; proba de absorción  de anticorpos treponémicos  fluorescentes (f) 
 ###TRAD es prueba de absorción de anticuerpos treponémicos fluorescentes;prueba FTA-ABS
@@ -31547,8 +31377,7 @@
 ###TRAD es prueba de aliento
 ###TRAD en breath test
 ###TRAD pt teste respiratório
-###IDENT 4874;test de anticorpo fluorescent;e
-###REM directo      m
+###IDENT 4874;test de anticorpo fluorescente directo;m;
 ###AT Probas complementarias;
 ###SIN test de inmunofluorescencia  directa; proba de anticorpo fluorescente  directo (f) 
 ###TRAD es prueba de anticuerpo fluorescente directo;prueba de inmunofluorescencia directa
@@ -31592,8 +31421,7 @@
 ###TRAD pt teste de estimulação
 ###REM test de estimulación con ACTH      
 ###RED test de estimulación con adrenocorticotropina 
-###IDENT 4880;test de estimulación co;n
-###REM adrenocorticotropina      m
+###IDENT 4880;test de estimulación con adrenocorticotropina;m;
 ###AT Probas complementarias;
 ###SIN test de estimulación con ACTH;  proba de estimulación con  adrenocorticotropina (f) 
 ###TRAD es prueba de estimulación con ACTH;prueba de estimulación con adrenocorticotropina
@@ -31614,8 +31442,7 @@
 ###REM test de inmunofluorescencia 
 ###REM directa      
 ###RED test de anticorpo fluorescente directo 
-###IDENT 4883;test de latencias múltiples d;o
-###REM sono      m
+###IDENT 4883;test de latencias múltiples do sono;m;
 ###AT Probas complementarias;
 ###SIN proba de latencias múltiples do  sono (f) 
 ###TRAD es prueba de latencia de sueño múltiple;prueba de latencias múltiples del sueño
@@ -31645,8 +31472,7 @@
 ###TRAD es prueba de tolerancia a la lactosa
 ###TRAD en lactose tolerance test
 ###TRAD pt teste de tolerância à lactose
-###IDENT 4888;test de tolerancia oral;á
-###REM glicosa      m
+###IDENT 4888;test de tolerancia oral;áglicosa;m;
 ###AT Probas complementarias;
 ###SIN proba de tolerancia oral á glicosa  (f) 
 ###TRAD es prueba de la tolerancia oral a la glucosa
@@ -31974,15 +31800,13 @@
 ###REM tomografía computadorizada 
 ###REM por emisión de fotón único
 ###RED tomografía por emisión de fotón único ___
-###IDENT 4937;tomografía por emisión d;e
-###REM fotón único      f
+###IDENT 4937;tomografía por emisión de fotón único;f;
 ###AT Probas complementarias;
 ###SIN tomografía computadorizada por  emisión de fotón único; SPECT (sg) 
 ###TRAD es SPECT (sg);tomografía computarizada por emisión de fotón único;tomografía por emisión de fotón único
 ###TRAD en single photon emission computed tomography;SPECT (sg)
 ###TRAD pt SPECT (sg);tomografia por emissão de fotão único [Pt.];tomografia por emissão de fóton único [Br.]
-###IDENT 4938;tomografía por emisión d;e
-###REM positróns      f
+###IDENT 4938;tomografía por emisión de positróns;f;
 ###AT Probas complementarias;
 ###SIN PET (sg); TEP (sg) 
 ###TRAD es PET (sg);TEP (sg);tomografía por emisión de positrones
@@ -32312,8 +32136,7 @@
 ###REM transposición das grandes 
 ###REM arterias      
 ###RED transposición dos grandes vasos 
-###IDENT 4991;transposición dos grande;s
-###REM vasos      f
+###IDENT 4991;transposición dos grandes vasos;f;
 ###AT Patoloxías;
 ###SIN transposición das grandes arterias 
 ###TRAD es transposición de las grandes arterias;transposición de los grandes vasos
@@ -32403,8 +32226,7 @@
 ###TRAD pt depressão bipolar;psicose maníaco-depressiva [arc.];transtorno bipolar
 ###REM trastorno ciclotímico      
 ###RED ciclotimia
-###IDENT 5006;trastorno de estré;s
-###REM postraumático      m
+###IDENT 5006;trastorno de estrés postraumático;m;
 ###AT Patoloxías;
 ###TRAD es trastorno de estrés postraumático
 ###TRAD en post-traumatic stress disorder
@@ -32419,7 +32241,7 @@
 ###TRAD es trastorno del sueño
 ###TRAD en sleep disorder
 ###TRAD pt transtorno do sono
-###IDENT 5009;trastorn;o
+###IDENT 5009;trastorno 
 ###REM obsesivo-compulsivo      m
 ###AT Patoloxías;
 ###SIN síndrome obsesiva-compulsiva (f);  neurose obsesiva-compulsiva (f);  neurose obsesivo-compulsiva (f) 
@@ -32769,7 +32591,7 @@
 ###TRAD la tuba uterina
 ###REM tubectomía 
 ###RED salpinxectomía
-###IDENT 50;5;7
+###REM 5057 
 ###REM m
 ###AT Anatomía;
 ###TRAD es tuber cinereum
@@ -32993,21 +32815,18 @@
 ###TRAD es ungüento
 ###TRAD en ointment
 ###TRAD pt ungüento
-###IDENT 5086;unidade de coidado;s
-###REM intensivos      f
+###IDENT 5086;unidade de coidados intensivos;f;
 ###AT Termos xerais;
 ###SIN UCI (sg) 
 ###TRAD es UCI (sg);unidad de cuidados intensivos
 ###TRAD en ICU (sg);intensive care unit
 ###TRAD pt UCI (sg);unidade de cuidados intensivos;unidade de tratamento intensivo [Br.];UTI (sg) [Br.]
-###IDENT 5087;unidade de coidado;s
-###REM paliativos      f
+###IDENT 5087;unidade de coidados paliativos;f;
 ###AT Termos xerais;
 ###TRAD es unidad de cuidados paliativos
 ###TRAD en palliative care unit
 ###TRAD pt unidade de cuidados paliativos
-###IDENT 5088;unidade formadora d;e
-###REM colonias      f
+###IDENT 5088;unidade formadora de colonias;f;
 ###AT Histoloxía;
 ###SIN UFC (sg) 
 ###TRAD es UFC (sg);unidad formadora de colonias
@@ -33881,8 +33700,7 @@
 ###TRAD pt vector [Pt];vetor [Br]
 ###REM veleno 
 ###RED tóxico
-###IDENT 5219;velocidade de sedimentació;n
-###REM dos glóbulos vermellos      f
+###IDENT 5219;velocidade de sedimentación dos glóbulos vermellos;f;
 ###AT Probas complementarias;
 ###SIN velocidade de sedimentación  globular; VSG (sg) 
 ###TRAD es velocidad de sedimentación globular
@@ -34062,8 +33880,7 @@
 ###TRAD es vértebra
 ###TRAD en spondyle;vertebra
 ###TRAD pt vértebra
-###TRAD la vertebra
-###REM vértebra C I 
+###TRAD la vertebravértebra C;I;
 ###RED atlas___
 ###REM vértebra C II 
 ###RED axe
@@ -34409,8 +34226,7 @@
 ###TRAD es virus de la influenza
 ###TRAD en influenza virus
 ###TRAD pt vírus da influenza;vírus influenza___
-###IDENT 5293;virus da inmunodeficienci;a
-###REM humana      m
+###IDENT 5293;virus da inmunodeficiencia humana;m;
 ###AT Etiopatoxenia;
 ###SIN VIH (sg); virus da SIDA 
 ###TRAD es VIH (sg);virus de la inmunodeficiencia humana;virus del SIDA
@@ -34595,15 +34411,13 @@
 ###TRAD es volumen de eyección
 ###TRAD en ejection volume
 ###TRAD pt volume de ejeção
-###IDENT 5323;volume de reserv;a
-###REM expiratoria      m
+###IDENT 5323;volume de reserva expiratoria;m;
 ###AT Fisioloxía;
 ###SIN VRE (sg) 
 ###TRAD es volumen de reserva espiratoria;VRE (sg)
 ###TRAD en ERV (sg);expiratory reserve volume
 ###TRAD pt volume de reserva expiratória;VRE (sg)___
-###IDENT 5324;volume de reserv;a
-###REM inspiratoria      m
+###IDENT 5324;volume de reserva inspiratoria;m;
 ###AT Fisioloxía;
 ###SIN VRI (sg) 
 ###TRAD es volumen de reserva inspiratoria;VRI (sg)
