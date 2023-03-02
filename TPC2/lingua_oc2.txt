@@ -1,0 +1,14 @@
+1
+ Areas
+  Semioloxia
+  Patoloxias
+ Linguas
+  "es"
+   ambliopia
+    Categoria
+     f
+   ojo vago
+  "en"
+   emblyopia
+   lazy eye
+2

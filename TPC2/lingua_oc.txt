@@ -1,0 +1,48 @@
+1
+ Areas
+  Semioloxia
+  Patoloxias
+ Linguas
+  "ga"
+   ambliopia
+    Categoria
+     f
+   ollo vago
+    Categoria
+     m
+    Forma
+     pop
+   ollo preguiceiro
+    Categoria
+     m
+    Forma
+     pop
+  "es"
+   ambliopia
+   ojo vago
+  "en"
+   emblyopia
+   lazy eye
+  "pt"
+   ambliopia
+   olho preuicoso
+2
+ Areas
+  Patoloxias
+ Linguas
+  "ga"
+   anemia ferropenica
+    Categoria
+     f
+  "es"
+   anemia ferropenica
+  "en"
+   hipoferric anemia
+   iron deficiency anemia
+  "pt"
+   anemia ferropenica
+    Pais
+     Pt
+   anemia ferropriva
+    Pais
+     Br
