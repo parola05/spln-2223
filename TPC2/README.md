@@ -4,29 +4,43 @@ Criação de uma grámatica (e também o *parser* para gramática) orientada ao 
 
 ## Gramática orientada ao **conceito**
 
-A linguagem orientada ao conceito num primeiro nível é caracterizada por uma lista de 
-
 ```
 Dicionario -> Conceitos
 Conceitos -> Conceitos SEPARADOR1 Conceito
-           | vazio
-Conceito -> Identidade_conceito SEPARADOR2 Areas SEPARADOR_CONCEITO_IN Linguas
+           | Conceito
+Conceito -> Identidade_conceito SEPARADOR2 AREAS SEPARADOR3 Areas SEPARADOR2 LINGUAS SEPARADOR3 Linguas
 Identidade_conceito -> INDEX
-Areas -> Areas SEPARADOR_AREAS Area
-Areas -> vazio
+Areas -> Area SEPARADOR3 Areas
+Areas -> Area
 Area -> NOME
-Linguas -> Linguas SEPARADOR3 Lingua
-Linguas -> vazio
+Linguas -> Lingua SEPARADOR3 Linguas
+Linguas -> Lingua
 Lingua -> Identidade_lingua SEPARADOR4 Sinonimos
 Identidade_lingua -> IDENTIDADE_LINGUA
-Sinonimos -> Sinonimos SEPARADOR4 Sinonimo
-Sinonimos -> vazio
+Sinonimos -> Sinonimo SEPARADOR4 Sinonimos
+Sinonimos -> Sinonimo
 Sinonimo -> NOME SEPARADOR5 Atributos
-Atributos -> Atributos SEPARADOR5 Atributo
-Atributos -> vazio
-Atributo -> ID_Atrib SEPARADOR_ATRIBUTO NOME
+Sinonimo -> NOME
+Atributos -> Atributo SEPARADOR5 Atributos
+Atributos -> Atributo
+Atributo -> ID_Atrib SEPARADOR6 NOME
 ID_Atrib -> CATEGORIA
           | FORMA
           | PAIS
           | SIGLA 
 ```
+
+Os **SEPARADORES** definidos servem para dar **identação** a sintaxe, sendo 
+explicitamente definidos da seguinte forma:
+* SEPARADOR6: **r'\n\ \ \ \ \ '**
+* SEPARADOR5: **r'\n\ \ \ \ '**
+* SEPARADOR4: **r'\n\ \ \ '**
+* SEPARADOR3: **r'\n\ \ '**
+* SEPARADOR2: **r'\n\ '**
+* SEPARADOR1: **r'\n'**
+
+## Estrutura de ficheiros
+
+* **lex.py**: processador léxico
+* **yacc.py**: processador sintático
+* **lingua_oc\*.txt**: ficheiros de teste para a gramática desenvolvida 
