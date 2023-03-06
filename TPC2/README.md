@@ -44,3 +44,8 @@ explicitamente definidos da seguinte forma:
 * **lex.py**: processador léxico
 * **yacc.py**: processador sintático
 * **lingua_oc\*.txt**: ficheiros de teste para a gramática desenvolvida 
+
+# Caso complexos
+* 575
+* 1957
+* 2125
