@@ -77,7 +77,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-with open('lingua_oc.txt', 'r') as f:
+with open('medicina_grammar.txt', 'r') as f:
     content = f.read()
     parser.success = True
     parser.flag = True

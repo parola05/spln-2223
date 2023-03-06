@@ -164,9 +164,9 @@ def getECSinonimos(sinonimosMatch):
             match = re.search(regexPais, sinonimo)
             if match:
                 if match.group(1): 
-                    sinonimoObj["pais"] = match.group(1) 
+                    sinonimoObj["Pais"] = match.group(1) 
                 elif match.group(2): 
-                    sinonimoObj["pais"] = match.group(2) 
+                    sinonimoObj["Pais"] = match.group(2) 
             match = re.search(regexSigla, sinonimo)
             if match:
                 sinonimoObj["sigla"] = True
@@ -207,21 +207,21 @@ def getECTraducoes(traducoesMatch):
             match = re.search(regexPais, sinonimo)
             if match:
                 if match.group(1): 
-                    sinonimoObj["pais"] = match.group(1) 
+                    sinonimoObj["Pais"] = match.group(1) 
                 elif match.group(2): 
-                    sinonimoObj["pais"] = match.group(2) 
+                    sinonimoObj["Pais"] = match.group(2) 
             match = re.search(regexSigla, sinonimo)
             if match:
-                sinonimoObj["sigla"] = True
+                sinonimoObj["Sigla"] = True
             match = re.search(regexForma, sinonimo)
             if match:
                 if match.group(1): 
-                    sinonimoObj["forma"] = match.group(1) 
+                    sinonimoObj["Forma"] = match.group(1) 
                 elif match.group(2): 
                     sinonimoObj["forma"] = match.group(2) 
             match = re.search(regexGenero, sinonimo)
             if match:
-                sinonimoObj["genero"] = match.group(1) 
+                sinonimoObj["Categoria"] = match.group(1) 
             sinonimosList.append(sinonimoObj)
         return sinonimosList   
     else:
@@ -274,3 +274,61 @@ file.write(texto)
 print("Número de Entradas Completas detetadas: ", len(medicinaConceitos["entradasCompletas"]))
 print("Número de Entradas Remissivas detetadas: ", len(medicinaConceitos["entradasRemissivas"]))
 print("Número total de Entradas detetadas: ", len(medicinaConceitos["entradasRemissivas"]) + len(medicinaConceitos["entradasCompletas"]))
+
+def converToGrammar():
+    with open('medicina.json', 'r') as file:
+        dataJson = json.load(file)
+
+    grammar = ''
+
+    for ec in dataJson["entradasCompletas"]:
+
+        grammar += ec["ecIndex"] + '\n Areas'
+        for area in ec["areasTematicas"]:
+            grammar += "\n  " + area  
+        grammar += '\n Linguas'
+
+        if ec["traducoes"]:
+            if len(ec["traducoes"]["es"]) > 0:
+                grammar += '\n  "es"'
+                for traducao in ec["traducoes"]["es"]:
+                    if traducao.get("palavra") is not None:
+                        grammar += "\n   " + traducao["palavra"]
+
+                    for atrib, value in traducao.items():
+                        if not atrib == "palavra":
+                            grammar += "\n    " + atrib + "\n     " + str(value) 
+            if len(ec["traducoes"]["en"]) > 0:
+                grammar += '\n  "en"'
+                for traducao in ec["traducoes"]["en"]:
+                    if traducao.get("palavra") is not None:
+                        grammar += "\n   " + traducao["palavra"]
+
+                    for atrib, value in traducao.items():
+                        if not atrib == "palavra":
+                            grammar += "\n    " + atrib + "\n     " + str(value) 
+            if len(ec["traducoes"]["pt"]) > 0:
+                grammar += '\n  "pt"'
+                for traducao in ec["traducoes"]["pt"]:
+                    if traducao.get("palavra") is not None:
+                        grammar += "\n   " + traducao["palavra"]
+
+                    for atrib, value in traducao.items():
+                        if not atrib == "palavra":
+                            grammar += "\n    " + atrib + "\n     " + str(value) 
+            if len(ec["traducoes"]["la"]) > 0:
+                grammar += '\n  "la"'
+                for traducao in ec["traducoes"]["la"]:
+                    if traducao.get("palavra") is not None:
+                        grammar += "\n   " + traducao["palavra"]
+
+                    for atrib, value in traducao.items():
+                        if not atrib == "palavra":
+                            grammar += "\n    " + atrib + "\n     " + str(value) 
+
+        grammar += '\n'
+
+    file = open('medicina_grammar.txt', 'w')
+    file.write(grammar)
+
+converToGrammar()
