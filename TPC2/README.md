@@ -47,5 +47,92 @@ explicitamente definidos da seguinte forma:
 
 # Caso complexos
 * 575
+    
+    * Entrada **Orientada ao Galego**
+
+    ```
+    {
+                        "ecIndex": "575",
+                        "denominacao": "axila",
+                        "categoriaGramatical": "f",
+                        "areasTematicas": [
+                                "Anatom�a"
+                        ],
+                        "sinonimos": [
+                                {
+                                        "palavra": "fosa axilar"
+                                },
+                                {
+                                        "palavra": "oco axilar",
+                                        "genero": "m"
+                                },
+                                {
+                                        "palavra": "sobrazo",
+                                        "forma": "pop",
+                                        "genero": "m"
+                                },
+                                {
+                                        "palavra": "sobaco",
+                                        "forma": "pop",
+                                        "genero": "m"
+                                }
+                        ],
+                        "variantes": [],
+                        "traducoes": {
+                                "es": [
+                                        {
+                                                "palavra": "axila"
+                                        },
+                                        {
+                                                "palavra": "sobaco",
+                                                "Forma": "pop"
+                                        }
+                                ],
+                                "en": [
+                                        {
+                                                "palavra": "axilla"
+                                        }
+                                ],
+                                "pt": [
+                                        {
+                                                "palavra": "axila"
+                                        },
+                                        {
+                                                "palavra": "sovaco",
+                                                "Forma": "pop",
+                                                "Categoria": "m"
+                                        }
+                                ],
+                                "la": [
+                                        {
+                                                "palavra": "axilla"
+                                        }
+                                ]
+                        },
+                        "nota": null
+                },
+    ```
+    * Entrada orientada ao **conceito**
+    ```
+    Areas
+     Anatom�a
+    Linguas
+     "es"
+      axila
+      sobaco
+       Forma
+        pop
+     "en"
+      axilla
+     "pt"
+      axila
+      sovaco
+       Forma
+        pop
+       Categoria
+        m
+    "la"
+     axilla
+    ```
 * 1957
 * 2125
