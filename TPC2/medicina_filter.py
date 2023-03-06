@@ -154,25 +154,31 @@ def getECSinonimos(sinonimosMatch):
         for sinonimo in sinonimos:
             sinonimoObj = {}  
             regexNome = r'\w+(?: \w+)*'
-            regexPais = r'\[Br\.\]|\[Pt\.\]'
+            regexPais = r'\[(Br)\.\]|\[(Pt)\.\]'
             regexSigla = r'\(sg\)'
-            regexForma = r'\[pop\.\]|\[cult\]'
-            regexGenero = r'\(\w\)'
+            regexForma = r'\[(pop)\.\]|\[(cult)\]'
+            regexGenero = r'\((\w)\)'
             match = re.search(regexNome, sinonimo)
             if match:
                 sinonimoObj["palavra"] = match.group(0) 
             match = re.search(regexPais, sinonimo)
             if match:
-                sinonimoObj["pais"] = match.group(0) 
+                if match.group(1): 
+                    sinonimoObj["pais"] = match.group(1) 
+                elif match.group(2): 
+                    sinonimoObj["pais"] = match.group(2) 
             match = re.search(regexSigla, sinonimo)
             if match:
                 sinonimoObj["sigla"] = True
             match = re.search(regexForma, sinonimo)
             if match:
-                sinonimoObj["forma"] = match.group(0) 
+                if match.group(1): 
+                    sinonimoObj["forma"] = match.group(1) 
+                elif match.group(2): 
+                    sinonimoObj["forma"] = match.group(2) 
             match = re.search(regexGenero, sinonimo)
             if match:
-                sinonimoObj["genero"] = match.group(0) 
+                sinonimoObj["genero"] = match.group(1) 
             sinonimosList.append(sinonimoObj)
         return sinonimosList   
     else:
@@ -191,25 +197,31 @@ def getECTraducoes(traducoesMatch):
         for sinonimo in sinonimos:
             sinonimoObj = {}  
             regexNome = r'\w+(?: \w+)*'
-            regexPais = r'\[Br\.\]|\[Pt\.\]'
+            regexPais = r'\[(Br)\.\]|\[(Pt)\.\]'
             regexSigla = r'\(sg\)'
-            regexForma = r'\[pop\.\]|\[cult\]'
-            regexGenero = r'\(\w\)'
+            regexForma = r'\[(pop)\.\]|\[(cult)\]'
+            regexGenero = r'\((\w)\)'
             match = re.search(regexNome, sinonimo)
             if match:
                 sinonimoObj["palavra"] = match.group(0) 
             match = re.search(regexPais, sinonimo)
             if match:
-                sinonimoObj["pais"] = match.group(0) 
+                if match.group(1): 
+                    sinonimoObj["pais"] = match.group(1) 
+                elif match.group(2): 
+                    sinonimoObj["pais"] = match.group(2) 
             match = re.search(regexSigla, sinonimo)
             if match:
                 sinonimoObj["sigla"] = True
             match = re.search(regexForma, sinonimo)
             if match:
-                sinonimoObj["forma"] = match.group(0) 
+                if match.group(1): 
+                    sinonimoObj["forma"] = match.group(1) 
+                elif match.group(2): 
+                    sinonimoObj["forma"] = match.group(2) 
             match = re.search(regexGenero, sinonimo)
             if match:
-                sinonimoObj["genero"] = match.group(0) 
+                sinonimoObj["genero"] = match.group(1) 
             sinonimosList.append(sinonimoObj)
         return sinonimosList   
     else:
