@@ -1,6 +1,6 @@
 1
  Areas
-  Semioloxia
+  Semioloxìa
   Patoloxias
  Linguas
   "es"
@@ -11,4 +11,3 @@
   "en"
    emblyopia
    lazy eye
-2

@@ -1,0 +1,482 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> dicionario
+Rule 1     dicionario -> conceitos
+Rule 2     conceitos -> conceito SEPARADOR1 conceitos
+Rule 3     conceitos -> conceito
+Rule 4     conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+Rule 5     identidadeconceito -> INDEX
+Rule 6     areas -> area SEPARADOR3 areas
+Rule 7     areas -> area
+Rule 8     area -> NOME
+Rule 9     linguas -> lingua SEPARADOR3 linguas
+Rule 10    linguas -> lingua
+Rule 11    lingua -> identidadelingua SEPARADOR4 sinonimos
+Rule 12    identidadelingua -> IDENTIDADELINGUA
+Rule 13    sinonimos -> sinonimo SEPARADOR4 sinonimos
+Rule 14    sinonimos -> sinonimo
+Rule 15    sinonimo -> NOME SEPARADOR5 atributos
+Rule 16    sinonimo -> NOME
+Rule 17    atributos -> atributo SEPARADOR5 atributos
+Rule 18    atributos -> atributo
+Rule 19    atributo -> idatrib SEPARADOR6 NOME
+Rule 20    idatrib -> CATEGORIA
+Rule 21    idatrib -> SIGLA
+Rule 22    idatrib -> FORMA
+Rule 23    idatrib -> PAIS
+
+Terminals, with rules where they appear
+
+AREAS                : 4
+CATEGORIA            : 20
+FORMA                : 22
+IDENTIDADELINGUA     : 12
+INDEX                : 5
+LINGUAS              : 4
+NOME                 : 8 15 16 19
+PAIS                 : 23
+SEPARADOR1           : 2
+SEPARADOR2           : 4 4
+SEPARADOR3           : 4 4 6 9
+SEPARADOR4           : 11 13
+SEPARADOR5           : 15 17
+SEPARADOR6           : 19
+SIGLA                : 21
+error                : 
+
+Nonterminals, with rules where they appear
+
+area                 : 6 7
+areas                : 4 6
+atributo             : 17 18
+atributos            : 15 17
+conceito             : 2 3
+conceitos            : 1 2
+dicionario           : 0
+idatrib              : 19
+identidadeconceito   : 4
+identidadelingua     : 11
+lingua               : 9 10
+linguas              : 4 9
+sinonimo             : 13 14
+sinonimos            : 11 13
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . dicionario
+    (1) dicionario -> . conceitos
+    (2) conceitos -> . conceito SEPARADOR1 conceitos
+    (3) conceitos -> . conceito
+    (4) conceito -> . identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+    (5) identidadeconceito -> . INDEX
+
+    INDEX           shift and go to state 5
+
+    dicionario                     shift and go to state 1
+    conceitos                      shift and go to state 2
+    conceito                       shift and go to state 3
+    identidadeconceito             shift and go to state 4
+
+state 1
+
+    (0) S' -> dicionario .
+
+
+
+state 2
+
+    (1) dicionario -> conceitos .
+
+    $end            reduce using rule 1 (dicionario -> conceitos .)
+
+
+state 3
+
+    (2) conceitos -> conceito . SEPARADOR1 conceitos
+    (3) conceitos -> conceito .
+
+    SEPARADOR1      shift and go to state 6
+    $end            reduce using rule 3 (conceitos -> conceito .)
+
+
+state 4
+
+    (4) conceito -> identidadeconceito . SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+
+    SEPARADOR2      shift and go to state 7
+
+
+state 5
+
+    (5) identidadeconceito -> INDEX .
+
+    SEPARADOR2      reduce using rule 5 (identidadeconceito -> INDEX .)
+
+
+state 6
+
+    (2) conceitos -> conceito SEPARADOR1 . conceitos
+    (2) conceitos -> . conceito SEPARADOR1 conceitos
+    (3) conceitos -> . conceito
+    (4) conceito -> . identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+    (5) identidadeconceito -> . INDEX
+
+    INDEX           shift and go to state 5
+
+    conceito                       shift and go to state 3
+    conceitos                      shift and go to state 8
+    identidadeconceito             shift and go to state 4
+
+state 7
+
+    (4) conceito -> identidadeconceito SEPARADOR2 . AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+
+    AREAS           shift and go to state 9
+
+
+state 8
+
+    (2) conceitos -> conceito SEPARADOR1 conceitos .
+
+    $end            reduce using rule 2 (conceitos -> conceito SEPARADOR1 conceitos .)
+
+
+state 9
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS . SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+
+    SEPARADOR3      shift and go to state 10
+
+
+state 10
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 . areas SEPARADOR2 LINGUAS SEPARADOR3 linguas
+    (6) areas -> . area SEPARADOR3 areas
+    (7) areas -> . area
+    (8) area -> . NOME
+
+    NOME            shift and go to state 13
+
+    areas                          shift and go to state 11
+    area                           shift and go to state 12
+
+state 11
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas . SEPARADOR2 LINGUAS SEPARADOR3 linguas
+
+    SEPARADOR2      shift and go to state 14
+
+
+state 12
+
+    (6) areas -> area . SEPARADOR3 areas
+    (7) areas -> area .
+
+    SEPARADOR3      shift and go to state 15
+    SEPARADOR2      reduce using rule 7 (areas -> area .)
+
+
+state 13
+
+    (8) area -> NOME .
+
+    SEPARADOR3      reduce using rule 8 (area -> NOME .)
+    SEPARADOR2      reduce using rule 8 (area -> NOME .)
+
+
+state 14
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 . LINGUAS SEPARADOR3 linguas
+
+    LINGUAS         shift and go to state 16
+
+
+state 15
+
+    (6) areas -> area SEPARADOR3 . areas
+    (6) areas -> . area SEPARADOR3 areas
+    (7) areas -> . area
+    (8) area -> . NOME
+
+    NOME            shift and go to state 13
+
+    area                           shift and go to state 12
+    areas                          shift and go to state 17
+
+state 16
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS . SEPARADOR3 linguas
+
+    SEPARADOR3      shift and go to state 18
+
+
+state 17
+
+    (6) areas -> area SEPARADOR3 areas .
+
+    SEPARADOR2      reduce using rule 6 (areas -> area SEPARADOR3 areas .)
+
+
+state 18
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 . linguas
+    (9) linguas -> . lingua SEPARADOR3 linguas
+    (10) linguas -> . lingua
+    (11) lingua -> . identidadelingua SEPARADOR4 sinonimos
+    (12) identidadelingua -> . IDENTIDADELINGUA
+
+    IDENTIDADELINGUA shift and go to state 22
+
+    linguas                        shift and go to state 19
+    lingua                         shift and go to state 20
+    identidadelingua               shift and go to state 21
+
+state 19
+
+    (4) conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas .
+
+    SEPARADOR1      reduce using rule 4 (conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas .)
+    $end            reduce using rule 4 (conceito -> identidadeconceito SEPARADOR2 AREAS SEPARADOR3 areas SEPARADOR2 LINGUAS SEPARADOR3 linguas .)
+
+
+state 20
+
+    (9) linguas -> lingua . SEPARADOR3 linguas
+    (10) linguas -> lingua .
+
+    SEPARADOR3      shift and go to state 23
+    SEPARADOR1      reduce using rule 10 (linguas -> lingua .)
+    $end            reduce using rule 10 (linguas -> lingua .)
+
+
+state 21
+
+    (11) lingua -> identidadelingua . SEPARADOR4 sinonimos
+
+    SEPARADOR4      shift and go to state 24
+
+
+state 22
+
+    (12) identidadelingua -> IDENTIDADELINGUA .
+
+    SEPARADOR4      reduce using rule 12 (identidadelingua -> IDENTIDADELINGUA .)
+
+
+state 23
+
+    (9) linguas -> lingua SEPARADOR3 . linguas
+    (9) linguas -> . lingua SEPARADOR3 linguas
+    (10) linguas -> . lingua
+    (11) lingua -> . identidadelingua SEPARADOR4 sinonimos
+    (12) identidadelingua -> . IDENTIDADELINGUA
+
+    IDENTIDADELINGUA shift and go to state 22
+
+    lingua                         shift and go to state 20
+    linguas                        shift and go to state 25
+    identidadelingua               shift and go to state 21
+
+state 24
+
+    (11) lingua -> identidadelingua SEPARADOR4 . sinonimos
+    (13) sinonimos -> . sinonimo SEPARADOR4 sinonimos
+    (14) sinonimos -> . sinonimo
+    (15) sinonimo -> . NOME SEPARADOR5 atributos
+    (16) sinonimo -> . NOME
+
+    NOME            shift and go to state 28
+
+    sinonimos                      shift and go to state 26
+    sinonimo                       shift and go to state 27
+
+state 25
+
+    (9) linguas -> lingua SEPARADOR3 linguas .
+
+    SEPARADOR1      reduce using rule 9 (linguas -> lingua SEPARADOR3 linguas .)
+    $end            reduce using rule 9 (linguas -> lingua SEPARADOR3 linguas .)
+
+
+state 26
+
+    (11) lingua -> identidadelingua SEPARADOR4 sinonimos .
+
+    SEPARADOR3      reduce using rule 11 (lingua -> identidadelingua SEPARADOR4 sinonimos .)
+    SEPARADOR1      reduce using rule 11 (lingua -> identidadelingua SEPARADOR4 sinonimos .)
+    $end            reduce using rule 11 (lingua -> identidadelingua SEPARADOR4 sinonimos .)
+
+
+state 27
+
+    (13) sinonimos -> sinonimo . SEPARADOR4 sinonimos
+    (14) sinonimos -> sinonimo .
+
+    SEPARADOR4      shift and go to state 29
+    SEPARADOR3      reduce using rule 14 (sinonimos -> sinonimo .)
+    SEPARADOR1      reduce using rule 14 (sinonimos -> sinonimo .)
+    $end            reduce using rule 14 (sinonimos -> sinonimo .)
+
+
+state 28
+
+    (15) sinonimo -> NOME . SEPARADOR5 atributos
+    (16) sinonimo -> NOME .
+
+    SEPARADOR5      shift and go to state 30
+    SEPARADOR4      reduce using rule 16 (sinonimo -> NOME .)
+    SEPARADOR3      reduce using rule 16 (sinonimo -> NOME .)
+    SEPARADOR1      reduce using rule 16 (sinonimo -> NOME .)
+    $end            reduce using rule 16 (sinonimo -> NOME .)
+
+
+state 29
+
+    (13) sinonimos -> sinonimo SEPARADOR4 . sinonimos
+    (13) sinonimos -> . sinonimo SEPARADOR4 sinonimos
+    (14) sinonimos -> . sinonimo
+    (15) sinonimo -> . NOME SEPARADOR5 atributos
+    (16) sinonimo -> . NOME
+
+    NOME            shift and go to state 28
+
+    sinonimo                       shift and go to state 27
+    sinonimos                      shift and go to state 31
+
+state 30
+
+    (15) sinonimo -> NOME SEPARADOR5 . atributos
+    (17) atributos -> . atributo SEPARADOR5 atributos
+    (18) atributos -> . atributo
+    (19) atributo -> . idatrib SEPARADOR6 NOME
+    (20) idatrib -> . CATEGORIA
+    (21) idatrib -> . SIGLA
+    (22) idatrib -> . FORMA
+    (23) idatrib -> . PAIS
+
+    CATEGORIA       shift and go to state 35
+    SIGLA           shift and go to state 36
+    FORMA           shift and go to state 37
+    PAIS            shift and go to state 38
+
+    atributos                      shift and go to state 32
+    atributo                       shift and go to state 33
+    idatrib                        shift and go to state 34
+
+state 31
+
+    (13) sinonimos -> sinonimo SEPARADOR4 sinonimos .
+
+    SEPARADOR3      reduce using rule 13 (sinonimos -> sinonimo SEPARADOR4 sinonimos .)
+    SEPARADOR1      reduce using rule 13 (sinonimos -> sinonimo SEPARADOR4 sinonimos .)
+    $end            reduce using rule 13 (sinonimos -> sinonimo SEPARADOR4 sinonimos .)
+
+
+state 32
+
+    (15) sinonimo -> NOME SEPARADOR5 atributos .
+
+    SEPARADOR4      reduce using rule 15 (sinonimo -> NOME SEPARADOR5 atributos .)
+    SEPARADOR3      reduce using rule 15 (sinonimo -> NOME SEPARADOR5 atributos .)
+    SEPARADOR1      reduce using rule 15 (sinonimo -> NOME SEPARADOR5 atributos .)
+    $end            reduce using rule 15 (sinonimo -> NOME SEPARADOR5 atributos .)
+
+
+state 33
+
+    (17) atributos -> atributo . SEPARADOR5 atributos
+    (18) atributos -> atributo .
+
+    SEPARADOR5      shift and go to state 39
+    SEPARADOR4      reduce using rule 18 (atributos -> atributo .)
+    SEPARADOR3      reduce using rule 18 (atributos -> atributo .)
+    SEPARADOR1      reduce using rule 18 (atributos -> atributo .)
+    $end            reduce using rule 18 (atributos -> atributo .)
+
+
+state 34
+
+    (19) atributo -> idatrib . SEPARADOR6 NOME
+
+    SEPARADOR6      shift and go to state 40
+
+
+state 35
+
+    (20) idatrib -> CATEGORIA .
+
+    SEPARADOR6      reduce using rule 20 (idatrib -> CATEGORIA .)
+
+
+state 36
+
+    (21) idatrib -> SIGLA .
+
+    SEPARADOR6      reduce using rule 21 (idatrib -> SIGLA .)
+
+
+state 37
+
+    (22) idatrib -> FORMA .
+
+    SEPARADOR6      reduce using rule 22 (idatrib -> FORMA .)
+
+
+state 38
+
+    (23) idatrib -> PAIS .
+
+    SEPARADOR6      reduce using rule 23 (idatrib -> PAIS .)
+
+
+state 39
+
+    (17) atributos -> atributo SEPARADOR5 . atributos
+    (17) atributos -> . atributo SEPARADOR5 atributos
+    (18) atributos -> . atributo
+    (19) atributo -> . idatrib SEPARADOR6 NOME
+    (20) idatrib -> . CATEGORIA
+    (21) idatrib -> . SIGLA
+    (22) idatrib -> . FORMA
+    (23) idatrib -> . PAIS
+
+    CATEGORIA       shift and go to state 35
+    SIGLA           shift and go to state 36
+    FORMA           shift and go to state 37
+    PAIS            shift and go to state 38
+
+    atributo                       shift and go to state 33
+    atributos                      shift and go to state 41
+    idatrib                        shift and go to state 34
+
+state 40
+
+    (19) atributo -> idatrib SEPARADOR6 . NOME
+
+    NOME            shift and go to state 42
+
+
+state 41
+
+    (17) atributos -> atributo SEPARADOR5 atributos .
+
+    SEPARADOR4      reduce using rule 17 (atributos -> atributo SEPARADOR5 atributos .)
+    SEPARADOR3      reduce using rule 17 (atributos -> atributo SEPARADOR5 atributos .)
+    SEPARADOR1      reduce using rule 17 (atributos -> atributo SEPARADOR5 atributos .)
+    $end            reduce using rule 17 (atributos -> atributo SEPARADOR5 atributos .)
+
+
+state 42
+
+    (19) atributo -> idatrib SEPARADOR6 NOME .
+
+    SEPARADOR5      reduce using rule 19 (atributo -> idatrib SEPARADOR6 NOME .)
+    SEPARADOR4      reduce using rule 19 (atributo -> idatrib SEPARADOR6 NOME .)
+    SEPARADOR3      reduce using rule 19 (atributo -> idatrib SEPARADOR6 NOME .)
+    SEPARADOR1      reduce using rule 19 (atributo -> idatrib SEPARADOR6 NOME .)
+    $end            reduce using rule 19 (atributo -> idatrib SEPARADOR6 NOME .)
+
