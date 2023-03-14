@@ -9,41 +9,63 @@ class Dic_concept():
         <html>
             <head>
                 <meta charset="UTF-8"/>
+                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
                 <title>Dicionário orientado ao conceito</title>
             </head>
             <body>
+            <div class="w3-card">
+            <header class="w3-container w3-blue">
+                <h1>Dicionário orientado ao conceito</h1>
+            </header>
+                <ul class="w3-ul">
         '''
         for concept in self.concepts:
             htmlPage = htmlPage + '''
-                <h1>''' + str(concept.index) + '''</h1>
-                <h2>Áreas</h2>
-                <ul>
+                <li>
+                    <h1>''' + str(concept.index) + '''</h1>
+                    <h2>Áreas</h2>
+                    <ul class="w3-ul">
                 '''
             for area in concept.areas:
                 htmlPage = htmlPage  + '''
-                    <li>''' + area.name + '''</li>
+                        <li>''' + area.name + '''</li>
                 '''
                     
             htmlPage = htmlPage + '''
-                </ul> 
-                <h2>Línguas</h2>
+                    </ul> 
+                    <h2>Línguas</h2>
+                    <ul class="w3-ul">
             '''
 
             for language in concept.languages:
                 htmlPage = htmlPage  + '''
-                <h3>''' + language.name + '''</h3>
+                    <li>
+                    <h3>''' + language.name + '''</h3>
+                    <ul class="w3-ul">
                 '''
                 for synonym in language.synonyms:
                     htmlPage = htmlPage  + '''
-                <h4>''' + synonym.name + '''</h4>
+                    <li>
+                    <h4>''' + synonym.name + '''</h4>
+                    <ul class="w3-ul">
                 '''
                     if not synonym.atribs == None:
                         for atrib in synonym.atribs:
-                            htmlPage = htmlPage  + '''
-                <p>''' + atrib.name + ''': ''' + atrib.value + '''</p>
+                            htmlPage = htmlPage  + '''<li>
+                    <p>''' + atrib.name + ''': ''' + atrib.value + '''</p>
+                    </li>
                 '''
+                    htmlPage = htmlPage + '''</ul>'''
+                htmlPage = htmlPage + '''
+                </ul>
+                '''
+            htmlPage = htmlPage + '''
+                </ul>
+            '''
 
         htmlPage = htmlPage + f'''
+                        </ul>
+                    </div> 
                 </body>
             </html>
             '''
