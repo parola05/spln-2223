@@ -3,6 +3,11 @@
 
 Criação de uma **estrutura de dados** em Python para o aramzenamento em memória do *dicionário orientado ao coneceito*
 criado no TP2 e de uma **vista em HTML** para o dicionário.
+
+<br>
+<br>
+
+
 ![enter image description here](https://raw.githubusercontent.com/henriqueparola/spln-2223/main/TPC3/images/banner.png)
 
 ### Ficheiros:
