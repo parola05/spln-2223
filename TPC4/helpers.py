@@ -47,3 +47,21 @@ def recoverSrAndSraAndSrta(text):
 def getSentences(text):
     sentences = re.split(r"\.\s", text)
     return sentences
+
+'''
+    Get content of a given page
+    Obs: a new page is identified by two '\n' in sequence
+    Obs(2): expect previous treatment of title and subtitle of chapters (that have two '\n' in sequence too)
+'''
+def getContentByPage(text,page):
+    sentences = re.split(r"\n\n", text)
+    return sentences[page]
+
+'''
+    Get words from text
+    Obs: expect all pontuations treated early
+    Return: list of words
+'''
+def getWords(text):
+    words = re.split(r"\s", text)
+    return words

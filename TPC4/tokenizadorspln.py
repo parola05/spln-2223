@@ -5,8 +5,9 @@ import argparse
 import helpers as hp
 
 parser = argparse.ArgumentParser(description='Processador de linguagem natural')
-parser.add_argument("-fl", action="store_true", help="Retorna uma frase por linha")
-parser.add_argument("-pl", action="store_true", help="Retorna uma palavra por linha")
+parser.add_argument("--fl", action="store_true", help="Retorna uma frase por linha")
+parser.add_argument("--pl", action="store_true", help="Retorna uma palavra por linha")
+parser.add_argument("--pag", type=int, help="Retorna o conteúdo da página fornecida")
 parser.add_argument('texto', type=argparse.FileType('r'), help='Arquivo de texto de entrada')
 
 args = parser.parse_args()
@@ -29,8 +30,15 @@ def main():
 
         for sentence in sentences:
             print(sentence)
-    elif args.fl: # Palavra por Linha
-        pass        
+    elif args.pl: # Palavra por Linha
+        words = hp.getWords(text)
+
+        for word in words:
+            print(word)   
+    elif args.pag: # Conteúdo da uma página
+        content = hp.getContentByPage(text,args.pag)
+        print("Page " + str(args.pag) + ":\n")
+        print(content)
     else:
         pass
 
