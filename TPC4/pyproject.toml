@@ -14,4 +14,4 @@ dynamic = ["version", "description"]
 Home = "https://github.com/LittleLevi05/spln-2223/tree/main/TPC4"
 
 [project.scripts]
-hpln = "hpln:main"
+hpln = "hpln.hpln:main"
