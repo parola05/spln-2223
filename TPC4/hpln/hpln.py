@@ -6,7 +6,7 @@ import argparse
 import sys
 import re
 
-__version__ = "0.1"
+__version__ = "0.2"
 
 '''
     Remove '\n' from the input text
