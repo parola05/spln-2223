@@ -1,4 +1,4 @@
-# TPC4
+# HPLN
 
 Criação de uma **processador de linguagem natural** em Python.
 
@@ -8,7 +8,7 @@ Criação de uma **processador de linguagem natural** em Python.
 ![enter image description here](https://raw.githubusercontent.com/henriqueparola/spln-2223/main/TPC4/images/banner.png)
 
 ```
-usage: tokenizadorspln.py [-h] [--fl] [--pl] [--pag PAG] texto
+usage: hpln.py [-h] [--fl] [--pl] [--pag PAG] texto
 
 Processador de linguagem natural
 
@@ -21,9 +21,5 @@ options:
   --pl        Retorna uma palavra por linha
   --pag PAG   Retorna o conteúdo da página fornecida
 ```
-
-### Ficheiros:
-* **tokenizadorspln**: programa final
-* **helpers**: possui as funções auxiliares para o processador
 
 
