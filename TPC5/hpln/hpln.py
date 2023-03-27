@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """Processador de linguagem natural!""" 
 import argparse
-from helpers import *
+from .helpers import *
 
-__version__ = "0.7"
+__version__ = "0.8"
 
 def main():
     parser = argparse.ArgumentParser(description='Processador de linguagem natural')
