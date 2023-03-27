@@ -2,6 +2,8 @@
 
 Criação de uma **processador de linguagem natural** em Python.
 
+[+] Versão **0.6**
+
 <br>
 
 
