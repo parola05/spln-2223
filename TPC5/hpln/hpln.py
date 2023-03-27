@@ -12,7 +12,7 @@ def main():
     parser.add_argument("--pag", type=int, help="Retorna o conteúdo da página fornecida")
     parser.add_argument("--abr", type=str, help="Ficheiro de abreviações do utilizador")
     parser.add_argument("--lang", type=str, help="Especificação da língua do texto")
-    parser.add_argument('texto', type=argparse.FileType('r'), help='Arquivo de texto de entrada')
+    parser.add_argument('texto', type=argparse.FileType('r'), help='Arquivo de texto de entrada ... LOBE')
 
     args = parser.parse_args()
 
