@@ -1,4 +1,6 @@
-from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel
+from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel, pipeline
+from story_analyzer.archiver import Archiver
+from story_analyzer.book_analyzer import BookAnalyzer
 
 class Book:
     
@@ -8,6 +10,7 @@ class Book:
         self.gpt_tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
         self.t5_model = T5ForConditionalGeneration.from_pretrained('t5-small', return_dict=True)
         self.t5_tokenizer = T5Tokenizer.from_pretrained('t5-small')
+
 
     def quiz(self):
         content_ids = self.gpt_tokenizer.encode(self.content, return_tensors = 'pt')
@@ -36,7 +39,26 @@ class Book:
         decoded = self.t5_tokenizer.decode(outputs[0], skip_special_tokens=True)
         return decoded
 
-b = Book(content="The Harry Potter said:")
+    def saveBook(self):
+        language = self.detectLanguage()
+        print(language)
+        analyzer : BookAnalyzer = BookAnalyzer(language)
+
+
+    def detectLanguage(self):
+        model_ckpt = "papluca/xlm-roberta-base-language-detection"
+        pipe = pipeline("text-classification", model=model_ckpt)
+        preds = pipe(self.content, top_k=None, truncation=True, max_length=128)
+        if preds:
+            pred = preds[0]
+            return pred["label"]
+        else:
+            return None
+
+
+
+b = Book(content="Harry Potter sagte: Ich will Woldermort töten, dieser Mann verdient einen schlechten Tod.")
+b.saveBook()
 options = b.quiz()
 translation = b.translate()
 print(translation)
