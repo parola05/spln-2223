@@ -12,28 +12,42 @@ class SpacyQueries:
     def __init__(self, language : str, text : str):
         self.parser: ParserModels = ParserModels()
         self.model :str = self.__modelFromLanguage(language)
+        self.text = text
+        self.docReady = False
+
+    def __createDoc(self):
         self.nlp = spacy.load(self.model)
-        self.doc = self.nlp(text)
-        self.maxElements = 100
+        self.doc = self.nlp(self.text)
+        self.docReady = True
 
     def __modelFromLanguage(self, language: str) -> str :
         return self.parser.getModel(language)
 
-    def queryActions(self):
+    def __createOne(self):
+        if not self.docReady:
+            self.__createDoc()
+
+    def queryActions(self, top : int):
         "Gets the most actions of a book"
+        # Acts as a singleton
+        self.__createOne()
         verbs: Counter = Counter()
         for w in self.doc:
             if w.pos_ == "VERB":
                 verbs[w.lemma_] += 1
-        return verbs.most_common(self.maxElements)
+        return verbs.most_common(top)
 
     def querySentences(self):
         "Gets the number of sentences of a text"
+        # Acts as a singleton
+        self.__createOne()
         return len(self.doc.sents)
 
 
     def similarSentence(self, input : str) -> (str, int):
         "Given a summary of a sentence it returns the actual sentence and the offset where it is present"
+        # Acts as a singleton
+        self.__createOne()
         #requires that the language of the input is the same
         search_sent = self.nlp(input)
 

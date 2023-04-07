@@ -8,12 +8,13 @@ import gensim
 class Book:
     
     def __init__(self, content) -> None:
-        self.content = content
+        self.content: str = content
         #For a harrypotter book it takes around 1sec.
         #Since a lot of functions require a language input
         #for choosing which models to import it's better to
         #always calculate this query straight away.
-        self.language = self.__detectLanguage()
+        self.language: str = self.__detectLanguage()
+        self.spacy_queries: SpacyQueries = SpacyQueries(self.language, self.content)
 
 
     def quiz(self):
@@ -66,8 +67,10 @@ class Book:
         summary = pegasus_tokenizer.batch_decode(output_ids[0])
         return ' '.join(summary)
 
-    def saveBook(self):
+    def saveContent(self):
         pass
+
+
 
     def __detectLanguage(self) -> str:
         model_ckpt = "papluca/xlm-roberta-base-language-detection"
