@@ -2,6 +2,8 @@ transformers
 torch
 sentencepiece
 spacy
+gensim
+beautifulsoup4
 ./story_analyzer/data/en_core_web_md-3.5.0-py3-none-any.whl
 ./story_analyzer/data/pt_core_news_md-3.5.0-py3-none-any.whl
 ./story_analyzer/data/de_core_news_md-3.5.0-py3-none-any.whl

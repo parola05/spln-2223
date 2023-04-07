@@ -12,12 +12,10 @@ class ParserModels:
             tokens = line.split()
             self.languages[tokens[0]] = tokens[1]
 
-
     def getModel(self, language : str) -> str:
         if language not in self.languages.keys():
             return None
         return  self.languages[language]
-
 
 class BookAnalyzer:
     def __init__(self, language : str, text : str):
@@ -41,8 +39,3 @@ class BookAnalyzer:
     def querySentences(self):
         "Gets the number of sentences of a text"
         return len(self.doc.sents)
-
-
-
-
-

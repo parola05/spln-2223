@@ -1,17 +1,8 @@
 import requests
-import sys
-import argparse
-import re
 from bs4 import BeautifulSoup, NavigableString
 
 # TODO: need to check conditions, maybe use the other format
 # Check if it is only accumulate <p></p> tags
-
-
-def panic(message):
-    print(f"error: {message}")  # todo: colors / warnings vs errors
-    exit(1)  # change if warning
-
 
 def treat_html(html):
     text = ""
@@ -67,43 +58,27 @@ def treat_html(html):
                 text += tag.get_text()
     return text
 
+def get_book(mode,book_name):
+    book_string = ''
+    
+    if mode == 'local':
+        input_file = open(book_name, 'r')
+        book_string = input_file.read()
+        input_file.close
+    elif mode == 'web':
+        search_url = f"http://www.gutenberg.org/ebooks/search/?query={book_name}"
+        response = requests.get(search_url)
 
-args_parser = argparse.ArgumentParser(
-    description='app_name: some description')
-args_parser.add_argument(
-    'input', nargs=1, type=str, metavar='input', help='input file path or book name (only in web mode)')
-args_parser.add_argument('output', nargs=1, type=str,
-                         metavar='output', help='output file path')
-args_parser.add_argument('-m', '--mode', nargs=1, type=str, choices=[
-    'local', 'web'], help='app modes', default=['local'])
-
-args = args_parser.parse_args()
-
-if args.mode[0] == 'local':
-    input_file = open(args.input[0], 'r')
-    content = input_file.read()
-    input_file.close
-elif args.mode[0] == 'web':
-    book_name = args.input[0]
-    search_url = f"http://www.gutenberg.org/ebooks/search/?query={book_name}"
-    response = requests.get(search_url)
-
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.content, 'html.parser')
-        book_id = soup.find(
-            'li', {'class': 'booklink'}).find('a')['href'].split('/')[-1]
-        book_html_url = f"http://www.gutenberg.org/files/{book_id}/{book_id}-h/{book_id}-h.htm"
-        response = requests.get(book_html_url)
         if response.status_code == 200:
-            book_string = treat_html(response.content)
-            print(book_string)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            book_id = soup.find('li', {'class': 'booklink'}).find('a')['href'].split('/')[-1]
+            book_html_url = f"http://www.gutenberg.org/files/{book_id}/{book_id}-h/{book_id}-h.htm"
+            response = requests.get(book_html_url)
+            if response.status_code == 200:
+                book_string = treat_html(response.content)
+            else:
+                raise ValueError(f"unavailable html version of the book")
         else:
-            panic("unavailable html version of the book")
-    else:
-        panic(f"unavailable book: {book_name}")
-else:
-    panic("unknown mode")
-
-
-# book_string = treat_html("<div><span>walt</span></div>")
-# print(book_string)
+            raise ValueError(f"unavailable book: {book_name}")
+    
+    return book_string
