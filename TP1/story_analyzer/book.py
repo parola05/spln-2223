@@ -1,7 +1,5 @@
 from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel, PegasusForConditionalGeneration, PegasusTokenizer, pipeline
-from archiver import Archiver
 from spacy_queries import SpacyQueries
-import spacy
 import random
 import gensim
 
@@ -9,33 +7,27 @@ class Book:
     
     def __init__(self, content) -> None:
         self.content: str = content
-        #For a harrypotter book it takes around 1sec.
-        #Since a lot of functions require a language input
-        #for choosing which models to import it's better to
-        #always calculate this query straight away.
-        self.language: str = self.__detectLanguage()
-        self.spacy_queries: SpacyQueries = SpacyQueries(self.language, self.content)
-
+        language_abr, language_long = self.__detectLanguage()
+        self.language: str = language_long
+        self.spacy_queries: SpacyQueries = SpacyQueries(language_abr, self.content)
 
     def quiz(self):
-        nlp = spacy.load("en_core_web_sm")
-        doc = nlp(self.content)
-        sentences = list(doc.sents)
+        "Generate a quiz game with six false sentences and one true sentence. The goal is the user guess the true sentence"
 
-        random_phrase = random.choice(sentences)
-        while len(random_phrase) < 8:
-            random_phrase = random.choice(sentences)
+        # get a random true sentence from the text
+        random_sentence = self.spacy_queries.queryGetRandomSentence()
 
-        print("radom:",random_phrase)
-
+        # load GPT model and tokenizer
         gpt_model = GPT2LMHeadModel.from_pretrained('gpt2')
         gpt_tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
         
-        content_ids = gpt_tokenizer.encode(random_phrase, return_tensors = 'pt')
+        # encode the first 5 words from the sentence to put in the model 
+        content_ids = gpt_tokenizer.encode(str(random_sentence[0:5]), return_tensors = 'pt')
         
+        # generate six fake sentences 
         generated_text_samples = gpt_model.generate(
             content_ids,
-            max_length= 200,  
+            max_length= 50,  
             do_sample=True,  
             top_k=100,
             top_p=0.92,
@@ -44,57 +36,64 @@ class Book:
             num_return_sequences= 6
         )
 
-        fake_texts = []
-        for i, beam in enumerate(generated_text_samples):
-            fake_texts.append(gpt_tokenizer.decode(beam, skip_special_tokens=True))
+        # decode fake sentences
+        fake_sentences = []
+        for beam in generated_text_samples:
+            fake_sentences.append(gpt_tokenizer.decode(beam, skip_special_tokens=True))
 
-        return random_phrase, fake_texts
+        # put the true sentence in a random position
+        random_index = random.randint(0, len(fake_sentences))
+        fake_sentences.insert(random_index, random_sentence)
+
+        return fake_sentences
 
     def translate(self,toLanguage="Germany"):
+        "translate the book content"
+
+        print("Translate " + self.language + " to " + toLanguage)
+
+        # load t5 model and tokenizer
         t5_model = T5ForConditionalGeneration.from_pretrained('t5-small', return_dict=True)
-        t5_tokenizer = T5Tokenizer.from_pretrained('t5-small')
-        input_ids = t5_tokenizer("translate English to " + toLanguage + ": " + self.content, return_tensors="pt").input_ids 
+        t5_tokenizer = T5Tokenizer.from_pretrained('t5-small', model_max_length=10000)
+        
+        # encode text to put in the model 
+        input_ids = t5_tokenizer("translate " + self.language + "to " + toLanguage + ": " + self.content, return_tensors="pt").input_ids 
+        
+        # generate the translated content
         outputs_ids = t5_model.generate(input_ids, max_length=10000, num_beams=4)
+        
+        # decode translated text
         translation = t5_tokenizer.decode(outputs_ids[0], skip_special_tokens=True)
+        
         return translation
 
-
     def summarize(self):
+        "summarize the book content"
+
+        # load Pegasus model and tokenizer
         pegasus_model = PegasusForConditionalGeneration.from_pretrained('google/pegasus-cnn_dailymail')
         pegasus_tokenizer = PegasusTokenizer.from_pretrained('google/pegasus-cnn_dailymail')
+        
+        # encode text to put in the model 
         input_ids = pegasus_tokenizer(self.content, truncation=True, padding="longest", return_tensors='pt')
+        
+        # generate the summary content
         output_ids = pegasus_model.generate(**input_ids)
+        
+        # decode summary text
         summary = pegasus_tokenizer.batch_decode(output_ids[0])
+        
         return ' '.join(summary)
 
-    def saveContent(self):
-        pass
-
-
-
-    def __detectLanguage(self) -> str:
-        model_ckpt = "papluca/xlm-roberta-base-language-detection"
-        pipe = pipeline("text-classification", model=model_ckpt)
-        preds = pipe(self.content, top_k=None, truncation=True, max_length=128)
-        if preds:
-            pred = preds[0]
-            #if this method is called then it stores in a instance variable
-            self.language = pred["label"]
-            return pred["label"]
-        else:
-            return None
-
-    def queryLanguage(self) -> str:
-        return self.language
     def topics(self):
-        nlp = spacy.load("en_core_web_sm")
+        "get most relevant discussions from the book"
 
-        stop_words = nlp.Defaults.stop_words
+        # get stop words from space_queries
+        stop_words = self.spacy_queries.getStopWords()
+        
         data_words = gensim.utils.simple_preprocess(self.content, deacc=True)
         bigram = gensim.models.Phrases(data_words, min_count=5, threshold=100)
-        trigram = gensim.models.Phrases(bigram[data_words], threshold=100)
         bigram_mod = gensim.models.phrases.Phraser(bigram)
-        trigram_mod = gensim.models.phrases.Phraser(trigram)
 
         def remove_stopwords(texts):
             return [[word for word in gensim.utils.simple_preprocess(str(doc)) if word not in stop_words] for doc in
@@ -131,3 +130,34 @@ class Book:
         )
 
         print(lda_model.print_topics())
+
+    def saveContent(self):
+        pass
+
+    def __detectLanguage(self) -> str:
+        model_ckpt = "papluca/xlm-roberta-base-language-detection"
+        pipe = pipeline("text-classification", model=model_ckpt)
+        preds = pipe(self.content, top_k=None, truncation=True, max_length=128)
+        if preds:
+            pred = preds[0]
+            #if this method is called then it stores in a instance variable
+            language_long = ''
+            if (pred["label"] == "es"):
+                language_long = "Spanish"
+            elif (pred["label"] == "en"):
+                language_long = "English"
+            elif (pred["label"] == "de"):
+                language_long = "German"
+            elif (pred["label"] == "it"):
+                language_long = "Italian"
+            elif (pred["label"] == "pt"):
+                language_long = "Portuguese"
+            elif (pred["label"] == "fr"):
+                language_long = "French"
+            
+            return pred["label"],language_long
+        else:
+            return None
+
+    def queryLanguage(self) -> str:
+        return self.language
