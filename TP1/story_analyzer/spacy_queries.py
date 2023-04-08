@@ -1,9 +1,8 @@
 import spacy
-import os
 from collections import Counter
 from typing import List
-import gensim
-from story_analyzer.parser_models import ParserModels
+import random
+from parser_models import ParserModels
 from sortedcontainers.sortedset import SortedSet
 
 class SpacyQueries:
@@ -27,6 +26,9 @@ class SpacyQueries:
         if not self.docReady:
             self.__createDoc()
 
+    def getStopWords(self):
+        return self.nlp.Defaults.stop_words
+
     def queryActions(self, top : int):
         "Gets the most actions of a book"
         # Acts as a singleton
@@ -43,6 +45,13 @@ class SpacyQueries:
         self.__createOne()
         return len(self.doc.sents)
 
+    def queryGetRandomSentence(self):
+        "Gets a random sentence of a text. The random setence must have more than 20 tokens"
+        self.__createOne()
+        random_sentence = random.choice(list(self.doc.sents))
+        while len(random_sentence) < 20:
+            random_sentence = random.choice(list(self.doc.sents))
+        return random_sentence
 
     def similarSentence(self, input : str) -> (str, int):
         "Given a summary of a sentence it returns the actual sentence and the offset where it is present"
@@ -61,3 +70,20 @@ class SpacyQueries:
             simSet.add(entry)
 
         return simSet[0]
+
+    def getCharacters(self):
+        "Get characters information of a book"
+        
+        # Acts as a singleton
+        self.__createOne()
+        
+        characters = {}
+
+        for sent in self.doc.sents:
+            for ent in sent.ents:
+                if ent.label_ == "PERSON":
+                    name = ent.text.lower().strip()
+                    characters[name] = characters.get(name, 0) + 1
+        
+        return characters
+    
