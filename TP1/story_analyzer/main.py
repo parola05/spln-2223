@@ -39,6 +39,8 @@ def main():
                              help='the book will be saved and so will any queries invoked deemed savable.', metavar='title')
     args_parser.add_argument('-p', '--projection', nargs=1, type=str,
                              help='project queries in the text range. Projetion type is [<bottom>;<higher>]')
+    args_parser.add_argument('-sa', '--sentiment_analysis', action='store_true',
+                             help="sentiment analysis of the book")
 
     args = args_parser.parse_args()
 
@@ -79,6 +81,8 @@ def main():
         elif args.characters:
             charactersInfo = book.spacy_queries.getCharacters()
             print(charactersInfo)
+        elif args.sentiment_analysis:
+            print(book.sentiment())
 
     except ValueError as e:
         panic(str(e))
