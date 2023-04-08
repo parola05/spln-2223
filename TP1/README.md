@@ -10,7 +10,6 @@ Get all the details of a story. From summaries to character information, explore
 * Translation 
 * Summarization  
 * Most relevant topics
-* Places list
 * Characteres list 
 * Lines list
 * Number of sentences

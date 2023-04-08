@@ -4,13 +4,12 @@ from book import Book
 import re
 import colorama
 from colorama import Fore, Style
-
+import json
 
 def panic(message):
     print(Fore.RED + f"error: {message}")
     reset = Style.RESET_ALL
     exit(1)
-
 
 def main():
     args_parser = argparse.ArgumentParser(
@@ -18,7 +17,7 @@ def main():
     args_parser.add_argument('input', nargs=1, type=str, metavar='input',
                              help='input file path or book name (only in web mode)')
     args_parser.add_argument('output', nargs=1, type=str,
-                             metavar='output', help='output file path')
+                             metavar='output', help='output file path. The extension automatic is set to JSON')
     args_parser.add_argument('-m', '--mode', nargs=1, type=str,
                              choices=['local', 'web'], help='app modes', default=['local'])
     args_parser.add_argument(
@@ -39,7 +38,6 @@ def main():
                              help='the book will be saved and so will any queries invoked deemed savable.', metavar='title')
     args_parser.add_argument('-p', '--projection', nargs=1, type=str,
                              help='project queries in the text range. Projetion type is [<bottom>;<higher>]')
-
     args = args_parser.parse_args()
 
     try:
@@ -61,28 +59,35 @@ def main():
         book = Book(book_content)
 
         if args.actions:
-            print(book.spacy_queries.queryActions(args.actions))
+            actions = book.spacy_queries.queryActions(args.actions)
+            with open(args.output[0] + ".json", 'w') as file:
+                 json.dump({"actions": actions}, file, indent=4)
         elif args.language:
-            print(book.queryLanguage())
+            language = book.queryLanguage()
+            with open(args.output[0] + ".json", 'w') as file:
+                 json.dump({"language": language}, file, indent=4)
         elif args.quiz:
-
             quiz_sentences = book.quiz()
-
-            for i, phrase in enumerate(quiz_sentences):
-                print("[", i, "]", str(phrase), "\n")
+            with open(args.output[0] + ".json", 'w') as file:
+                 json.dump({"sentences": quiz_sentences}, file, indent=4)
         elif args.translate:
-            print(book.translate(args.translate))
+            translation = book.translate(args.translate)
+            with open(args.output[0] + ".json", 'w') as file:
+                 json.dump({"translation": translation}, file, indent=4)
         elif args.summary:
-            print(book.summarize())
+            summary = book.summarize()
+            with open(args.output[0] + ".json", 'w') as file:
+                 json.dump({"summary": summary}, file, indent=4)
         elif args.discussions:
-            print(book.topics())
+            topics = book.topics()
+            # TODO put in the output file
         elif args.characters:
             charactersInfo = book.spacy_queries.getCharacters()
-            print(charactersInfo)
+            with open(args.output[0] + ".json", 'w') as file:
+                 json.dump(charactersInfo, file, indent=4)
 
     except ValueError as e:
         panic(str(e))
-
 
 if __name__ == "__main__":
     main()
