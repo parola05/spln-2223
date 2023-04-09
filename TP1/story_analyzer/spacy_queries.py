@@ -43,7 +43,7 @@ class SpacyQueries:
         "Gets the number of sentences of a text"
         # Acts as a singleton
         self.__createOne()
-        return len(self.doc.sents)
+        return len(list(self.doc.sents))
 
     def queryGetRandomSentence(self):
         "Gets a random sentence of a text. The random setence must have more than 20 tokens"

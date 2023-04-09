@@ -50,8 +50,9 @@ def main():
     args_parser.add_argument('-sa', '--sentiment_analysis', action='store_true',
                              help="sentiment analysis of the book")
     args_parser.add_argument('-si', '--similar', nargs=1, type=str,
-                             help='Finds the sentence that better describes the input given. It also gives the word offset'
+                             help='finds the sentence that better describes the input given. It also gives the word offset'
                                   ' from the beginning of the story. Useful for finding an exact reference.')
+    args_parser.add_argument('-sn', '--sentence_no', action='store_true', help='get the number of sentences of a story')
 
 
     args = args_parser.parse_args()
@@ -76,6 +77,14 @@ def main():
 
         book = Book(book_content)
 
+        if args.sentence_no:
+            if args.read and (sentence_no := book.getContent(args.read[0])["sentence_no"]):
+                pass
+            else:
+                sentence_no = book.spacy_queries.querySentences()
+            out["sentence_no"] = sentence_no
+            if args.save:
+                saveDict["sentence_no"] = sentence_no
         if args.similar:
             _input = args.similar[0]
             similar = book.spacy_queries.similarSentence(_input)
