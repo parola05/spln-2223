@@ -89,11 +89,10 @@ def main():
             out["language"] = language
             if args.save:
                 saveDict["language"] = language
-        elif args.quiz:
+        if args.quiz:
             quiz_sentences = book.quiz()
             out["sentences"] = quiz_sentences
-        elif args.translate:
-            #todo make read translate
+        if args.translate:
             if args.read and book.getContent(args.read[0])["translation"] and (args.translate in book.getContent(args.read[0])["translation"].keys()):
                 translation = book.getContent(args.read[0])["translation"][args.translate]
             else:
@@ -101,7 +100,7 @@ def main():
             out["translation"] = translation
             if args.save:
                 saveDict["translation"] = {args.translate: translation}
-        elif args.summary:
+        if args.summary:
             if args.read and (summary := book.getContent(args.read[0])["summary"]):
                 pass
             else:
@@ -109,10 +108,10 @@ def main():
             out["summary"] = summary
             if args.save:
                 saveDict["summary"] = summary
-        elif args.discussions:
+        if args.discussions:
             topics = book.topics()
             # TODO put in the output file
-        elif args.characters:
+        if args.characters:
             if args.read and (charactersInfo := book.getContent(args.read[0])["characters"]):
                 pass
             else:
@@ -120,7 +119,7 @@ def main():
             out["characters"] = charactersInfo
             if args.save:
                 saveDict["characters"] = charactersInfo
-        elif args.sentiment_analysis:
+        if args.sentiment_analysis:
             if args.read and (sentiment := book.getContent(args.read[0])["sentiment"]):
                 pass
             else:
