@@ -43,7 +43,9 @@ options:
                         get the top most actions of a book
   --save title          the book will be saved and so will any queries invoked deemed savable.
   -p PROJECTION, --projection PROJECTION
-                        project queries in the text range. Projetion type is [<bottom>;<higher>]
+                        project queries in the text range. Projection type is [<bottom>;<higher>]
+  -sa, --sentiment-analysis
+                        get the sentiment analysis of the book
 ```
 
 ## Dependencies
