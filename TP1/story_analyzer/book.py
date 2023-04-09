@@ -1,5 +1,6 @@
-from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel, PegasusForConditionalGeneration, PegasusTokenizer, pipeline
+from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel, PegasusForConditionalGeneration, PegasusTokenizer, pipeline, AutoModelForSequenceClassification, AutoTokenizer, logging
 from spacy_queries import SpacyQueries
+import torch
 import random
 import gensim
 
@@ -7,11 +8,13 @@ import gensim
 class Book:
 
     def __init__(self, content) -> None:
+        logging.set_verbosity_error()
         self.content: str = content
         language_abr, language_long = self.__detectLanguage()
         self.language: str = language_long
         self.spacy_queries: SpacyQueries = SpacyQueries(
             language_abr, self.content)
+        self.device = 0 if torch.cuda.is_available() else -1
 
     def quiz(self):
         "Generate a quiz game with six false sentences and one true sentence. The goal is the user guess the true sentence"
@@ -148,14 +151,32 @@ class Book:
     def saveContent(self):
         pass
 
-    # TODO: too many tokens for this model, need to find a way (maybe split text in chunks and analyze each chunk, then merge results (average?))
     def sentiment(self) -> str:
-        pipe = pipeline("sentiment-analysis")
-        result = pipe(self.content)
-        if result:
-            return result[0]["label"]
-        else:
-            return "neutral"
+        model = AutoModelForSequenceClassification.from_pretrained(
+            "bert-base-multilingual-uncased")
+        tokenizer = AutoTokenizer.from_pretrained(
+            "bert-base-multilingual-uncased")
+        pipe = pipeline("sentiment-analysis", model=model,
+                        tokenizer=tokenizer, device=self.device)
+
+        chunks = self.content.split(".")
+
+        labels = {"Neutral": 0, "Positive": 0, "Negative": 0}
+
+        dataset = [{"text": text} for text in chunks]
+
+        results = pipe(dataset, batch_size=8)
+
+        for result in results:
+            label = result["label"]
+            if label == "LABEL_0":
+                labels["Negative"] += 1
+            elif label == "LABEL_1":
+                labels["Positive"] += 1
+            else:
+                labels["Neutral"] += 1
+
+        return max(labels, key=labels.get)
 
     def __detectLanguage(self) -> str:
         model_ckpt = "papluca/xlm-roberta-base-language-detection"

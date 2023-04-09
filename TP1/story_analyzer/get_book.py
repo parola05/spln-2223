@@ -75,7 +75,6 @@ def get_book(mode, book_name):
             response = requests.get(book_html_url)
             if response.status_code == 200:
                 book_string = trim_newlines(treat_html(response.content))
-                print(book_string)
             else:
                 raise ValueError(f"unavailable html version of the book")
         else:
