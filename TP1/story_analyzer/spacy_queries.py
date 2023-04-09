@@ -1,6 +1,6 @@
 import spacy
 from collections import Counter
-from typing import List
+from typing import List,Tuple
 import random
 from story_analyzer.parser_models import ParserModels
 from sortedcontainers.sortedset import SortedSet
@@ -53,7 +53,7 @@ class SpacyQueries:
             random_sentence = random.choice(list(self.doc.sents))
         return random_sentence
 
-    def similarSentence(self, input : str) -> (str, int):
+    def similarSentence(self, input : str) -> List[Tuple[str, int]]:
         "Given a summary of a sentence it returns the actual sentence and the offset where it is present"
         # Acts as a singleton
         self.__createOne()
@@ -62,14 +62,15 @@ class SpacyQueries:
 
         search_no_stop_words = self.nlp(' '.join([str(word) for word in search_sent if not word.is_stop]))
 
-        simSet = SortedSet(key=lambda x: x[1])
+        simSet = SortedSet(key=lambda x: -x[1])
 
         for sent in self.doc.sents:
             sent_no_stop_words = self.nlp(' '.join([str(word) for word in sent if not word.is_stop]))
             entry = (sent.text, search_no_stop_words.similarity(sent_no_stop_words), sent.start)
             simSet.add(entry)
 
-        return simSet[0]
+        # for now hardcoded if there's time enable custom number
+        return list(simSet[0:2])
 
     def getCharacters(self):
         "Get characters information of a book"

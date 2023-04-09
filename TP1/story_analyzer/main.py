@@ -49,6 +49,10 @@ def main():
                              help='project queries in the text range. Projetion type is [<bottom>;<higher>]')
     args_parser.add_argument('-sa', '--sentiment_analysis', action='store_true',
                              help="sentiment analysis of the book")
+    args_parser.add_argument('-si', '--similar', nargs=1, type=str,
+                             help='Finds the sentence that better describes the input given. It also gives the word offset'
+                                  ' from the beginning of the story. Useful for finding an exact reference.')
+
 
     args = args_parser.parse_args()
 
@@ -72,8 +76,13 @@ def main():
 
         book = Book(book_content)
 
+        if args.similar:
+            _input = args.similar[0]
+            similar = book.spacy_queries.similarSentence(_input)
+            out["similar"] = similar
+
         if args.actions:
-            #if it's requested a read and the book info is cached then use it else do the query
+            # if it's requested a read and the book info is cached then use it else do the query
             if args.read and (actions := book.getContent(args.read[0])["actions"]):
                 pass
             else:
