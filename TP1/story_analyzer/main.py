@@ -48,6 +48,7 @@ def main():
     try:
         book_content = get_book.get_book(args.mode[0], args.input[0])
 
+        out = {}
         # limit book_content with projection is used
         if args.projection:
 
@@ -63,35 +64,36 @@ def main():
 
         book = Book(book_content)
 
+        if args.save:
+            print(args.save)
         if args.actions:
             actions = book.spacy_queries.queryActions(args.actions)
-            with open(args.output[0] + ".json", 'w') as file:
-                json.dump({"actions": actions}, file, indent=4)
-        elif args.language:
+            out["actions"] = actions
+        if args.language:
             language = book.queryLanguage()
-            with open(args.output[0] + ".json", 'w') as file:
-                json.dump({"language": language}, file, indent=4)
+            out["language"] = language
         elif args.quiz:
             quiz_sentences = book.quiz()
-            with open(args.output[0] + ".json", 'w') as file:
-                json.dump({"sentences": quiz_sentences}, file, indent=4)
+            out["sentences"] = quiz_sentences
         elif args.translate:
             translation = book.translate(args.translate)
-            with open(args.output[0] + ".json", 'w') as file:
-                json.dump({"translation": translation}, file, indent=4)
+            out["translation"] = translation
         elif args.summary:
             summary = book.summarize()
-            with open(args.output[0] + ".json", 'w') as file:
-                json.dump({"summary": summary}, file, indent=4)
+            out["summary"] = summary
         elif args.discussions:
             topics = book.topics()
             # TODO put in the output file
         elif args.characters:
             charactersInfo = book.spacy_queries.getCharacters()
-            with open(args.output[0] + ".json", 'w') as file:
-                json.dump(charactersInfo, file, indent=4)
+            out.update(charactersInfo)
         elif args.sentiment_analysis:
+            out["sentiment"] = book.sentiment()
             print(book.sentiment())
+
+        with open(args.output[0] + ".json", 'w') as file:
+            json.dump(out, file, indent=4)
+
 
     except ValueError as e:
         panic(str(e))
