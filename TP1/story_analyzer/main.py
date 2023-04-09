@@ -75,7 +75,6 @@ def main():
         if args.actions:
             #if it's requested a read and the book info is cached then use it else do the query
             if args.read and (actions := book.getContent(args.read[0])["actions"]):
-                print("actions cached")
                 pass
             else:
                 actions = book.spacy_queries.queryActions(args.actions)
@@ -95,12 +94,18 @@ def main():
             out["sentences"] = quiz_sentences
         elif args.translate:
             #todo make read translate
-            translation = book.translate(args.translate)
+            if args.read and book.getContent(args.read[0])["translation"] and (args.translate in book.getContent(args.read[0])["translation"].keys()):
+                translation = book.getContent(args.read[0])["translation"][args.translate]
+            else:
+                translation = book.translate(args.translate)
             out["translation"] = translation
             if args.save:
                 saveDict["translation"] = {args.translate: translation}
         elif args.summary:
-            summary = book.summarize()
+            if args.read and (summary := book.getContent(args.read[0])["summary"]):
+                pass
+            else:
+                summary = book.summarize()
             out["summary"] = summary
             if args.save:
                 saveDict["summary"] = summary
@@ -108,12 +113,18 @@ def main():
             topics = book.topics()
             # TODO put in the output file
         elif args.characters:
-            charactersInfo = book.spacy_queries.getCharacters()
+            if args.read and (charactersInfo := book.getContent(args.read[0])["characters"]):
+                pass
+            else:
+                charactersInfo = book.spacy_queries.getCharacters()
             out["characters"] = charactersInfo
             if args.save:
                 saveDict["characters"] = charactersInfo
         elif args.sentiment_analysis:
-            sentiment = book.sentiment()
+            if args.read and (sentiment := book.getContent(args.read[0])["sentiment"]):
+                pass
+            else:
+                sentiment = book.sentiment()
             out["sentiment"] = sentiment
             if args.save:
                 saveDict["sentiment"] = sentiment
