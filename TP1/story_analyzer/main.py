@@ -1,10 +1,12 @@
 import argparse
-import get_book
-from book import Book
+import story_analyzer.get_book as get_book
+from story_analyzer.book import Book
 import re
 import colorama
 from colorama import Fore, Style
 import json
+
+from story_analyzer.archiver import Archiver
 
 
 def panic(message):
@@ -36,8 +38,13 @@ def main():
                              help='get informations of the book characters')
     args_parser.add_argument('-a', '--actions', nargs='?', type=int,
                              help='get the top most actions of a book', const=10)
+    # TODO add information about which queries will be saved
     args_parser.add_argument('--save', nargs=1, type=str,
                              help='the book will be saved and so will any queries invoked deemed savable.', metavar='title')
+    args_parser.add_argument('--read', nargs=1, type=str,
+                             help='for queries saved the response time will be quicker, since the query done '
+                                  'will be a lookup to a database with the book info. However if a query was not saved or '
+                                  'is not deemed savable then the query times will remain the same', metavar='title')
     args_parser.add_argument('-p', '--projection', nargs=1, type=str,
                              help='project queries in the text range. Projetion type is [<bottom>;<higher>]')
     args_parser.add_argument('-sa', '--sentiment_analysis', action='store_true',
@@ -49,6 +56,7 @@ def main():
         book_content = get_book.get_book(args.mode[0], args.input[0])
 
         out = {}
+        saveDict = {}
         # limit book_content with projection is used
         if args.projection:
 
@@ -64,35 +72,59 @@ def main():
 
         book = Book(book_content)
 
-        if args.save:
-            print(args.save)
         if args.actions:
-            actions = book.spacy_queries.queryActions(args.actions)
+            #if it's requested a read and the book info is cached then use it else do the query
+            if args.read and (actions := book.getContent(args.read[0])["actions"]):
+                print("actions cached")
+                pass
+            else:
+                actions = book.spacy_queries.queryActions(args.actions)
             out["actions"] = actions
+            if args.save:
+                saveDict["actions"] = actions
         if args.language:
-            language = book.queryLanguage()
+            if args.read and (language := book.getContent(args.read[0])["language"]):
+                pass
+            else:
+                language = book.queryLanguage()
             out["language"] = language
+            if args.save:
+                saveDict["language"] = language
         elif args.quiz:
             quiz_sentences = book.quiz()
             out["sentences"] = quiz_sentences
         elif args.translate:
+            #todo make read translate
             translation = book.translate(args.translate)
             out["translation"] = translation
+            if args.save:
+                saveDict["translation"] = {args.translate: translation}
         elif args.summary:
             summary = book.summarize()
             out["summary"] = summary
+            if args.save:
+                saveDict["summary"] = summary
         elif args.discussions:
             topics = book.topics()
             # TODO put in the output file
         elif args.characters:
             charactersInfo = book.spacy_queries.getCharacters()
-            out.update(charactersInfo)
+            out["characters"] = charactersInfo
+            if args.save:
+                saveDict["characters"] = charactersInfo
         elif args.sentiment_analysis:
-            out["sentiment"] = book.sentiment()
+            sentiment = book.sentiment()
+            out["sentiment"] = sentiment
+            if args.save:
+                saveDict["sentiment"] = sentiment
             print(book.sentiment())
 
         with open(args.output[0] + ".json", 'w') as file:
             json.dump(out, file, indent=4)
+
+        if args.save:
+            book.saveContent(args.save[0], saveDict)
+
 
 
     except ValueError as e:

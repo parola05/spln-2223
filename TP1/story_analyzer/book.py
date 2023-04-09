@@ -1,7 +1,8 @@
 from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel, PegasusForConditionalGeneration, PegasusTokenizer, pipeline
-from spacy_queries import SpacyQueries
+from story_analyzer.spacy_queries import SpacyQueries
 import random
 import gensim
+from story_analyzer.archiver import Archiver
 
 
 class Book:
@@ -12,6 +13,7 @@ class Book:
         self.language: str = language_long
         self.spacy_queries: SpacyQueries = SpacyQueries(
             language_abr, self.content)
+        self.db : Archiver = Archiver()
 
     def quiz(self):
         "Generate a quiz game with six false sentences and one true sentence. The goal is the user guess the true sentence"
@@ -145,8 +147,11 @@ class Book:
 
         print(lda_model.print_topics())
 
-    def saveContent(self):
-        pass
+    def saveContent(self, title : str, archiveDict : dict):
+        self.db.addStory(title, archiveDict)
+
+    def getContent(self, title : str):
+        return self.db.getStory(title)
 
     # TODO: too many tokens for this model, need to find a way (maybe split text in chunks and analyze each chunk, then merge results (average?))
     def sentiment(self) -> str:

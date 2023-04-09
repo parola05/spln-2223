@@ -2,7 +2,7 @@ import spacy
 from collections import Counter
 from typing import List
 import random
-from parser_models import ParserModels
+from story_analyzer.parser_models import ParserModels
 from sortedcontainers.sortedset import SortedSet
 
 class SpacyQueries:
