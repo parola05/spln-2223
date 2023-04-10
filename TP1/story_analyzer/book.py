@@ -1,11 +1,11 @@
+
 from transformers import T5Tokenizer, T5ForConditionalGeneration, GPT2Tokenizer, GPT2LMHeadModel, PegasusForConditionalGeneration, PegasusTokenizer, pipeline, AutoModelForSequenceClassification, AutoTokenizer, logging
 from story_analyzer.spacy_queries import SpacyQueries
 import torch
 import random
 import gensim
 from story_analyzer.archiver import Archiver
-from typing import Optional
-
+from typing import 
 
 class Book:
 
@@ -76,8 +76,8 @@ class Book:
     def translate(self, toLanguage="Germany"):
         "translate the book content"
 
-        #If read mode get
-        print("Translate " + self.language + " to " + toLanguage)
+        if len(self.content) > 512:
+            raise TypeError("The text are to long to be translated. Try a little one.")
 
         # load t5 model and tokenizer
         t5_model = T5ForConditionalGeneration.from_pretrained(
@@ -101,6 +101,9 @@ class Book:
 
     def summarize(self):
         "summarize the book content"
+
+        if len(self.content) > 1024:
+            raise TypeError("The text are to long to be translated. Try a little one.")
 
         # load Pegasus model and tokenizer
         pegasus_model = PegasusForConditionalGeneration.from_pretrained(
@@ -166,7 +169,7 @@ class Book:
             per_word_topics=True
         )
 
-        print(lda_model.print_topics())
+        return lda_model.print_topics()
 
     def saveContent(self, title : str, archiveDict : dict):
         #works because self.language is not used to init spacy queries and nor is the archive used for that
@@ -231,3 +234,6 @@ class Book:
 
     def queryLanguage(self) -> str:
         return self.language
+
+    def setProjection(self,bottom,higher):
+        self.content = self.spacy_queries.querySentencesInRange(bottom=bottom,higher=higher)

@@ -6,6 +6,7 @@ from story_analyzer.parser_models import ParserModels
 from sortedcontainers.sortedset import SortedSet
 from story_analyzer.archiver import Archiver
 from typing import Optional
+
 class SpacyQueries:
     # The goal of this class is to encapsulate all the spacy queries that are
     # done with the same text and same model
@@ -37,7 +38,6 @@ class SpacyQueries:
         archive = Archiver()
         archive.addStory(title, {"doc": self.doc, "nlp": self.nlp})
 
-
     def __createOne(self):
         if not self.docReady:
             self.__createDoc()
@@ -68,6 +68,19 @@ class SpacyQueries:
         while len(random_sentence) < 20:
             random_sentence = random.choice(list(self.doc.sents))
         return random_sentence
+
+    def querySentencesInRange(self,bottom,higher):
+        "Gets a the sentence number 'bottom' until sentence number 'higher'. Sentences is concatened in a single sting"
+        
+        self.__createOne()
+
+        if bottom < 0 and higher > len(list(self.doc.sents)):
+            raise TypeError("projection not allowed")
+
+        sentences = (list(self.doc.sents))[bottom:higher]
+        sentences_string = "".join(str(sentences))
+
+        return sentences_string
 
     def similarSentence(self, input : str) -> List[Tuple[str, int]]:
         "Given a summary of a sentence it returns the actual sentence and the offset where it is present"
@@ -103,4 +116,3 @@ class SpacyQueries:
                     characters[name] = characters.get(name, 0) + 1
         
         return characters
-    

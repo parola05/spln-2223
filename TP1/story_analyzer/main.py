@@ -8,12 +8,10 @@ from story_analyzer.archiver import Archiver
 import json
 
 
-
 def panic(message):
     print(Fore.RED + f"error: {message}")
     reset = Style.RESET_ALL
     exit(1)
-
 
 def main():
     args_parser = argparse.ArgumentParser(
@@ -27,7 +25,7 @@ def main():
     args_parser.add_argument(
         '-q', '--quiz', action='store_true', help='quiz game')
     args_parser.add_argument('-t', '--translate', nargs='?', type=str, choices=[
-                             'English', 'Spanish', 'French', 'German', 'Italian', 'Portuguese'], help='translate the book', const=['English'])
+                             'French', 'German', 'Romanian'], help='translate the book', const=['French'])
     args_parser.add_argument(
         '-d', '--discussions', action='store_true', help='list the book discussions (topics)')
     args_parser.add_argument(
@@ -49,6 +47,8 @@ def main():
                              help='project queries in the text range. Projetion type is [<bottom>;<higher>]')
     args_parser.add_argument('-sa', '--sentiment_analysis', action='store_true',
                              help="sentiment analysis of the book")
+    args_parser.add_argument('-v', '--view', action='store_true',
+                             help="view book content. With projection is used, the text is limited by the projection range")
     args_parser.add_argument('-si', '--similar', nargs=1, type=str,
                              help='finds the sentence that better describes the input given. It also gives the word offset'
                                   ' from the beginning of the story. Useful for finding an exact reference.')
@@ -69,10 +69,12 @@ def main():
                 if match:
                     bottom_limit = int(match.group(1))
                     higher_limit = int(match.group(2))
-                    bottom_limit = int((bottom_limit * len(book_content)) / 100)
-                    higher_limit = int((higher_limit * len(book_content)) / 100)
-                    book_content = book_content[bottom_limit:higher_limit]
-            book = Book(book_content)
+
+                    book = Book(book_content)
+                    try:
+                        book.setProjection(bottom_limit, higher_limit)
+                    except TypeError as e:
+                        panic(str(e))
         elif args.read:
             archive = Archiver()
             bookObj = archive.getStory(args.read[0])
@@ -97,7 +99,6 @@ def main():
             _input = args.similar[0]
             similar = book.spacy_queries.similarSentence(_input)
             out["similar"] = similar
-
         if args.actions:
             # if it's requested a read and the book info is cached then use it else do the query
             if args.read and "actions" in bookObj.keys():
@@ -117,12 +118,17 @@ def main():
                 saveDict["language"] = language
         if args.quiz:
             quiz_sentences = book.quiz()
-            out["sentences"] = quiz_sentences
+            print(quiz_sentences)
+            # out["sentences"] = quiz_sentences
         if args.translate:
             if args.read and "translation" in bookObj.keys() and (args.translate in bookObj["translation"].keys()):
                 translation = bookObj["translation"][args.translate]
             else:
-                translation = book.translate(args.translate)
+                try:
+                    translation = book.translate(args.translate)
+                except TypeError as e:
+                    panic(str(e))
+                
             out["translation"] = translation
             if args.save:
                 saveDict["translation"] = {args.translate: translation}
@@ -136,7 +142,7 @@ def main():
                 saveDict["summary"] = summary
         if args.discussions:
             topics = book.topics()
-            # TODO put in the output file
+            print(topics)
         if args.characters:
             if args.read and "characters" in bookObj.keys():
                 charactersInfo = bookObj["characters"]
@@ -154,14 +160,14 @@ def main():
             if args.save:
                 saveDict["sentiment"] = sentiment
             print(book.sentiment())
+        if args.view:
+            out["view"] = book.content
 
         with open(args.output[0] + ".json", 'w') as file:
             json.dump(out, file, indent=4)
 
         if args.save:
             book.saveContent(args.save[0], saveDict)
-
-
 
     except ValueError as e:
         panic(str(e))
