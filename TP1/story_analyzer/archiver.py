@@ -8,7 +8,6 @@ class Archiver:
         self.path: str = os.path.join(self.home, ".story", "db", "archive")
 
     def addStory(self, title: str, bookObj : dict):
-        print(os.path.dirname(self.path))
         os.makedirs(os.path.dirname(self.path), exist_ok=True)
         db: Shelf = shelve.open(self.path)
         if title in db.keys():
