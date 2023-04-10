@@ -43,6 +43,7 @@ class SpacyQueries:
             self.__createDoc()
 
     def getStopWords(self):
+        self.__createOne()
         return self.nlp.Defaults.stop_words
 
     def queryActions(self, top : int):
@@ -62,7 +63,7 @@ class SpacyQueries:
         return len(list(self.doc.sents))
 
     def queryGetRandomSentence(self):
-        "Gets a random sentence of a text. The random setence must have more than 20 tokens"
+        "Gets a random sentence of a text. The random sentence must have more than 20 tokens"
         self.__createOne()
         random_sentence = random.choice(list(self.doc.sents))
         while len(random_sentence) < 20:

@@ -5,7 +5,9 @@ import torch
 import random
 import gensim
 from story_analyzer.archiver import Archiver
-from typing import 
+from typing import Optional
+from story_analyzer.parser_models import ParserModels
+import spacy
 
 class Book:
 
@@ -64,12 +66,12 @@ class Book:
         # decode fake sentences
         fake_sentences = []
         for beam in generated_text_samples:
-            fake_sentences.append(gpt_tokenizer.decode(
-                beam, skip_special_tokens=True))
+            fake_sentences.append(str(gpt_tokenizer.decode(
+                beam, skip_special_tokens=True)))
 
         # put the true sentence in a random position
         random_index = random.randint(0, len(fake_sentences))
-        fake_sentences.insert(random_index, random_sentence)
+        fake_sentences.insert(random_index, str(random_sentence))
 
         return fake_sentences
 
@@ -143,6 +145,9 @@ class Book:
         def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
             texts_out = []
             for sent in texts:
+                parser = ParserModels()
+                model = parser.getModel(self.language_abr)
+                nlp = spacy.load(model)
                 doc = nlp(" ".join(sent))
                 texts_out.append(
                     [token.lemma_ for token in doc if token.pos_ in allowed_postags])

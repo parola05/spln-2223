@@ -61,6 +61,7 @@ def main():
         if args.input:
             book_content = get_book.get_book(args.mode[0], args.input)
             # limit book_content with projection is used
+            book = Book(book_content)
             if args.projection and args.input and not args.read:
 
                 pattern = r'\[(\d+):(\d+)\]'
@@ -70,7 +71,6 @@ def main():
                     bottom_limit = int(match.group(1))
                     higher_limit = int(match.group(2))
 
-                    book = Book(book_content)
                     try:
                         book.setProjection(bottom_limit, higher_limit)
                     except TypeError as e:
@@ -109,7 +109,7 @@ def main():
             if args.save:
                 saveDict["actions"] = actions
         if args.language:
-            if args.read and "language" in bookObj.keys() :
+            if args.read and "language" in bookObj.keys():
                 language = bookObj["language"]
             else:
                 language = book.queryLanguage()
@@ -117,9 +117,13 @@ def main():
             if args.save:
                 saveDict["language"] = language
         if args.quiz:
-            quiz_sentences = book.quiz()
-            print(quiz_sentences)
-            # out["sentences"] = quiz_sentences
+            if args.read and "sentences" in bookObj.keys():
+                quiz_sentences = bookObj["sentences"]
+            else:
+                quiz_sentences = book.quiz()
+            out["sentences"] = quiz_sentences
+            if args.save:
+                saveDict["sentences"] = quiz_sentences
         if args.translate:
             if args.read and "translation" in bookObj.keys() and (args.translate in bookObj["translation"].keys()):
                 translation = bookObj["translation"][args.translate]
