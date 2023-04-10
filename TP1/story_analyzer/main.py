@@ -4,9 +4,9 @@ from story_analyzer.book import Book
 import re
 import colorama
 from colorama import Fore, Style
+from story_analyzer.archiver import Archiver
 import json
 
-from story_analyzer.archiver import Archiver
 
 
 def panic(message):
@@ -18,7 +18,7 @@ def panic(message):
 def main():
     args_parser = argparse.ArgumentParser(
         description='Book Analyzer: get insight informations of your storie')
-    args_parser.add_argument('input', nargs=1, type=str, metavar='input',
+    args_parser.add_argument('input', nargs='?', type=str, metavar='input',
                              help='input file path or book name (only in web mode)')
     args_parser.add_argument('output', nargs=1, type=str,
                              metavar='output', help='output file path. The extension automatic is set to JSON')
@@ -58,28 +58,38 @@ def main():
     args = args_parser.parse_args()
 
     try:
-        book_content = get_book.get_book(args.mode[0], args.input[0])
+        print(args.input)
+        if args.input:
+            book_content = get_book.get_book(args.mode[0], args.input)
+            # limit book_content with projection is used
+            if args.projection and args.input and not args.read:
+
+                pattern = r'\[(\d+):(\d+)\]'
+                match = re.search(pattern, str(args.projection[0]))
+
+                if match:
+                    bottom_limit = int(match.group(1))
+                    higher_limit = int(match.group(2))
+                    bottom_limit = int((bottom_limit * len(book_content)) / 100)
+                    higher_limit = int((higher_limit * len(book_content)) / 100)
+                    book_content = book_content[bottom_limit:higher_limit]
+            book = Book(book_content)
+        elif args.read:
+            archive = Archiver()
+            bookObj = archive.getStory(args.read[0])
+            if bookObj and "content" in bookObj.keys():
+                book_content = bookObj["content"]
+            else:
+                panic("There wasn't a save for this title before this reading command")
+            book = Book(title=args.read[0])
 
         out = {}
         saveDict = {}
-        # limit book_content with projection is used
-        if args.projection:
-
-            pattern = r'\[(\d+):(\d+)\]'
-            match = re.search(pattern, str(args.projection[0]))
-
-            if match:
-                bottom_limit = int(match.group(1))
-                higher_limit = int(match.group(2))
-                bottom_limit = int((bottom_limit * len(book_content)) / 100)
-                higher_limit = int((higher_limit * len(book_content)) / 100)
-                book_content = book_content[bottom_limit:higher_limit]
-
-        book = Book(book_content)
 
         if args.sentence_no:
-            if args.read and (sentence_no := book.getContent(args.read[0])["sentence_no"]):
-                pass
+            print(args.input)
+            if args.read and "sentence_no" in bookObj.keys():
+                sentence_no = bookObj["sentence_no"]
             else:
                 sentence_no = book.spacy_queries.querySentences()
             out["sentence_no"] = sentence_no
@@ -92,16 +102,16 @@ def main():
 
         if args.actions:
             # if it's requested a read and the book info is cached then use it else do the query
-            if args.read and (actions := book.getContent(args.read[0])["actions"]):
-                pass
+            if args.read and "actions" in bookObj.keys():
+                actions = bookObj["actions"]
             else:
                 actions = book.spacy_queries.queryActions(args.actions)
             out["actions"] = actions
             if args.save:
                 saveDict["actions"] = actions
         if args.language:
-            if args.read and (language := book.getContent(args.read[0])["language"]):
-                pass
+            if args.read and "language" in bookObj.keys() :
+                language = bookObj["language"]
             else:
                 language = book.queryLanguage()
             out["language"] = language
@@ -111,16 +121,16 @@ def main():
             quiz_sentences = book.quiz()
             out["sentences"] = quiz_sentences
         if args.translate:
-            if args.read and book.getContent(args.read[0])["translation"] and (args.translate in book.getContent(args.read[0])["translation"].keys()):
-                translation = book.getContent(args.read[0])["translation"][args.translate]
+            if args.read and "translation" in bookObj.keys() and (args.translate in bookObj["translation"].keys()):
+                translation = bookObj["translation"][args.translate]
             else:
                 translation = book.translate(args.translate)
             out["translation"] = translation
             if args.save:
                 saveDict["translation"] = {args.translate: translation}
         if args.summary:
-            if args.read and (summary := book.getContent(args.read[0])["summary"]):
-                pass
+            if args.read and "summary" in bookObj.keys():
+                summary = bookObj["summary"]
             else:
                 summary = book.summarize()
             out["summary"] = summary
@@ -130,16 +140,16 @@ def main():
             topics = book.topics()
             # TODO put in the output file
         if args.characters:
-            if args.read and (charactersInfo := book.getContent(args.read[0])["characters"]):
-                pass
+            if args.read and "characters" in bookObj.keys():
+                charactersInfo = bookObj["characters"]
             else:
                 charactersInfo = book.spacy_queries.getCharacters()
             out["characters"] = charactersInfo
             if args.save:
                 saveDict["characters"] = charactersInfo
         if args.sentiment_analysis:
-            if args.read and (sentiment := book.getContent(args.read[0])["sentiment"]):
-                pass
+            if args.read and "sentiment" in bookObj.keys():
+                sentiment = bookObj["sentiment"]
             else:
                 sentiment = book.sentiment()
             out["sentiment"] = sentiment

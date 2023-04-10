@@ -4,18 +4,34 @@ import torch
 import random
 import gensim
 from story_analyzer.archiver import Archiver
+from typing import Optional
 
 
 class Book:
 
-    def __init__(self, content) -> None:
+    def __init__(self, content: Optional[str]=None, title: Optional[str] = None) -> None:
         logging.set_verbosity_error()
-        self.content: str = content
-        language_abr, language_long = self.__detectLanguage()
-        self.language: str = language_long
-        self.spacy_queries: SpacyQueries = SpacyQueries(
-            language_abr, self.content)
         self.db : Archiver = Archiver()
+        if content:
+            self.content: str = content
+            self.read_only: bool = False
+            language_abr, language_long = self.__detectLanguage()
+            self.language: str = language_long
+            self.language_abr = language_abr
+            self.spacy_queries: SpacyQueries = SpacyQueries(
+                language_abr, self.content)
+        elif title:
+            bookObj: dict = self.db.getStory(title)
+            # These fields are always stored when a save is done
+            if bookObj["content"] and bookObj["language"]:
+                self.content = bookObj["content"]
+                self.language = bookObj["language"]
+            else:
+                raise Exception('A save was not previously done')
+
+            self.spacy_queries: SpacyQueries = SpacyQueries(title=title)
+            self.read_only: bool = True
+
         self.device = 0 if torch.cuda.is_available() else -1
 
     def quiz(self):
@@ -59,6 +75,7 @@ class Book:
     def translate(self, toLanguage="Germany"):
         "translate the book content"
 
+        #If read mode get
         print("Translate " + self.language + " to " + toLanguage)
 
         # load t5 model and tokenizer
@@ -151,7 +168,10 @@ class Book:
         print(lda_model.print_topics())
 
     def saveContent(self, title : str, archiveDict : dict):
+        #works because self.language is not used to init spacy queries and nor is the archive used for that
+        archiveDict.update({"content": self.content, "language": self.language, "language_abr": self.language_abr})
         self.db.addStory(title, archiveDict)
+        self.spacy_queries.saveDoc(title)
 
     def getContent(self, title : str):
         return self.db.getStory(title)

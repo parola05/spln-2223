@@ -4,15 +4,27 @@ from typing import List,Tuple
 import random
 from story_analyzer.parser_models import ParserModels
 from sortedcontainers.sortedset import SortedSet
-
+from story_analyzer.archiver import Archiver
+from typing import Optional
 class SpacyQueries:
     # The goal of this class is to encapsulate all the spacy queries that are
     # done with the same text and same model
-    def __init__(self, language : str, text : str):
+    def __init__(self, language : Optional[str]=None, text : Optional[str] = None, title : Optional[str] = None):
         self.parser: ParserModels = ParserModels()
-        self.model :str = self.__modelFromLanguage(language)
-        self.text = text
-        self.docReady = False
+        if text and language:
+            print("Im here")
+            self.model:str = self.__modelFromLanguage(language)
+            self.text = text
+            self.docReady = False
+        elif title:
+            archive = Archiver()
+            bookObj: dict = archive.getStory(title)
+            self.nlp = bookObj["nlp"]
+            self.doc = bookObj["doc"]
+            # If there is a read than it is guaranteed that there is a language saved
+            print(bookObj["language_abr"])
+            self.model:str = self.__modelFromLanguage(bookObj["language_abr"])
+            self.docReady = True
 
     def __createDoc(self):
         self.nlp = spacy.load(self.model)
@@ -21,6 +33,12 @@ class SpacyQueries:
 
     def __modelFromLanguage(self, language: str) -> str :
         return self.parser.getModel(language)
+
+    def saveDoc(self, title: str):
+        self.__createDoc()
+        archive = Archiver()
+        archive.addStory(title, {"doc": self.doc, "nlp": self.nlp})
+
 
     def __createOne(self):
         if not self.docReady:

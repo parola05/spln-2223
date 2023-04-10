@@ -8,7 +8,7 @@ class Archiver:
 
     def addStory(self, title: str, bookObj : dict):
         db: Shelf = shelve.open(self.path)
-        if db[title]:
+        if title in db.keys():
             copyDict : dict = copy.deepcopy(db[title])
             copyDict.update(bookObj)
             db[title] = copyDict
