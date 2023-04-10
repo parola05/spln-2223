@@ -5,7 +5,7 @@ description = ""
 authors = [
     "Francisco Alexandre Neves <pg50375@alunos.uminho.pt>",
     "Henrique Parola Costa <pg50415@alunos.uminho.pt>",
-    "jpdiasfernandes <jpdiasfernandes13@gmail.com>"
+    "José Pedro Fernandes <pg50525@alunos.uminho.pt>"
 ]
 readme = "README.md"
 packages = [{include = "story_analyzer"}]
@@ -19,11 +19,6 @@ sentencepiece = "^0.1.97"
 spacy = "^3.5.1"
 gensim = "^4.3.1"
 beautifulsoup4 = "^4.12.2"
-en-core-web-md = {path = "story_analyzer/data/en_core_web_md-3.5.0-py3-none-any.whl"}
-pt-core-news-md = {path = "story_analyzer/data/pt_core_news_md-3.5.0-py3-none-any.whl"}
-de-core-news-md = {path = "story_analyzer/data/de_core_news_md-3.5.0-py3-none-any.whl"}
-es-core-news-md = {path = "story_analyzer/data/es_core_news_md-3.5.0-py3-none-any.whl"}
-fr-core-news-md = {path = "story_analyzer/data/fr_core_news_md-3.5.0-py3-none-any.whl"}
 sortedcontainers = "^2.4.0"
 colorama = "^0.4.6"
 
@@ -34,14 +29,3 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 story_analyzer = 'story_analyzer.main:main'
-
-[project]
-name = "story_analyzer"
-authors = [{name = "jpdiasfernandes", email = "jpdiasfernandes13@gmail.com"}]
-license = {file = "LICENSE"}
-classifiers = ["License :: OSI Approved :: MIT License"]
-dynamic = ["version", "description"]
-readme = "README.md"
-
-[project.scripts]
-tokenizador = "story_analyzer.main:main"

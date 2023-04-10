@@ -1,5 +1,8 @@
 import os
 
+import spacy
+from spacy.cli import download
+
 class ParserModels:
     def __init__(self):
         self.path: str = os.path.dirname(__file__) + "/data/spacy_models"
@@ -12,4 +15,9 @@ class ParserModels:
     def getModel(self, language : str) -> str:
         if language not in self.languages.keys():
             return None
-        return  self.languages[language]
+        try:
+            spacy.load(self.languages[language])
+        except:
+            download(self.languages[language])
+
+        return self.languages[language]
