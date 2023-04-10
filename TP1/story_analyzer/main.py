@@ -58,7 +58,6 @@ def main():
     args = args_parser.parse_args()
 
     try:
-        print(args.input)
         if args.input:
             book_content = get_book.get_book(args.mode[0], args.input)
             # limit book_content with projection is used
@@ -87,7 +86,6 @@ def main():
         saveDict = {}
 
         if args.sentence_no:
-            print(args.input)
             if args.read and "sentence_no" in bookObj.keys():
                 sentence_no = bookObj["sentence_no"]
             else:

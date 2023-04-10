@@ -12,7 +12,6 @@ class SpacyQueries:
     def __init__(self, language : Optional[str]=None, text : Optional[str] = None, title : Optional[str] = None):
         self.parser: ParserModels = ParserModels()
         if text and language:
-            print("Im here")
             self.model:str = self.__modelFromLanguage(language)
             self.text = text
             self.docReady = False
@@ -22,7 +21,6 @@ class SpacyQueries:
             self.nlp = bookObj["nlp"]
             self.doc = bookObj["doc"]
             # If there is a read than it is guaranteed that there is a language saved
-            print(bookObj["language_abr"])
             self.model:str = self.__modelFromLanguage(bookObj["language_abr"])
             self.docReady = True
 
