@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "story-analyzer"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
 authors = [
     "Francisco Alexandre Neves <pg50375@alunos.uminho.pt>",

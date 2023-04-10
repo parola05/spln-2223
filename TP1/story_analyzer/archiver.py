@@ -4,9 +4,12 @@ import os
 import copy
 class Archiver:
     def __init__(self):
-        self.path: str = os.path.dirname(__file__) + "/db/archive"
+        self.home = os.path.expanduser("~")
+        self.path: str = os.path.join(self.home, ".story", "db", "archive")
 
     def addStory(self, title: str, bookObj : dict):
+        print(os.path.dirname(self.path))
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
         db: Shelf = shelve.open(self.path)
         if title in db.keys():
             copyDict : dict = copy.deepcopy(db[title])
