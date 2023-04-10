@@ -26,6 +26,7 @@ class Book:
             if bookObj["content"] and bookObj["language"]:
                 self.content = bookObj["content"]
                 self.language = bookObj["language"]
+                self.language_abr = bookObj["language_abr"]
             else:
                 raise Exception('A save was not previously done')
 

@@ -35,7 +35,7 @@ class SpacyQueries:
         return self.parser.getModel(language)
 
     def saveDoc(self, title: str):
-        self.__createDoc()
+        self.__createOne()
         archive = Archiver()
         archive.addStory(title, {"doc": self.doc, "nlp": self.nlp})
 
