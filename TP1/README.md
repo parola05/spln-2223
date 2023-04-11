@@ -4,7 +4,7 @@
 
 <br>
 
-![Banner](banner.jpg)
+![Banner](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/banner.jpg)
 
 <p align="center">
   <a href="https://formulae.brew.sh/formula/semgrep">
@@ -38,65 +38,66 @@
 
 ## Features
 
-* 🎲 Automatic **quiz** game generation of the book content
-* 🌐 Translation and language detection
-* 🔍 Match of input phrase with a **similar story excert**
+* 🎲 [Automatic **quiz** game generation of the book content](#quiz)
+* 🌐 [Translation](#translation)
+* 🔍 [Match of input phrase with a **similar story excert**](#match)
 * 📝 Summarization  
-* 😊 Sentiment analsys of the book
+* 🌐 [Language Detection](#language)
+* 😊 [Sentiment analsys of the book](#sentiment)
 * 🎯 Most relevant **topics** in the book
 * 👥 Characteres list 
-* 🎚️ Sentences projection 
-* 🕸️ Fetch a book from **web**
+* 🎚️ [Sentences projection](#projection)
+* 🕸️ [Fetch a book from **web**](#fetch)
 * 💹 Actions list 
-* 📁 Book **archiever**
+* 📁 [Book **archiver**](#archiver)
 
-### **Quiz game**
+### 🎲 <a name="quiz">Quiz game</a> 
 
 A random complex sentence from the book is selected. With the firsts five words from the sentence, six fake sentences is generated. The goal is the user guess the true sentence.
 
-![img1](img1.png)
+![img1](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img1.png
+)
 
-### **Projection**
+### 🎚️ <a name="projection"> Projection </a>
 
 Some operations can be very time consuming with is being considered the hole content of the book. So, with the user wants to make the operation only in a limited part of the book, **projections** can be used. Every other flag used with the projection flag, only operates in the projection content. The projection syntax is like access an array in Python: *the book's content is abstracted into a list of sentences*. If the user wants to **view** the projection of the first 3 sentences of the book, it can be used **-v** flag.
 
-![img1](img2.png)
+![img1](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img2.png
+)
 
-### **Translation** 
+### 🌐 <a name="translation">Translation</a> 
 
 The **translation** feature only works for texts with a number of words less than 512. This means that is possible to translate a hole paragraph! The program have support to translate only texts written in **English**. The languages available to translate are **French**, **German** and **Romanian**. The following example made the translation of the previous book projection.
 
-``` bash
-$ story_analyzer HarryPotter.txt outputFile -p [0:2] -t German | cat outputFile.json
-{
-    translation:"Herr und Frau Dursley von der Privet Drive Nummer vier waren stolz darauf zu sagen, dass sie vollkommen normal waren, vielen Dank. Sie waren die letzten Personen, von denen man erwarten würde, dass sie in etwas Seltsames oder Geheimnisvolles verwickelt wären, weil sie mit einem solchen Unsinn einfach nichts zu tun haben wollten. Herr Dursley war Direktor einer Firma namens Grunnings, die Bohrer herstellte.
-}
-```
+![img1](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img3.png
+)
 
-### **Language detection**
+### 🌐 <a name="language">**Language detection**</a>
 
 In order to detect the language of the book, the user can execute:
 
-``` bash
-$ story_analyzer HarryPotter.txt outputFile -l | cat outputFile.json
-{
-    language: "English"
-}
-```
+![img1](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img4.png
+)
 
-### **Match of input phrase with a similar story excert**
+### 🔍 <a name="match">**Match of input phrase with a similar story excert**</a>
 
 Sometimes the user wants to read again a certain excert from the book, but only remember a short description of this part. In order to find this part of the book, the user can write what he remembers and the program returns the part of the book which is more similar in terms of subject to what was passed.
 
-``` bash
-$ story_analyzer HarryPotter.txt outputFile -l | cat outputFile.json
-```
+![img1](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img5.png
+)
 
-### **Fetch a book from web**
+
+### 🕸️ <a name="fetch">**Fetch a book from web**</a>
+
+TODO: Alex
+
+### 📁 <a name="archiver">**Book archiver**</a>
 
 TODO
 
-### 
+### 😊 <a name="sentiment">**Sentiment Analysis**</a>
+
+TODO. Alex
 
 ## Usage
 
