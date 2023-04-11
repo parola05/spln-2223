@@ -1,4 +1,4 @@
-<center><h1> Story Analyzer </h1></center>
+<center><h1> Story <b>Analyzer</b> </h1></center>
 
 <center><h3>Get all the details of a story. From summaries to character information, explore your book like never before!</h3> </center>
 
@@ -40,17 +40,17 @@
 
 * 🎲 Automatic **quiz** game generation of the book content
 * 🌐 Translation and language detection
-* 🔍 Match of input phrase with a **similar storie excert**
+* 🔍 Match of input phrase with a **similar story excert**
 * 📝 Summarization  
 * 😊 Sentiment analsys of the book
 * 🎯 Most relevant **topics** in the book
 * 👥 Characteres list 
 * 🎚️ Sentences projection 
-* 🕸️ Book fetch from **web**
+* 🕸️ Fetch a book from **web**
 * 💹 Actions list 
 * 📁 Book **archiever**
 
-## Quiz game
+### **Quiz game**
 
 A random complex sentence from the book is selected. With the firsts five words from the sentence, six fake sentences is generated. The goal is the user guess the true sentence.
 
@@ -69,7 +69,7 @@ $ story_analyzer HarryPotter.txt outputFile -q | cat outputFile.json
   }
 ```
 
-## Projection
+### **Projection**
 
 Some operations can be very time consuming with is being considered the hole content of the book. So, with the user wants to make the operation only in a limited part of the book, **projections** can be used. Every other flag used with the projection flag, only operates in the projection content. The projection syntax is like access an array in Python: *the book's content is abstracted into a list of sentences*. If the user wants to **view** the projection of the first 3 sentences of the book, it can be used **-v** flag.
 
@@ -80,7 +80,7 @@ $ story_analyzer HarryPotter.txt outputFile -p [0:2] -v | cat outputFile.json
 }
 ```
 
-## Translation 
+### **Translation** 
 
 The **translation** feature only works for texts with a number of words less than 512. This means that is possible to translate a hole paragraph! The program have support to translate only texts written in **English**. The languages available to translate are **French**, **German** and **Romanian**. The following example made the translation of the previous book projection.
 
@@ -90,6 +90,31 @@ $ story_analyzer HarryPotter.txt outputFile -p [0:2] -t German | cat outputFile.
     translation:"Herr und Frau Dursley von der Privet Drive Nummer vier waren stolz darauf zu sagen, dass sie vollkommen normal waren, vielen Dank. Sie waren die letzten Personen, von denen man erwarten würde, dass sie in etwas Seltsames oder Geheimnisvolles verwickelt wären, weil sie mit einem solchen Unsinn einfach nichts zu tun haben wollten. Herr Dursley war Direktor einer Firma namens Grunnings, die Bohrer herstellte.
 }
 ```
+
+### **Language detection**
+
+In order to detect the language of the book, the user can execute:
+
+``` bash
+$ story_analyzer HarryPotter.txt outputFile -l | cat outputFile.json
+{
+    language: "English"
+}
+```
+
+### **Match of input phrase with a similar story excert**
+
+Sometimes the user wants to read again a certain excert from the book, but only remember a short description of this part. In order to find this part of the book, the user can write what he remembers and the program returns the part of the book which is more similar in terms of subject to what was passed.
+
+``` bash
+$ story_analyzer HarryPotter.txt outputFile -l | cat outputFile.json
+```
+
+### **Fetch a book from web**
+
+TODO
+
+### 
 
 ## Usage
 
