@@ -86,7 +86,6 @@ Sometimes the user wants to read again a certain excert from the book, but only 
 ![img1](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img5.png
 )
 
-
 ### 🕸️ <a name="fetch">**Fetch a book from web**</a>
 
 TODO: Alex
@@ -95,34 +94,21 @@ TODO: Alex
 
 The **archiver** features allow the user to save the book in a database by using the argument **--save TITLE**. By using the arguments **--view** and **--read TITLE**, it is possible to read the content of the book saved. 
 
-```
-~ $ story_analyzer harry1.txt out --save "Harry Potter"
-~ $ story_analyzer out --read "Harry Potter" --view
-~ $ cat out.json
-{
-    "view": "/ \n\n\n\n\nTHE BOY WHO LIVED \n\nMr. and Mrs. Dursley, of number four, Privet Drive ...
-       ..."
-}
-```
+![img6](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img6.png
+)
+
 Another use case of this feature is the use of the **--save TITLE** argument followed by queries. Instead of just saving the content of the book it will also save the queries asked by the user. By doing this it is possible to use the **archive** as a cache, thus reducing the total time of the queries saved. 
-```
-~ $ story_analyzer out --read "Harry Potter" --sentence_no --language --save "Harry Potter"
-~ $ story_analyzer out --read "Harry Potter" --sentence_no --language
-~ $ cat out.json
-{
-    "sentence_no": 6472,
-    "language": "English"
-}
-```
+
+![img7](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img7.png
+)
 
 **Not all the queries will be deemed as savable**. Similar sentences and Sentiment Analysis will not be saved.
 
 Another thing to beware is the fact that it is **not supported to do a projection** of a book saved in the archive. This is due to the fact that a projection will change the books content. However in order to optimize the queries that require a spacy analyzis, the Doc object is saved in the archive. If the user were to do a projection on a read and then use the **--save** argument then the doc saved would not reflect the projection, thus it would not be coherent with the expected result. For future work, it would be interesting to implement a way to support this feature.
 
-Example that is **not** supported
-```
-~ $ story_analyzer out --read "Harry Potter" --projection [1:100] --save "Harry Potter"
-```
+![img8](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img8.png
+)
+
 ### 😊 <a name="sentiment">**Sentiment Analysis**</a>
 
 TODO. Alex
