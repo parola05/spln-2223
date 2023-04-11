@@ -93,8 +93,36 @@ TODO: Alex
 
 ### 📁 <a name="archiver">**Book archiver**</a>
 
-TODO
+The **archiver** features allow the user to save the book in a database by using the argument **--save TITLE**. By using the arguments **--view** and **--read TITLE**, it is possible to read the content of the book saved. 
 
+```
+~ $ story_analyzer harry1.txt out --save "Harry Potter"
+~ $ story_analyzer out --read "Harry Potter" --view
+~ $ cat out.json
+{
+    "view": "/ \n\n\n\n\nTHE BOY WHO LIVED \n\nMr. and Mrs. Dursley, of number four, Privet Drive ...
+       ..."
+}
+```
+Another use case of this feature is the use of the **--save TITLE** argument followed by queries. Instead of just saving the content of the book it will also save the queries asked by the user. By doing this it is possible to use the **archive** as a cache, thus reducing the total time of the queries saved. 
+```
+~ $ story_analyzer out --read "Harry Potter" --sentence_no --language --save "Harry Potter"
+~ $ story_analyzer out --read "Harry Potter" --sentence_no --language
+~ $ cat out.json
+{
+    "sentence_no": 6472,
+    "language": "English"
+}
+```
+
+**Not all the queries will be deemed as savable**. Similar sentences and Sentiment Analysis will not be saved.
+
+Another thing to beware is the fact that it is **not supported to do a projection** of a book saved in the archive. This is due to the fact that a projection will change the books content. However in order to optimize the queries that require a spacy analyzis, the Doc object is saved in the archive. If the user were to do a projection on a read and then use the **--save** argument then the doc saved would not reflect the projection, thus it would not be coherent with the expected result. For future work, it would be interesting to implement a way to support this feature.
+
+Example that is **not** supported
+```
+~ $ story_analyzer out --read "Harry Potter" --projection [1:100] --save "Harry Potter"
+```
 ### 😊 <a name="sentiment">**Sentiment Analysis**</a>
 
 TODO. Alex
