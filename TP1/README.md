@@ -36,6 +36,22 @@
   </a>
 </p>
 
+## Installation
+
+The program is available at [**PyPI**](https://pypi.org/project/story-analyzer/) and can be installed by the command:
+
+```
+$ pip install story-analyzer
+```
+
+If you want to download the files from this **git**, after clone the repository you should do the following commands:
+
+```
+$ pip install -r requirements.txt
+$ cd story_analyzer
+$ python main.py -h 
+```
+
 ## Features
 
 * 🎲 [Automatic **quiz** game generation of the book content](#quiz)
