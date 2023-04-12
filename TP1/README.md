@@ -94,7 +94,7 @@ It is important to notice that the program will only be able to fetch books that
 
 ### 📁 <a name="archiver">**Book archiver**</a>
 
-The **archiver** features allow the user to save the book in a database by using the argument **--save TITLE**. By using the arguments **--view** and **--read TITLE**, it is possible to read the content of the book saved. 
+The **archiver** features allows the user to save the book in a database by using the argument **--save TITLE**. By using the arguments **--view** and **--read TITLE**, it is possible to read the content of the book saved. 
 
 ![img6](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img6.png
 )
@@ -106,7 +106,7 @@ Another use case of this feature is the use of the **--save TITLE** argument fol
 
 **Not all the queries will be deemed as savable**. Similar sentences and Sentiment Analysis will not be saved.
 
-Another thing to beware is the fact that it is **not supported to do a projection** of a book saved in the archive. This is due to the fact that a projection will change the books content. However in order to optimize the queries that require a spacy analyzis, the Doc object is saved in the archive. If the user were to do a projection on a read and then use the **--save** argument then the doc saved would not reflect the projection, thus it would not be coherent with the expected result. For future work, it would be interesting to implement a way to support this feature.
+Another thing to be aware is the fact that it is **not supported to do a projection** of a book saved in the archive. This is due to the fact that a projection will change the book's content. However, in order to optimize the queries that require a spacy analyzis, the Doc object is saved in the archive. If the user were to do a projection on a read and then use the **--save** argument then the doc saved would not reflect the projection, thus it would not be coherent with the expected result. For future work, it would be interesting to implement a way to support this feature.
 
 ![img8](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP1/images/img8.png
 )
@@ -155,7 +155,7 @@ options:
 ## Dependencies
 
 * Quiz game is made with https://huggingface.co/gpt2
-* Transaltion is made with https://huggingface.co/docs/transformers/main/en/model_doc/t5#overview
+* Translation is made with https://huggingface.co/docs/transformers/main/en/model_doc/t5#overview
 * Summarization is made with https://huggingface.co/docs/transformers/model_doc/pegasus
 * Most Relevent Topics is made with https://radimrehurek.com/gensim/
 * Language detection is made with https://huggingface.co/papluca/xlm-roberta-base-language-detection
