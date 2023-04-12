@@ -88,7 +88,9 @@ Sometimes the user wants to read again a certain excert from the book, but only 
 
 ### 🕸️ <a name="fetch">**Fetch a book from web**</a>
 
-TODO: Alex
+By providing the possibility to fetch a book from web, the program will be able to read books that are not in the local machine, expanding its scope. With the argument **--mode web** followed by the name of the desired book, the program will try to fetch the book from [Project Gutenberg](https://www.gutenberg.org/).
+
+It is important to notice that the program will only be able to fetch books that are in Project Gutenberg's database, otherwise the user should consider using the **--mode local** argument and providing the path to the book in the local machine.
 
 ### 📁 <a name="archiver">**Book archiver**</a>
 
@@ -111,7 +113,7 @@ Another thing to beware is the fact that it is **not supported to do a projectio
 
 ### 😊 <a name="sentiment">**Sentiment Analysis**</a>
 
-TODO. Alex
+To end the list of the implemented features, there is also the possibility to analyze the general sentiment transmited by a book. To use this feature, the user should use the argument **--sa**. The program will print the sentiment of the book. It can be "Positive", "Negative" or "Neutral".
 
 ## Usage
 
