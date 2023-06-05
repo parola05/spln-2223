@@ -1,0 +1,19 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "shield"
+authors = [
+    {name = "Francisco Alexandre Neves, email = pg50375@alunos.uminho.pt"},
+    {name = "Henrique Parola Costa, email = pg50415@alunos.uminho.pt"},
+    {name = "José Pedro Fernandes,email = pg50525@alunos.uminho.pt}"
+]
+readme = "README.md"
+license = {file="LICENSE"}
+
+[project.urls]
+Source = 
+
+[project.scripts]
+shield = "src.main"
