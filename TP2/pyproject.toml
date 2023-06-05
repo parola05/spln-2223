@@ -5,15 +5,16 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "shield"
 authors = [
-    {name = "Francisco Alexandre Neves, email = pg50375@alunos.uminho.pt"},
-    {name = "Henrique Parola Costa, email = pg50415@alunos.uminho.pt"},
-    {name = "José Pedro Fernandes,email = pg50525@alunos.uminho.pt}"
+    {name = "Francisco Alexandre Neves", email = "pg50375@alunos.uminho.pt"},
+    {name = "Henrique Parola Costa", email = "pg50415@alunos.uminho.pt"},
+    {name = "José Pedro Fernandes",email = "pg50525@alunos.uminho.pt"}
 ]
 readme = "README.md"
 license = {file="LICENSE"}
+dynamic = ["version", "description"]
 
 [project.urls]
-Source = 
+Source = "https://github.com/LittleLevi05/spln-2223/tree/main/TP2"
 
 [project.scripts]
-shield = "src.main"
+shield = "shield.main:main"
