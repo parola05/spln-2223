@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "shield"
+name = "hshield"
 authors = [
     {name = "Francisco Alexandre Neves", email = "pg50375@alunos.uminho.pt"},
     {name = "Henrique Parola Costa", email = "pg50415@alunos.uminho.pt"},
@@ -18,4 +18,4 @@ dynamic = ["version", "description"]
 Source = "https://github.com/LittleLevi05/spln-2223/tree/main/TP2"
 
 [project.scripts]
-shield = "shield.main:main"
+hshield = "hshield.main:main"
