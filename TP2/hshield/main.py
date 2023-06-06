@@ -1,7 +1,7 @@
 import argparse
-from modules.name_shield import NameShield
-from modules.address_shield import AddressShield
-from modules.document_shield import DocumentShield
+from hshield.modules.name_shield import NameShield
+from hshield.modules.address_shield import AddressShield
+from hshield.modules.document_shield import DocumentShield
 
 def main():
     parser = argparse.ArgumentParser(
