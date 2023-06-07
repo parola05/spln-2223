@@ -1,27 +1,18 @@
 import newspaper
-import time
+from newspaper import Article
 import pickle
+import sys 
+import time
 
-urls = [
-    'https://jornaldeangola.sapo.ao/',
-    'https://www.novojornal.co.ao/',
-    'https://www.opais.net/'
-]
+websiteUrl = sys.argv[1] if len(sys.argv)>=1 else ''
+articlesDir = sys.argv[2] if len(sys.argv)>=2 else '.'
 
-articles = []
-i = 0
-
-for url in urls:
-    time.sleep(5)
-    print("Build do newspaper " + url + " ...")
-    paper = newspaper.build(url)
+while True:
+    time.sleep(86400) # sleep for a day before make new requests
+    paper = newspaper.build(websiteUrl)
     for article in paper.articles:
-        try:
-            print("Download do artigo " + i + " ...")
-            article.download()
-            article.parse()
-            with open("articles\\" + url + "\\" + i, "wb") as file:
-                pickle.dump(article, file)
-            i = i + 1
-        except:
-            continue
+        article = Article(article.url)
+        article.download()
+        article.parse()
+        with open(articlesDir + "/" + article.url , "w") as file:
+            pickle.dump(article, file)
