@@ -1,7 +1,7 @@
 import argparse
-from hshield.modules.name_shield import NameShield
-from hshield.modules.address_shield import AddressShield
-from hshield.modules.document_shield import DocumentShield
+from name_shield import NameShield
+from address_shield import AddressShield
+from document_shield import DocumentShield
 
 def main():
     parser = argparse.ArgumentParser(
@@ -25,7 +25,8 @@ def main():
             text  = f.read() 
 
         if args.name:
-            text = NameShield(text=text).shield()
+            name = NameShield(text=text)
+            print(name.shield())
 
         if args.document:
             text = DocumentShield(text=text).shield()
@@ -37,7 +38,8 @@ def main():
             with open(args.output,"w") as f:
                 f.write(text)
         else:
-            print(text)
+            #print(text)
+            pass
 
 if __name__ == "__main__":
     main()
