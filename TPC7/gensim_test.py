@@ -11,6 +11,8 @@ model = Word2Vec(book_content, size=100, window=5, min_count=1, workers=4)
 
 print(model.wv.most_similar('harry'))
 
+print(model.wv.most_similar(positive=["harry","vilain"],negative=["hero"]))
+
 model.wv.save_word2vec_format("model_harry")
 
 #python -m gensim.scripts.word2vec2tensor -i model_harry -o model_harry
