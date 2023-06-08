@@ -55,35 +55,8 @@ if ent.label_ == "PERSON" or ent.label_ == "ORG":
 
 ### Anonimização de Documentos
 
-## Autores
+## Equipa
 
-<h2>Autores</h2>
-
-<div class="author-container">
-  <div class="author">
-    <img src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/henrique.jpeg
-" alt="Henrique Parola">
-    <p>Henrique Parola</p>
-  </div>
-  <div class="author">
-    <img src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/jose.png" alt="José Pedro">
-    <p>José Pedro</p>
-  </div>
-  <div class="author">
-    <img src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/alex.png" alt="Alex">
-    <p>Alex</p>
-  </div>
-</div>
-
-<style>
-.author-container {
-  display: flex;
-  width: 100%;
-  height: 190px;
-}
-
-.author {
-  flex: 1;
-}
-</style>
-
+| ![Henrique Parola](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/henrique.jpeg) | ![José Pedro](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/jose.png) | ![Alex](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/alex.png) |
+|:---:|:---:|:---:|
+| Henrique Parola | José Pedro | Alex |
