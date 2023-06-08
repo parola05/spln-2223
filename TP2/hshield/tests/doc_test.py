@@ -4,4 +4,6 @@ text = "Número de carta de condução: BR-123456 1 agora vou ligar à carla o n
        "é 912345678! Já agora o meu número de cc é 11340443"
 
 test = DocumentShield(text)
-print(test.window_text)
+
+test.shield()
+#print(test.window_text)
