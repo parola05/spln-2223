@@ -24,7 +24,7 @@ class NameShield():
 
         for ent in doc.ents:
             if ent.label_ == "PERSON" or ent.label_ == "ORG":
-                ent_names = ent.text.split(" ") # separate entity names
+                ent_names = re.split(r"\s+",ent.text)
                 anonymized_name = ".".join(name[0] for name in ent_names) # create new string with the initital letters of entity names separated by "point"
                 self.text = re.sub(ent.text,anonymized_name,self.text) # substitue all ocurrences of the entity name by the anonymized text
         
