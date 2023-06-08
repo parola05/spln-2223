@@ -1,6 +1,7 @@
 import spacy
 import re
 import math
+import os
 
 class DocumentShield():
     def __init__(self, text) -> None:
@@ -9,11 +10,49 @@ class DocumentShield():
         self.window_pos = None
         self.window_size = None
 
+        self.expressions = self.parse()
         self.text = text
         self.nlp = spacy.load("pt_core_news_md")
         self.doc = self.nlp(self.text)
 
         self.init_window()
+
+    def parse(self):
+        path = os.path.dirname(__file__) + "/data/regex_doc.txt"
+        file = open(path, "r")
+        country = ""
+        match = ""
+        last_empty = True
+        res = {}
+        keys = ["regex", "keywords", "check", "sub"]
+        for line in file:
+            line = line.strip()
+            split = line.split(':')
+            if split[0] != '':
+                if last_empty:
+                    if split[0] == "country":
+                        country = split[1]
+                        res[country] = {}
+                    else:
+                        match = split[0]
+                        res[country][match] = {}
+                    last_empty = False
+                elif split[0] in keys:
+                    key = split[0]
+                    if key == "keywords":
+                        value = split[1].split(',')
+                    elif key == "check":
+                        value = split[1] == "yes"
+                    else:
+                        value = split[1]
+
+                    res[country][match][key] = value
+            else:
+                last_empty = True
+
+        import json
+        #print(json.dumps(res, indent=2))
+        return res
 
     def init_window(self):
         self.window_pos = 0
