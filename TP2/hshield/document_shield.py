@@ -9,12 +9,17 @@ class DocumentShield():
         self.window_pos_max = None
         self.window_pos = None
         self.window_size = None
+        self.cur_dict = None
 
         self.expressions = self.parse()
+        self.text_original = text
         self.text = text
         self.nlp = spacy.load("pt_core_news_md")
         self.doc = self.nlp(self.text)
+        self.delta_history = []
 
+
+        self.cur_match = None
         self.init_window()
 
     def parse(self):
@@ -52,12 +57,14 @@ class DocumentShield():
 
         import json
         #print(json.dumps(res, indent=2))
+        #with open('filename', 'w', encoding='utf8') as json_file:
+        #    json.dump(res, json_file, ensure_ascii=False, indent=2)
         return res
 
     def init_window(self):
         self.window_pos = 0
         self.window_pos_max = len(self.doc) - 1
-        self.window_size = min(self.window_pos_max, 10)
+        self.window_size = min(self.window_pos_max, 15)
         self.window = []
 
         for (i, token) in enumerate(self.doc):
@@ -91,12 +98,51 @@ class DocumentShield():
             if token.idx <= offset < token.idx + len(token.text):
                 return i + self.window_pos
 
+    def keywords_present(self, keywords):
+        for key in keywords:
+            doc_word = self.nlp(key)
+            lemma_list = [w.lemma_ + " " for w in doc_word]
+            key_norm = "".join(lemma_list).strip()
+            window_norm = self.window_text().strip()
+            if re.search(key_norm, window_norm):
+                return True
+        return False
+
+    def update_pos_deltas(self, index, new_delta):
+        res = []
+        for (char_pos, delta) in self.delta_history[index:]:
+            res.append((char_pos + new_delta, delta))
+
+        return res
+
+    def put_delta_char(self, char_start, new_delta):
+        for i,(char_pos, delta) in enumerate(self.delta_history):
+            if char_pos > char_start:
+                self.delta_history[i:] = self.update_pos_deltas(i, new_delta)
+                self.delta_history.insert(i, (char_start, new_delta))
+                return
+        self.delta_history.append((char_start, new_delta))
+
+
+    def original_pos(self, match_pos):
+        res = match_pos
+        for (pos, delta) in self.delta_history:
+            if pos < match_pos:
+                res -= delta
+        return res
+
     def change(self, match):
         "For test purposes to see the effeects of the sliding window"
-        print("MATCH")
-        self.slide_right(match.start(0))
-        print(self.window_text())
-        return "NUMERO " + str(self.window_pos)
+        original_pos = self.original_pos(match.start(0))
+        self.cur_match = match.group(0)
+        self.slide_right(original_pos)
+        if not self.cur_dict["check"] and self.keywords_present(self.cur_dict["keywords"]):
+            sub = self.cur_dict["sub"]
+            self.put_delta_char(match.start(0), len(sub) - len(match.group(0)))
+            return sub
+        else:
+            return match.group(0)
+
     def shield(self):
         '''
             description: 
@@ -110,7 +156,17 @@ class DocumentShield():
             return:
                 Anonymized self.text
         '''
-        self.text = re.sub("número", self.change, self.text)
+        #para já assumir só uma linguagem
+        #no futuro é possível para cada linguagem fazer uma análise
+        #com o spacy com diferentes linguagens.
+        for match, dict in self.expressions["pt"].items():
+            self.cur_dict = dict
+            self.text = re.sub(dict["regex"], self.change, self.text)
+            # Ao substituir os regexes o text original muda e o get_token deixa
+            # de funcionar como devido à posição de chars não combinar
+            # Acho que dá para otimizar isto
+            self.init_window()
+
         print(self.text)
 
         return self.text
