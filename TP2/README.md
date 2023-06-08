@@ -1,4 +1,4 @@
-<h1 style="font-size:60px" align="center"><img height=58cm src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/logo.png"> HShield</h1>
+<h1 style="font-size:60px" align="center"><img height=28cm src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/logo.png"> HShield</h1>
 
 <h4 align="center">A ferramenta ideal para anonimização de dados pessoais dos seus documentos</h4>
 
