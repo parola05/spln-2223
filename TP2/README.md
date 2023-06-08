@@ -16,7 +16,8 @@
    2. [Anonimização de Nomes](#anonimização-de-nomes)
    3. [Anonimização de Endereços](#anonimização-de-endereços)
    4. [Anonimização de Documentos](#anonimização-de-documentos)
-3. [👥 Equipa](#equipa)
+3. [👋 Modos de Uso](#modos-de-uso)
+4. [👥 Equipa](#equipa)
 
 ## 🌟 Introdução
 
@@ -78,6 +79,27 @@ if ent.label_ == "PERSON" or ent.label_ == "ORG":
 ### Anonimização de Endereços
 
 ### Anonimização de Documentos
+
+## 👋 Modos de Uso
+
+A utilização do programa HShield pode englobar tanto uma anonimização global do documento de *input*, tanto como uma anonimização especializada para algum termo-alvo. Disponibiliza-se assim opções para serem anonimizados os (1) nomes, (2) documentos e (3) endereços. Estas opções podem ser utilizadas em conjunto, mediante a necessidade do utilizador.
+
+```bash
+Data anonymizer tool
+
+positional arguments:
+  filename
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n, --name            anonymize only names
+  -d, --document        anonymize only documents
+  -a, --address         anonymize only addresses
+  -o OUTPUT, --output OUTPUT
+                        output file
+
+Build by Henrique, José and Alex
+```
 
 ## 👥 Equipa
 
