@@ -1,16 +1,24 @@
-<h1 align="center"> Shield </h1> 
+<h2 style="font-size:80px" align="center"><img height=58cm src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/logo.png"> HShield</h2>
 
-1. [Introdução](#introducao)
+<h4 align="center">A ferramenta ideal para anonimização de dados pessoais dos seus documentos</h4>
+
+<br>
+
+<img src="https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/banner.png">
+
+<br>
+
+1. [🌟 Introdução](#introducao)
    1. [Contexto](#contexto)
    2. [Propósito e Objetivos](#proposito-e-objetivos)
-2. [Caracterização do sistema](#caracterização-do-sistema)
+2. [⚙️ Caracterização do sistema](#caracterização-do-sistema)
    1. [Arquitetura](#arquitetura)
    2. [Anonimização de Nomes](#anonimização-de-nomes)
    3. [Anonimização de Endereços](#anonimização-de-endereços)
    4. [Anonimização de Documentos](#anonimização-de-documentos)
-3. [Equipa](#equipa)
+3. [👥 Equipa](#equipa)
 
-## Introdução
+## 🌟 Introdução
 
 ### Contexto
 
@@ -26,7 +34,7 @@ O propósito deste projeto é garantir a anonimização dos dados sensíveis pes
 Em suma, o objetivo principal do sistema é garantir a segurança dos indíviduos através de processos de anonimização. Uma vez que existem diversas formas de se concretizar esta tarefa, [não havendo um processo único de anonimização, a solução ideal será a que apresente em cada processo a maior impossibilidade da “re-identificação dos titulares dos dados”. Por princípio, a anonimização deverá ser um processo irreversível, análogo à destruição.](https://www.uc.pt/protecao-de-dados/protecao-de-dados-pessoais/anonimizacao-e-pseudonimizacao/)
 
 
-## Caracterização do sistema
+## ⚙️ Caracterização do sistema
 
 ### Arquitetura
 
@@ -71,7 +79,7 @@ if ent.label_ == "PERSON" or ent.label_ == "ORG":
 
 ### Anonimização de Documentos
 
-## Equipa
+## 👥 Equipa
 
 | ![Henrique Parola](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/henrique.jpeg) | ![José Pedro](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/jose.png) | ![Alex](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/alex.png) |
 |:---:|:---:|:---:|
