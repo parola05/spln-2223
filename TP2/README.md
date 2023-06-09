@@ -46,14 +46,41 @@ Em suma, o objetivo principal do sistema é garantir a segurança dos indíviduo
 
 Os **nomes** anonimizados nesta etapa da ferramenta consistem em:
 
-* **Nomes de Pessoas**: nomes próprios, apelidos, alcunhas. Por exemplo: *John Smith*, *Sarah*.
-* **Nomes de Organizações**: nomes de entidades estruturadas, geralmente composta por um grupo de pessoas, que trabalha para atingir objetivos específicos. Por exemplo: *Acme Industries*, *World Wildlife Fund*.
+* **Nomes de Pessoas**: nomes próprios, apelidos, alcunhas. Por exemplo: *João Pedro*, *Juliana*.
+* **Nomes de Organizações**: nomes de entidades estruturadas, geralmente composta por um grupo de pessoas, que trabalha para atingir objetivos específicos. Por exemplo: *Petrobras*, *Banco do Brasil*.
 
-Para a anonimização destes nomes foi decidido que, ao serem identificados, deviam ser substituídos pelas correspondentes iniciais intercaladas com o **ponto final**. A metodologia deste algoritmo baseou-se em três etapas:
+Para a anonimização destes nomes foi decidido que, ao serem identificados, deviam ser substituídos pelas correspondentes iniciais intercaladas com o **ponto final**. Mas **não somente isso**, uma vez que poderia haver a problemática de nomes diferentes corresponderem as mesmas iniciais. Ora, uma coisa é anonimizar um texto, outra é fazer ele **perder o sentido e coesão**. Não pretendemos causar a perda de significado no texto, isto é, deve ser possível continuar a lê-lo sem deixar de compreendê-lo. O seguinte texto é um exemplo disto: 
+
+```
+José Pedro esteve na Praça dos Arsenalistas naquela tarde. Quando José Pedro
+encontrou João Pinto, já era tarde demais. João Pinto estava morto diante de José Pedro.
+A partir deste dia a vida de José Pedro nunca foi a mesma, nem Joana Pedrosa (sua parceira
+de trabalho no Banco do Brasil) acreditava mais nele.
+```
+
+Reparemos que as três entidades neste texto possuem as mesmas iniciais. Se os seus nomes apenas fossem substituídos pelas respectivas iniciais intercaladas com ponto, então teríamos uma frase do tipo:
+
+```
+Quando J.P encontrou J.P, já era tarde demais.
+```
+
+A compreensão da frase **foi comprometida** e, por tanto, um cuidado adicional deve ser tomado. Esse cuidado consiste justamente em adicionar um **identificador** numérico as entidades, por forma a, quando for decteado o José Pedro, seja possível distingui-lo do João Pinto. Este identificador, ao ser adicionado na anonimização, torna o texto do seguinte modo:
+
+```
+J.P(0) esteve na Praça dos Arsenalistas naquela tarde. Quando J.P(0)
+encontrou J.P(1), já era tarde demais. J.P(1) estava morto diante de J.P(0).
+A partir deste dia a vida de J.P(0) nunca foi a mesma, nem J.P(2) (sua parceira
+de trabalho no B.d.B(0)) acreditava mais nele.
+```
+
+Como pode ser visto, sem revelar a identidade de nenhuma entidade, consegue-se agora compreender a natureza do significado das frases.
+
+A metodologia do algoritmo geral para anonimização dos nomes baseou-se então em três etapas:
 
 1.  Detecção das entidades do texto.
 2.  Filtragem das entidades que representam **pessoas** e **organizações**;
-3. Substituição do nome destas entidades pelo seu nome anonimizado.
+3.  Calculo do identificador das entidades filtradas;
+3. Substituição do nome destas entidades pelo seu nome anonimizado com o identificador.
 
 A etapa 1 e 2 foram concretizadas utilizando a biblioteca Spacy. Após carregar o modelo de processamento de texto no idioma do texto dado pelo utilizador e aplicar os processamentos linguísticos deste modelo no texto, é possível extrair as suas entidades da seguinte maneira:
 
@@ -65,16 +92,44 @@ for ent in doc.ents:
         # substitution
 ```
 
-Por outro lado, a etapa 3 foi realizada com técnicas de processamento de texto em Python, utilizando alguns métodos sobre *strings* e o módulo RE para expressões regulares. Dada uma entidade, os seus respectivos nomes foram separados a partir de um ou mais carácter de espaço em branco e, de seguida, o **nome anonimizado**  foi formado com as iniciais de cada nome concatenadas com o carácter **"."**. Uma vez em posse do nome anonimizado, bastava substituir todas as ocorrências do nome sem anonimização pelo termo anonimizado. 
+Por outro lado, a etapa 3 e 4 foram realizadas com técnicas de processamento de texto em Python, utilizando alguns métodos sobre *strings* e o módulo RE para expressões regulares. Dada uma entidade, os seus respectivos nomes foram separados a partir de um ou mais carácter de espaço em branco e, de seguida, o **nome anonimizado**  foi formado com as iniciais de cada nome concatenadas com o carácter **"."**. Inicialmente, foi utilizada a função *split* sobre *strings* com um único delimitador de "espaço" para serem separados os nomes de uma entidade. Porém, esta alternativa não foi seguida, uma vez que alguns textos mal formados poderiam conter mais de um carácter de espaço em branco entre os nomes de uma entidade. Por isso que, como pode ser visto no excerto de código seguinte, foi utilizado o *split* do módulo RE que possibilitar a utilização de uma expressão regular para informar o delimitador do *split*.
 
 ```Python
 if ent.label_ == "PERSON" or ent.label_ == "ORG":
     ent_names = re.split(r"\s+",ent.text)
     anonymized_name = ".".join(name[0] for name in ent_names)
-    self.text = re.sub(ent.text,anonymized_name,self.text) 
 ```
 
-É de se salientar que, inicialmente, foi utilizada a função *split* sobre *strings* com um único delimitador de ``espaço" para serem separados os nomes de uma entidade. Porém, esta alternativa não foi seguida, uma vez que alguns textos mal formados poderiam conter mais de um carácter de espaço em branco entre os nomes de uma entidade. Por isso que, como pode ser visto no código acima, foi utilizado o *split* do módulo RE que possibilitar a utilização de uma expressão regular para informar o delimitador do *split*.
+Como foi exemplicado anteriormente, este termo *anonymized_name* ainda não está completo. Falta a adição do identificador da entidade. Para isto foi criado um dicionário chamado *dic_names*. Seu objetivo é relacionar, para cada valor de letras iniciais intercaladas com ponto (*anonymized_name* sem identificador) os nomes das entidades 
+que utilizam tais letras iniciais de forma idêntica. Por outras pavras, no caso do exemplo anterior, este dicionário teria:
+
+```
+dic_names = {
+  "J.P" = ["José Pedro", "João Pinto", "Joana Pedrosa"]
+}
+```
+
+Deste modo, foi decidido que o identificador de cada entidade
+seria justamente a sua posição na lista de nomes do seu nome anonimizado. Daí resulta no José Pedro ser o J.P(0), o João Pinto ser o J.P(1) e a Joana Pedrosa a J.P(2). O algoritmo que efetua o calculo do identificador é o seguinte:
+
+```Python
+if anonymized_name in dic_names:
+    if ent.text in dic_names[anonymized_name]:
+        id = dic_names[anonymized_name].index(ent.text)
+    else:
+        id = len(dic_names[anonymized_name])
+        dic_names[anonymized_name].append(ent.text)
+else:
+    id = 0
+    dic_names[anonymized_name] = [ent.text]
+```
+
+ Uma vez em posse do nome anonimizado com o seu identificador, bastava substituir todas as ocorrências do nome sem anonimização pelo termo anonimizado. 
+ 
+ ```
+ anonymized_name += '('+str(id)+')'
+self.text = re.sub(ent.text,anonymized_name,self.text)   
+ ```
 
 ### Anonimização de Endereços
 
