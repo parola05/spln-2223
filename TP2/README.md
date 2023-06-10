@@ -134,6 +134,103 @@ self.text = re.sub(ent.text,anonymized_name,self.text)
 ### Anonimização de Endereços
 
 ### Anonimização de Documentos
+Os documentos anonimizados são identificados através de uma expressão regular. De seguida, só é realizada a anonimização se na prefiria do formato identificado for encontrada pelo menos uma keyword associada ao documento.
+
+A associação do formato do documento e das keywords permite aumentar o contexto disponível para tomar a decisão se a anonimização está correta. 
+Considere-se o caso específico de um número de telemóvel com 9 dígitos e o número de identificação fiscal (NIF). Ambos têm o mesmo formato, 9 dígitos seguidos sem espaços. Se na preferia do formato encontrado se encontrar a keyword "nif" há uma maior confiança que o formato encontrado é de facto um NIF. Se, por outro lado, se encontrar uma keyword "ligar" há uma maior confiança que o formato encontrado é um número de telemóvel. 
+No entanto, é necessário um jogo de balanceamento, uma vez que não se pretende pesquisar numa preferia muito grande, onde o contexto se ia tornar muito abrangente, mas também não se pretende ter uma preferia muito pequena.
+A figura seguinte permite encontrar um exemplo onde uma preferia muito grande poderia levar a resultados errados. 
+
+```
+A Carla está sempre a avisar para eu não me esquecer de adicionar o nif do clube, sempre que faço 
+despesas com a carrinha do clube. O problem é que já me esqueci, sabes qual é o nif? 
+Sim, é 123456789, mas o melhor era ligares para confirmar. O número de telemóvel dela é o 912345678
+Obrigado! Vou ver se lhe ligo assim que conseguir. 
+```
+
+Neste caso, se a preferia fosse muito abrangente, ao identificar "912345678" ia-se encontrar a keyword "nif" e haveria um falso positivo. 
+Por outro lado, se a preferia fosse muito pequena, por exemplo mais ou menos duas palavras, não se identificaria a keyword "ligar" e haveria um falso negativo. 
+
+Este problema poderia ser resolvido se se assumisse que se fizesse duas pesquisas. 
+Uma da expressão identificada para o início do texto e da expressão para o fim do texto.
+Desta forma a keyword mais próxima era que seria "encontrada" primeiro. 
+
+A razão pela qual foi estabelicido um limite nesta janela de procura era o overhead de procurar no texto todo. 
+Na verdade, é comum encontrar-se estas keywords perto da expressão encontrada e quanto mais afastada estiver a keyword menos confiança se tem que realmente a expressão é a que mapeia o tipo de documento que se está a procurar no momento.
+
+#### Utilização spacy
+Assim que se obtem o texto é criado o documento spacy do texto. A razão para utilzar o spacy é porque desta forma é possível fazer uma lemalização da janela de contexto, e pesquisar pelo lema de uma keyword nesta janela com lemalização. A vantagem de fazer a lemização é a abrangência de mais palavras mapeadas na mesma keyword.
+No exemplo seguinte pode-se encontrar uma palavra, ligou, que não faria match com a palavra ligar. 
+
+```
+O Diogo ligou para o número 912345678 da Carla. 
+```
+
+Considere-se a janela "ligou para o número 912345678 da Carla.", ao realizar a lemalização desta janela obtém-se
+"Diogo ligar para o número 912345678 de o Carla ." Desta forma a keyword "ligar" já consegue fazer match.
+
+#### Algoritmo de anonimização
+Existem três passos na realização da anonimização. 
+
+1. Parsing do ficheiro que contém os documentos que se pretende identificar;
+2. Para cada tipo de documento encontrar formatos que façam match no texto;
+3. Para cada match encontrada verificar se existem keywords na janela de contexto. Se um tipo de documento tiver um algoritmo de check apenas subsituir se o check provar que o padrão é válido.
+
+De seguida vai ser explorado cada passo em pormenor.
+
+#### Estrutura do ficheiro de tipos documentos
+O ficheiro contém a identificação do país onde os documentos são emitidos. 
+De seguida existe uma lista de documentos a serem identificados.
+Cada documento contém:
+* um identificador do documento;
+* o padrão onde deve constar uma expressão regular do formato do documento;
+* uma lista de keywords para permitir um maior contexto na identificação do documento;
+* um booleano que identifica se o documento tem uma função de check;
+* um identificador que substitua o documento encontrado.
+
+#### Encontrar os formatos dos vários documentos
+Para cada tipo de documento existente é utilizada a função `re.sub` com a expressão regular do formato do documento,
+com um método `change` responsável pela verificação se o match vai ser anonimizado e por último o texto mais atual. 
+Ou seja, se já houve anonimizações este texto vai contê-las.
+
+#### Verificação da existência de keywords na janela de contexto
+O primeiro obstáculo é a criação da janela de contexto. 
+A janela de contexto é composta por tokens e está centrada no primeiro caratér de um match do caratér. 
+Portanto é necessário saber qual o token que corresponde ao offset desse caratér no texto. 
+
+```
+"A Alice e o Bob estão a comunicar por um telefone estragado."
+```
+
+Neste exemplo se o match for "Alice" o offset do caratér 'A' vai ser utilizado para calcular qual o token vai ser utilizado 
+para centrar a janela de contexto. Para tal percorre-se o documento spacy, token a token, e verifica-se a condição             
+`token.idx <= offset < token.idx + len(token.text)`. Se for verdadeira então este token é considerado o token central da janela. 
+Neste exemplo a janela seria: `[A_token, Alice_token, e_token]`. De salientar que como o método `re.sub` faz uma travessia do texto
+de forma sequencial do primeiro caratér para o último, sem saltos, é possível ir percorrendo o documento spacy na verificação da condição, invés de 
+estar sempre a percorrer o documento spacy. Para tal guarda-se o último índice do último token que foi o centro de uma janela. 
+
+No entanto, esta verificação assume um offset do caratér em relação ao texto original, texto usado para criar o documento spacy.
+Desta forma sempre que existe uma substituição, e consequente alteração do texto original, é inserido um par `(pos, delta)` numa lista de histórico.
+Ao fazer match de uma expressão de um texto, que não o original, extrai-se o offset do primeiro caratér do match (com recurso ao método `match_object.start(0)`) 
+e faz-se uma conversão de qual seria o offset no texto original. No caso de não tiverem havido nenhuma substituição num caratér inferior 
+então o offset obtido pelo o match é equivalente ao do texto orignal. No entanto, se já houve é necessário fazer uma soma de deltas de substituição prévias e substrair o delta acumulado.
+ 
+Com a janela já criada, percorre-se token a token da janela e cria-se uma string de lemmas desses tokens separados por espaços.
+De seguida, para cada key nas keywords verifica-se se o lemma dessa key existe na string de lemas da janela. Se existir então a match pode eventualmente ser anonimizada.
+
+#### Documentos com função de check
+Há documentos que requerem uma função de check. Para tal assume-se que existe uma função com o nome "check_country_tipo_de_padrao" que devolve um booleano.
+O exemplo a seguir demonstra um exemplo de um cartão de cidadão (CC) válido e de outro inválido, assim como as contas feitas para verificar se um CC é valido.
+
+```
+TODO fazer exemplo 
+```
+
+
+
+
+
+
 
 ## 👋 Modos de Uso
 
