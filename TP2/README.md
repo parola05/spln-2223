@@ -8,16 +8,16 @@
 
 <br>
 
-1. [🌟 Introdução](#introducao)
-   1. [Contexto](#contexto)
-   2. [Propósito e Objetivos](#proposito-e-objetivos)
-2. [⚙️ Caracterização do sistema](#caracterização-do-sistema)
-   1. [Arquitetura](#arquitetura)
-   2. [Anonimização de Nomes](#anonimização-de-nomes)
-   3. [Anonimização de Endereços](#anonimização-de-endereços)
-   4. [Anonimização de Documentos](#anonimização-de-documentos)
-3. [👋 Modos de Uso](#modos-de-uso)
-4. [👥 Equipa](#equipa)
+- [🌟 Introdução](#-introdução)
+  - [Contexto](#contexto)
+  - [Propósito e Objetivos](#propósito-e-objetivos)
+- [⚙️ Caracterização do sistema](#️-caracterização-do-sistema)
+  - [Arquitetura](#arquitetura)
+  - [Anonimização de Nomes](#anonimização-de-nomes)
+  - [Anonimização de Endereços](#anonimização-de-endereços)
+  - [Anonimização de Documentos](#anonimização-de-documentos)
+- [👋 Modos de Uso](#-modos-de-uso)
+- [👥 Equipa](#-equipa)
 
 ## 🌟 Introdução
 
@@ -133,6 +133,205 @@ self.text = re.sub(ent.text,anonymized_name,self.text)
 
 ### Anonimização de Endereços
 
+Já nesta etapa, o objetivo passou para anonimizar endereços, quer
+endereços *web*, quer endereços físicos. Assim, os endereços
+anonimizados consistem em:
+
+-   **Endereços de Localização**: endereços físicos de locais no mundo.
+    Por exemplo: *Rua Chãozinha, nº23*;
+
+-   **Endereços de *email***: endereços de correio eletrónico. Por
+    exemplo: *email@example.com*;
+
+-   **Endereços URL**: estes encontram-se subdivididos em duas partes,
+    que serão tratadas de forma diferente:
+
+    -   **Endereços de Redes Sociais**: endereços de aplicações *web*
+        muito conhecidas. Por exemplo: *www.facebook.com*;
+
+    -   **Endereços *Web***: todos os endereços URL que não são de uma
+        rede social conhecida. Por exemplo: *pt.overleaf.com*.
+
+De forma a anonimizar os endereços, foi seguida a política definida no
+trabalho prático. Desta forma, quando um endereço de localização é
+encontrado, o mesmo é substituído por *localização\...*, já quando um
+endereço de *email* é encontrado, este é substituído por *email\...*,
+por outro lado, quando um endereço de rede social é encontrado, este é
+substituído pelo nome da rede social em questão seguido de reticências,
+por exemplo, *Instagram\...*, por fim, quando um endereço *web* é
+encontrado, este é substituído por *www\...*.
+
+Vejamos o seguinte exemplo:
+
+```
+Era uma bela manhã de verão, quando o José Pedro decidiu que iria
+visitar a Rua da Chãozinha, nº25, 1º andar, em Lisboa. Isto deveu-se ao
+anúncio que ele encontrou em www.instagram.com. Inicialmente, o José
+Pedro ainda visitou o vídeo presente em www.youtube.com para verificar a
+veracidade dos factos apresentados no anúncio. Como parecia tudo muito
+bom, dirigiu-se a www.google.com, para aceder ao seu email. Lá, enviou
+um email para reservas@gmail.com para reservar o seu lugar.
+```
+
+Ao aplicarmos a anonimização definida, obtemos o seguinte resultado:
+
+```
+Era uma bela manhã de verão, quando o José Pedro decidiu que iria
+visitar a localização... . Isto deveu-se ao anúncio que ele encontrou
+em www.... Inicialmente, o José Pedro ainda visitou o vídeo presente em
+www... para verificar a veracidade dos factos apresentados no anúncio.
+Como parecia tudo muito bom, dirigiu-se a www..., para aceder ao seu
+email. Lá, enviou um email para email... para reservar o seu lugar.
+```
+
+A metodologia do algoritmo geral para anonimização baseou-se então nas
+seguintes etapas:
+
+1.  Deteção dos endereços no texto;
+
+2.  Filtragem dos tipos de endereço;
+
+3.  Substituição dos *tokens* pelo seu valor anonimizado.
+
+À semelhança do módulo anterior, foi utilizada a biblioteca Spacy para
+fornecer alguma ajuda na concretização dos objetivos propostos. O
+carregamento do modelo de processamento de texto para posteriormente
+aplicar os processamentos linguísticos do modelo no texto, sendo
+possível efetuar o tratamento pretendido é feito da seguinte maneira:
+
+```
+    replace_loc = False
+    prev_token_space = False
+    for (i, token) in enumerate(doc):
+        if token.like_email:
+            # trata email
+        elif token.like_url:
+            # trata urls web e de redes sociais
+        elif token.ent_type_ == "LOC" or token.ent_type_ == "GPE":
+            # trata endereços de localização
+```
+
+Por outro lado, foi ainda necessário a utilização do módulo RE para o
+tratamento da diferenciação entre urls genéricos e urls de redes
+sociais, bem como para a aglomeração de elementos pertencentes a uma
+localização (por exemplo, *Rua da Veiga, nº23, 5230-021* deverá ser
+substituído por um único parâmetro *localização\...*).
+
+O tratamento da diferenciação entre urls é realizado da seguinte
+maneira:
+
+```
+    if token.like_url:
+        url_matched = False
+        for pattern, replacement in self.social_networks_regex.items():
+            if re.search(pattern, token.text, re.IGNORECASE):
+                url_matched = True
+                # trata endereço de rede social
+            if not url_matched:
+                # trata endereço geral
+```
+
+Assim, de forma a ser possível testar as expressões regulares das
+diferentes redes sociais detetadas, foi implementado um dicionário que
+associa a cada expressão regular o valor que o token deverá tomar caso
+dê *match* com a mesma:
+
+``` 
+social_networks_regex = {
+r"https?://(?:www\.)?github\.com/([^/?#]+)": "GitHub...",
+r"https?://(?:www\.)?gitlab\.com/([^/?#]+)": "GitLab...",
+r"""https?://(?:www\.)?goodreads\.com
+    /(?:book/show|author/show|user/show)/(\d+)""": 
+    "Goodreads...",
+...
+}
+```
+
+As redes consideradas para substituições específicas foram:
+-   Facebook;
+-   Twitter;
+-   Instagram;
+-   LinkedIn;
+-   YouTube;
+-   Telegram;
+-   WhatsApp;
+-   TikTok;
+-   Pinterest;
+-   Reddit;
+-   Tumblr;
+-   Flickr;
+-   Quora;
+-   Medium;
+-   Twitch;
+-   Zoom;
+-   Google Meet;
+-   Jitsi;
+-   Trello;
+-   Slack;
+-   Discord;
+-   Stack Exchange;
+-   Stack Overflow;
+-   Stack Apps;
+-   GitHub;
+-   GitLab;
+-   Goodreads.
+
+Por fim, de forma a efetuarmos o tratamento adequado da localização, é
+preciso analisar o contexto envolvente às palavras detetadas como
+localização, desta forma, o tratamento é efetuado da seguinte maneira:
+
+```
+if replace_loc:
+    if (re.match(r"(\d+|em|na|no)", token.text)):
+        if (self.check_context(doc, i)):
+            continue
+        elif (
+                token.ent_type_ == "LOC"
+                or token.ent_type_ == "GPE"
+                or self.match_address(token.text)
+            ):
+                continue
+        else:
+            replace_loc = False
+...
+elif token.ent_type_ == "LOC" or token.ent_type_ == "GPE":
+        if not replace_loc:
+            replace_loc = True
+            anonymized_text += "localização..."
+```
+
+O método que permite a verificação de contexto é o seguinte:
+
+```
+def check_context(self, doc: spacy.__doc__, i: int) -> bool:
+    if i == 0:
+        return False
+    if self.match_address(doc[i-1].text) or 
+        self.match_address(doc[i+1].text):
+        return True
+    if doc[i + 1].ent_type_ == "LOC" or doc[i + 1].ent_type_ == "GPE":
+        return True
+
+def match_address(self, text: str) -> bool:
+    for item in self.address_regex:
+        if re.search(item, text, re.IGNORECASE):
+            return True
+    return False
+```
+
+Para isto, à semelhança daquilo que foi feito com o caso das redes
+sociais, possuímos uma lista com expressões regulares indicadoras de
+endereço que o Spacy não é capaz de detetar, visto dependerem do
+contexto envolvente:
+
+```
+address_regex = [
+    r"n(([u|ú]m)?e(ro)?)?º?\.?\s?\d+",
+    r"\d{4}-\d{2,3}-?",
+    r"[,;:-]"
+]
+```
+
 ### Anonimização de Documentos
 
 ## 👋 Modos de Uso
@@ -159,5 +358,5 @@ Build by Henrique, José and Alex
 ## 👥 Equipa
 
 | ![Henrique Parola](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/henrique.jpeg) | ![José Pedro](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/jose.png) | ![Alex](https://raw.githubusercontent.com/LittleLevi05/spln-2223/main/TP2/images/alex.png) |
-|:---:|:---:|:---:|
-| Henrique Parola | José Pedro | Alex |
+| :--------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+|                                              Henrique Parola                                               |                                            José Pedro                                            |                                            Alex                                            |
