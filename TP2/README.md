@@ -134,22 +134,22 @@ self.text = re.sub(ent.text,anonymized_name,self.text)
 ### Anonimização de Endereços
 
 ### Anonimização de Documentos
-Os documentos anonimizados são identificados através de uma expressão regular. De seguida, só é realizada a anonimização se na prefiria do formato identificado for encontrada pelo menos uma keyword associada ao documento.
+Os documentos anonimizados são identificados através de uma expressão regular. De seguida, só é realizada a anonimização se na periferia do formato identificado for encontrada pelo menos uma keyword associada ao documento.
 
 A associação do formato do documento e das keywords permite aumentar o contexto disponível para tomar a decisão se a anonimização está correta. 
-Considere-se o caso específico de um número de telemóvel com 9 dígitos e o número de identificação fiscal (NIF). Ambos têm o mesmo formato, 9 dígitos seguidos sem espaços. Se na preferia do formato encontrado se encontrar a keyword "nif" há uma maior confiança que o formato encontrado é de facto um NIF. Se, por outro lado, se encontrar uma keyword "ligar" há uma maior confiança que o formato encontrado é um número de telemóvel. 
-No entanto, é necessário um jogo de balanceamento, uma vez que não se pretende pesquisar numa preferia muito grande, onde o contexto se ia tornar muito abrangente, mas também não se pretende ter uma preferia muito pequena.
-A figura seguinte permite encontrar um exemplo onde uma preferia muito grande poderia levar a resultados errados. 
+Considere-se o caso específico de um número de telemóvel com 9 dígitos e o número de identificação fiscal (NIF). Ambos têm o mesmo formato, 9 dígitos seguidos sem espaços. Se na periferia do formato encontrado se encontrar a keyword "nif" há uma maior confiança que o formato encontrado é de facto um NIF. Se, por outro lado, se encontrar uma keyword "ligar" há uma maior confiança que o formato encontrado é um número de telemóvel. 
+No entanto, é necessário um jogo de balanceamento, uma vez que não se pretende pesquisar numa periferia muito grande, onde o contexto se ia tornar muito abrangente, mas também não se pretende ter uma periferia muito pequena.
+A figura seguinte permite encontrar um exemplo onde uma periferia muito grande poderia levar a resultados errados. 
 
 ```
-A Carla está sempre a avisar para eu não me esquecer de adicionar o nif do clube, sempre que faço 
-despesas com a carrinha do clube. O problem é que já me esqueci, sabes qual é o nif? 
+A Carla está sempre a avisar para eu não me esquecer de adicionar o nif do clube, sempre que ponho
+combustível na carrinha do clube. O problema é que já me esqueci, sabes qual é o nif? 
 Sim, é 123456789, mas o melhor era ligares para confirmar. O número de telemóvel dela é o 912345678
 Obrigado! Vou ver se lhe ligo assim que conseguir. 
 ```
 
-Neste caso, se a preferia fosse muito abrangente, ao identificar "912345678" ia-se encontrar a keyword "nif" e haveria um falso positivo. 
-Por outro lado, se a preferia fosse muito pequena, por exemplo mais ou menos duas palavras, não se identificaria a keyword "ligar" e haveria um falso negativo. 
+Neste caso, se a periferia fosse muito abrangente, ao identificar "912345678" ia-se encontrar a keyword "nif" e haveria um falso positivo. 
+Por outro lado, se a periferia fosse muito pequena, por exemplo mais ou menos duas palavras, não se identificaria a keyword "ligar" e haveria um falso negativo. 
 
 Este problema poderia ser resolvido se se assumisse que se fizesse duas pesquisas. 
 Uma da expressão identificada para o início do texto e da expressão para o fim do texto.
@@ -159,7 +159,7 @@ A razão pela qual foi estabelicido um limite nesta janela de procura era o over
 Na verdade, é comum encontrar-se estas keywords perto da expressão encontrada e quanto mais afastada estiver a keyword menos confiança se tem que realmente a expressão é a que mapeia o tipo de documento que se está a procurar no momento.
 
 #### Utilização spacy
-Assim que se obtem o texto é criado o documento spacy do texto. A razão para utilzar o spacy é porque desta forma é possível fazer uma lemalização da janela de contexto, e pesquisar pelo lema de uma keyword nesta janela com lemalização. A vantagem de fazer a lemização é a abrangência de mais palavras mapeadas na mesma keyword.
+Assim que se obtem o texto é criado o documento spacy do texto. A razão para utilizar o spacy é porque desta forma é possível fazer uma lemalização da janela de contexto, e pesquisar pelo lema de uma keyword nesta janela com lemalização. A vantagem de fazer a lemização é a abrangência de mais palavras mapeadas na mesma keyword.
 No exemplo seguinte pode-se encontrar uma palavra, ligou, que não faria match com a palavra ligar. 
 
 ```
@@ -167,7 +167,7 @@ O Diogo ligou para o número 912345678 da Carla.
 ```
 
 Considere-se a janela "ligou para o número 912345678 da Carla.", ao realizar a lemalização desta janela obtém-se
-"Diogo ligar para o número 912345678 de o Carla ." Desta forma a keyword "ligar" já consegue fazer match.
+"ligar para o número 912345678 de o Carla ." Desta forma a keyword "ligar" já consegue fazer match.
 
 #### Algoritmo de anonimização
 Existem três passos na realização da anonimização. 
@@ -195,7 +195,7 @@ Ou seja, se já houve anonimizações este texto vai contê-las.
 
 #### Verificação da existência de keywords na janela de contexto
 O primeiro obstáculo é a criação da janela de contexto. 
-A janela de contexto é composta por tokens e está centrada no primeiro caratér de um match do caratér. 
+A janela de contexto é composta por tokens e está centrada no primeiro caratér de um match. 
 Portanto é necessário saber qual o token que corresponde ao offset desse caratér no texto. 
 
 ```
@@ -211,9 +211,12 @@ estar sempre a percorrer o documento spacy. Para tal guarda-se o último índice
 
 No entanto, esta verificação assume um offset do caratér em relação ao texto original, texto usado para criar o documento spacy.
 Desta forma sempre que existe uma substituição, e consequente alteração do texto original, é inserido um par `(pos, delta)` numa lista de histórico.
+Pode-se considerar que este histórico permite através da última versão de texto e um offset de um caratér nesse texto e um offset de um caratér nesse texto, obter o offset do texto original. Assim, sempre que é inserido este par na lista de histórico é necessário atualizar todas as entradas seguintes com a sua posição nova no novo texto. Ou seja, para as entradas seguintes a sua posição/offset fica pos_antiga + delta_novo.
+
 Ao fazer match de uma expressão de um texto, que não o original, extrai-se o offset do primeiro caratér do match (com recurso ao método `match_object.start(0)`) 
-e faz-se uma conversão de qual seria o offset no texto original. No caso de não tiverem havido nenhuma substituição num caratér inferior 
-então o offset obtido pelo o match é equivalente ao do texto orignal. No entanto, se já houve é necessário fazer uma soma de deltas de substituição prévias e substrair o delta acumulado.
+e faz-se uma conversão de qual seria o offset no texto original. No caso de não ter havido nenhuma substituição num caratér com offset inferior 
+então o offset obtido pelo o match é equivalente ao do texto orignal. No entanto, se já houve substituição, é necessário fazer uma soma de deltas de substituição prévias e subtrair o delta acumulado.
+
  
 Com a janela já criada, percorre-se token a token da janela e cria-se uma string de lemmas desses tokens separados por espaços.
 De seguida, para cada key nas keywords verifica-se se o lemma dessa key existe na string de lemas da janela. Se existir então a match pode eventualmente ser anonimizada.
@@ -223,7 +226,19 @@ Há documentos que requerem uma função de check. Para tal assume-se que existe
 O exemplo a seguir demonstra um exemplo de um cartão de cidadão (CC) válido e de outro inválido, assim como as contas feitas para verificar se um CC é valido.
 
 ```
-TODO fazer exemplo 
+Cartão de cidadão válido: 00000000 0 ZZ4 
+Check: 
+- 00000000 0 (35)(35)4
+- (0×2) = 0, (0×2) = 0, (0×2) = 0, (0×2) = 0, (0×2) = 0, ((35×2) = 70 – 9) = 61
+- (0) + 0 + (0) + 0 + (0) + 0 + (0) + 0 + (0) + 35 + (61) + 4 = 100
+- 100 mod 10 == 0, 0 == 0, válido.
+
+Cartão de cidadão inválido: 12345678 2 ZZ4
+Check: 
+- 123456 2 (35)(35)4
+- (1x2) = 2, (3x2) = 6, (5x2) = 10 - 9 = 1, (7x2) = 14 - 9 = 5, (2x2) = 4, ((35x2) = 70 - 9) = 61
+- (2) + 2 + (6) + 4 + (1) + 6 + (5) + 8 + (4) + 35 + 61 + 4 = 138
+- 138 mod 10 != 0, 8 != 0, inválido.
 ```
 
 
