@@ -108,7 +108,7 @@ class DocumentShield():
     def init_window(self):
         self.window_pos = 0
         self.window_pos_max = len(self.doc) - 1
-        self.window_size = min(self.window_pos_max, 15)
+        self.window_size = min(self.window_pos_max, 40)
         self.window = []
 
         for (i, token) in enumerate(self.doc):
