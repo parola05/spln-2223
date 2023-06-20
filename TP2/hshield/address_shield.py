@@ -5,33 +5,33 @@ import re
 class AddressShield():
 
     social_networks_regex = {
-        r"https?://(?:www\.)?(?:facebook\.com|fb\.com)/(?:pages?/[a-zA-Z0-9_.-]+|groups?/[a-zA-Z0-9_.-]+|[^/]+/[a-zA-Z0-9_.-]+)(?:/\d+)?": "Facebook...",
-        r"https?://(?:www\.)?(?:twitter\.com|twttr\.com)/[a-zA-Z0-9_]{1,15}(?:/status/\d+)?(?:\?s=\d+)?(?:&s=\d+)?(?:#\w+)?": "Twitter...",
-        r"r'https?://(?:www\.)?(?:instagram\.com|instagr\.am)/(?:[a-zA-Z0-9_]{1,30}|p|tv|reel|explore/tags)/[a-zA-Z0-9_\-./]+": "Instagram...",
-        r"https?://(?:www\.)?(?:linkedin\.com|lnkd\.in)/(?:in|company)/[a-zA-Z0-9_\-]+(?:/[^/]+)?": "LinkedIn...",
-        r"(?:https?://)?(?:www\.)?(?:youtube\.com|youtu\.be)/(?:channel/|user/|c/)?[a-zA-Z0-9\-_]{1,}": "YouTube...",
-        r"https?://(?:www\.)?(?:t\.me|telegram\.me)/(?:joinchat/|addstickers/|(?:[cC]/)?)([a-zA-Z0-9_]+)": "Telegram...",
-        r"https?://(?:www\.)?(?:api\.)?(?:whatsapp\.com|wa\.me)/(?:send\?phone=)?(\d+)(?:&text=.+)?": "WhatsApp...",
-        r"https?://(?:www\.)?(?:tiktok\.com|vm\.tiktok\.com)/(?:[a-zA-Z0-9\-_]+)/?": "TikTok...",
-        r"https?://(?:www\.)?(?:pinterest\.[a-z]{2,3}|pinimg\.com)/(?:[^/]+/)*(?:[a-zA-Z0-9\-_]{3,})/?": "Pinterest...",
-        r"https?://(?:www\.)?(?:reddit\.com|redd\.it)/(?:r/[^/]+/comments/|user/|u/)?([a-zA-Z0-9_]{3,})/?": "Reddit...",
-        r"https?://(?:www\.)?(?:[a-zA-Z0-9_\-]+\.tumblr\.com)/(?:post/)?(\d+)/?": "Tumblr...",
-        r"https?://(?:www\.)?flickr\.com/photos/(?:[^/]+/)?(\d+)/?": "Flickr...",
-        r"https?://(?:www\.)?quora\.com/(?:profile/[^/]+|question/(\d+))/?(?:\?.*)?": "Quora...",
-        r"https?://(?:www\.)?medium\.com/(?:@[^/]+/)?([^/]+)/?(?:\?.*)?": "Medium...",
-        r"https?://(?:www\.)?twitch\.tv/([^/]+)/(?:v/(\d+)|clip/([^/]+))/?(?:\?.*)?": "Twitch...",
-        r"https?://(?:www\.)?zoom\.us/(?:j/)?(?:my/)?(\d+)(?:\?pwd=[^&]+)?": "Zoom...",
-        r"https?://meet.google.com/(\w{3}-\w{4}-\w{3})": "Google Meet...",
-        r"https?://(?:www\.)?(?:meet\.jit\.si|jitsi\.(?:org|app))/([^/?]+)": "Jitsi...",
-        r"https?://(?:www\.)?trello\.com/(?:c|b|[^/]+)/([^/?]+)": "Trello...",
-        r"https?://(?:[a-z0-9]+\.){0,1}slack\.com/(?:[a-z0-9_-]+/){0,1}([^/?]+)": "Slack...",
-        r"https?://(?:www\.)?(?:discord\.gg|discord(?:app)?\.com/invite)/([a-zA-Z0-9]+)": "Discord...",
-        r"https?://(?:[a-z]+\.)?stack(?:exchange)\.com/(?:q(?:uestions)?|a(?:nswers)?|users)/([^/?#]+)": "Stack Exchange...",
-        r"https?://(?:[a-z]+\.)?stack(?:overflow)\.com/(?:q(?:uestions)?|a(?:nswers)?|users)/([^/?#]+)": "Stack Overflow...",
-        r"https?://(?:[a-z]+\.)?stack(?:apps)\.com/(?:q(?:uestions)?|a(?:nswers)?|users)/([^/?#]+)": "Stack Apps...",
-        r"https?://(?:www\.)?github\.com/([^/?#]+)": "GitHub...",
-        r"https?://(?:www\.)?gitlab\.com/([^/?#]+)": "GitLab...",
-        r"https?://(?:www\.)?goodreads\.com/(?:book/show|author/show|user/show)/(\d+)": "Goodreads...",
+        r"(https?://)?(?:www\.)?(?:facebook\.com|fb\.com).*": "Facebook...",
+        r"(https?://)?(?:www\.)?(?:twitter\.com|twttr\.com).*": "Twitter...",
+        r"(https?://)?(?:www\.)?(instagram\.com|instagr\.am).*": "Instagram...",
+        r"(https?://)?(?:www\.)?(?:linkedin\.com|lnkd\.in).*": "LinkedIn...",
+        r"(?:https?://)?(?:www\.)?(?:youtube\.com|youtu\.be).*": "YouTube...",
+        r"(https?://)?(?:www\.)?(?:t\.me|telegram\.me).*": "Telegram...",
+        r"(https?://)?(?:www\.)?(?:api\.)?(?:whatsapp\.com|wa\.me).*": "WhatsApp...",
+        r"(https?://)?(?:www\.)?(?:tiktok\.com|vm\.tiktok\.com).*": "TikTok...",
+        r"(https?://)?(?:www\.)?(?:pinterest\.[a-z]{2,3}|pinimg\.com).*": "Pinterest...",
+        r"(https?://)?(?:www\.)?(?:reddit\.com|redd\.it).*": "Reddit...",
+        r"(https?://)?(?:www\.)?(?:[a-zA-Z0-9_\-]+\.tumblr\.com).*": "Tumblr...",
+        r"(https?://)?(?:www\.)?flickr\.com.*": "Flickr...",
+        r"(https?://)?(?:www\.)?quora\.com.*": "Quora...",
+        r"(https?://)?(?:www\.)?medium\.com.*": "Medium...",
+        r"(https?://)?(?:www\.)?twitch\.tv.*": "Twitch...",
+        r"(https?://)?(?:www\.)?zoom\.us.*": "Zoom...",
+        r"(https?://)?meet.google.com.*": "Google Meet...",
+        r"(https?://)?(?:www\.)?(?:meet\.jit\.si|jitsi\.(?:org|app)).*": "Jitsi...",
+        r"(https?://)?(?:www\.)?trello\.com.*": "Trello...",
+        r"(https?://)?(?:[a-z0-9]+\.){0,1}slack\.com.*": "Slack...",
+        r"(https?://)?(?:www\.)?(?:discord\.gg|discord(?:app)?)\.com.*": "Discord...",
+        r"(https?://)?(?:[a-z]+\.)?stack(?:exchange)\.com.*": "Stack Exchange...",
+        r"(https?://)?(?:[a-z]+\.)?stack(?:overflow)\.com.*": "Stack Overflow...",
+        r"(https?://)?(?:[a-z]+\.)?stack(?:apps)\.com.*": "Stack Apps...",
+        r"(https?://)?(?:www\.)?github\.com.*": "GitHub...",
+        r"(https?://)?(?:www\.)?gitlab\.com.*": "GitLab...",
+        r"(https?://)?(?:www\.)?goodreads\.com.*": "Goodreads...",
     }
 
     address_regex = [
@@ -96,7 +96,7 @@ class AddressShield():
                 if prev_token_space:
                     anonymized_text += " "
                 for pattern, replacement in self.social_networks_regex.items():
-                    if re.search(pattern, token.text, re.IGNORECASE):
+                    if re.match(pattern, token.text, re.IGNORECASE):
                         anonymized_text += replacement
                         url_matched = True
                         break
@@ -115,3 +115,18 @@ class AddressShield():
             prev_token_space = bool(token.whitespace_)
 
         return anonymized_text.strip()
+
+
+text = \
+    """ 
+Era uma bela manhã de verão, quando o José Pedro decidiu que iria
+visitar a Rua da Chãozinha, nº25, 1º andar, em Lisboa. Isto deveu-se ao
+anúncio que ele encontrou em www.facebook.com. Inicialmente, o José
+Pedro ainda visitou o vídeo presente em www.youtube.com para verificar a
+veracidade dos factos apresentados no anúncio. Como parecia tudo muito
+bom, dirigiu-se a www.google.com, para aceder ao seu email. Lá, enviou
+um email para reservas@gmail.com para reservar o seu lugar.
+"""
+
+shield = AddressShield(text)
+print(shield.shield())
