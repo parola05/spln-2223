@@ -25,8 +25,7 @@ def main():
             text  = f.read() 
 
         if args.name:
-            name = NameShield(text=text)
-            print(name.shield())
+            text = NameShield(text=text).shield()
 
         if args.document:
             text = DocumentShield(text=text).shield()
